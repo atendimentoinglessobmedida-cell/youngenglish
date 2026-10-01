@@ -1,6 +1,6 @@
 # ISM Young English
 
-Aplicativo de inglês para estudantes de 10–15 anos, versão 12. São 144 aulas em seis níveis e quinze modalidades de jogos. Os cinco novos jogos trabalham vocabulário, palavras em contexto, gramática, reconstrução de frases e escrita com autoavaliação. Esta distribuição é uma demonstração; os planos não implementam cobrança ou controle de acesso no servidor.
+Aplicativo de inglês para estudantes de 10–15 anos, versão 13. São 144 aulas em seis níveis e quinze modalidades de jogos. Os cinco novos jogos trabalham vocabulário, palavras em contexto, gramática, reconstrução de frases e escrita com autoavaliação. Esta distribuição é uma demonstração; os planos não implementam cobrança ou controle de acesso no servidor.
 
 ## Verificar e construir
 
@@ -13,3 +13,6 @@ Repositório: https://github.com/atendimentoinglessobmedida-cell/youngenglish. A
 As URLs `.html` são preservadas porque o aplicativo utiliza esses caminhos. Configuração: [documentação oficial da Vercel](https://vercel.com/docs/project-configuration/vercel-json).
 
 Não incluir credenciais ou arquivos de alunos. O e-mail do professor ainda aguarda confirmação.
+
+
+Video Lab reúne seis links oficiais do British Council e missões ISM originais por nível. Os vídeos abrem na fonte externa; não são incorporados ou redistribuídos. Nenhum player externo é carregado automaticamente. As missões também podem ser praticadas com textos autorais de apoio.
