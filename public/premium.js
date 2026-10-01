@@ -28,7 +28,7 @@ function validatedProgress(raw){
  const clean=(obj,test)=>Object.fromEntries(plain(obj)?Object.entries(obj).filter(([k,v])=>test(k,v)):[]);
  return {...raw,answers:clean(raw.answers,(k,v)=>validKey(k)&&typeof v==='boolean'),drafts:clean(raw.drafts,(k,v)=>(ids.has(k)||videoMissions.some(m=>k==='video-'+m.id)||validKey(k)||/^project-[0-6]$/.test(k))&&typeof v==='string'),stars:clean(raw.stars,(k,v)=>ids.has(k)&&Number.isInteger(v)&&v>=1&&v<=3),done:Array.isArray(raw.done)?raw.done.filter(k=>ids.has(k)):[],gameWins:Array.isArray(raw.gameWins)?raw.gameWins.filter(k=>typeof k==='string'&&ids.has(k.slice(0,k.lastIndexOf(':')))&&gameTypes.some(g=>g.id===k.slice(k.lastIndexOf(':')+1))):[],themeAchievements:Array.isArray(raw.themeAchievements)?raw.themeAchievements.filter(k=>typeof k==='string'&&/^(explore|practice|create):(cinema|comics|series|books|travel|music)$/.test(k)):[],resume:raw.resume&&ids.has(raw.resume.id)&&Number.isInteger(raw.resume.step)&&raw.resume.step>=0&&raw.resume.step<=5?raw.resume:null,filters:plain(raw.filters)?raw.filters:{}};
 }
-function progressSnapshot(){return {version:4,appVersion:13,points,answers,drafts,done:[...done],stars,gameWins:[...gameWins],themeAchievements:[...themeAchievements],missionMode,age,resume:resumeLesson,filters:{catalogStatus,catalogTheme,premiumStatus,premiumTheme,premiumLevel}}}
+function progressSnapshot(){return {version:4,appVersion:14,points,answers,drafts,done:[...done],stars,gameWins:[...gameWins],themeAchievements:[...themeAchievements],missionMode,age,resume:resumeLesson,filters:{catalogStatus,catalogTheme,premiumStatus,premiumTheme,premiumLevel}}}
 function saveProgress(){
  if(!remember)return;
  try{localStorage.setItem(progressKey,JSON.stringify(progressSnapshot()));storageFailed=false}

@@ -1,0 +1,11 @@
+# Prompt — vídeos reproduzidos dentro do ISM Young English
+
+Atue como desenvolvedor de aplicativos educacionais e especialista em ensino de inglês para estudantes de 10–15 anos. Implemente reprodução de vídeo dentro das lições, sem exigir que o estudante saia do aplicativo.
+
+Use somente fontes cuja incorporação tenha autorização verificável. Para esta execução, use o clipe visual From the Moon to the Earth, NASA SVS 5039, disponível em https://svs.gsfc.nasa.gov/5039/. A política do SVS permite o uso de suas visualizações em domínio público, salvo indicação contrária; não utilizar trilhas musicais licenciadas. Preserve os créditos indicados na ficha e não sugira parceria ou aprovação da NASA. Não incorporar os materiais do British Council enquanto não houver autorização específica para esse uso; preservar os links oficiais existentes.
+
+Crie seis missões autorais para Elementary, Basic, Pre-Intermediate, Intermediate, Upper e Advanced usando o mesmo clipe, com vocabulário, gramática e escrita diferentes. Informe claramente que é uma animação visual sem narração, destinada à prática de linguagem com apoio escrito, e que não representa seis vídeos distintos ou compreensão de áudio. Mantenha textos e gabaritos originais e adequados à idade.
+
+Integre um player HTML nativo com controles, reprodução somente por escolha, pausa, velocidade e tela cheia quando oferecida pelo navegador. Carregue a mídia externa somente após o estudante escolher disponibilizar o player. Mantenha descrição visual e alternativa de texto; não invente legendas faladas para um clipe sem fala. Apresente estados de player disponível, reprodução, pausa, término e erro, com opção de tentar novamente. Em caso de falha de rede, as atividades continuam acessíveis. Pause o vídeo ao ocultar a aba. Garanta que a navegação encerre a reprodução da missão anterior.
+
+Preserve chaves e rascunhos antigos, não recompense clicar ou assistir e não marque a missão como assistida automaticamente. Mantenha o XP por prática e revisão com limite de primeira conclusão. Atualize filtros e contadores para todas as missões. Verifique conteúdo, gabaritos, validação do progresso, navegador, reprodução real e layout móvel. Publique pelos canais GitHub e Vercel já autorizados e relate exatamente a cobertura dos testes e as limitações restantes.
