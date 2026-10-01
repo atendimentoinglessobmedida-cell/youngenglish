@@ -1,6 +1,6 @@
 # ISM Young English
 
-Aplicativo de inglês para estudantes de 10–15 anos, versão 9. Esta distribuição é uma demonstração; os planos não implementam cobrança ou controle de acesso no servidor.
+Aplicativo de inglês para estudantes de 10–15 anos, versão 10. São 144 aulas em seis níveis e quinze modalidades de jogos. Os cinco novos jogos trabalham vocabulário, palavras em contexto, gramática, reconstrução de frases e escrita com autoavaliação. Esta distribuição é uma demonstração; os planos não implementam cobrança ou controle de acesso no servidor.
 
 ## Verificar e construir
 
