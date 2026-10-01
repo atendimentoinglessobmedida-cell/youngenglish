@@ -1,0 +1,50 @@
+{
+  "version": 5,
+  "freeLessons": 72,
+  "premiumLessons": 60,
+  "totalLessons": 132,
+  "vocabularyEntries": 1056,
+  "grammarExercises": 396,
+  "totalObjectiveExercises": 1584,
+  "checks": [
+    "132 aulas concluídas incluindo 396 gramáticas",
+    "60 novas aulas com jogos vinculados a vocabulário e diálogo",
+    "Contagens por nível e filtro vazio",
+    "Filtros e retorno ao catálogo",
+    "Missão Criar e medalhas",
+    "XP sem duplicação na revisão",
+    "Salvar, recarregar e retomar etapa por ID",
+    "Migração de dados v4",
+    "URLs diretas e aula anterior",
+    "Exclusão do progresso e retomada",
+    "Preços preservados e guia atualizado",
+    "132 aulas verificadas estruturalmente",
+    "1440/390/320 sem rolagem horizontal",
+    "Sem erros JavaScript ou arquivos ausentes"
+  ],
+  "limits": [
+    "Sem pagamentos ou autorização comercial no servidor",
+    "Sem sincronização entre dispositivos",
+    "Escrita e fala avaliadas pelo próprio aluno",
+    "Respostas objetivas baseadas nas alternativas previstas"
+  ],
+  "visualUpdate": {
+    "images": 6,
+    "themes": [
+      "cinema",
+      "comics",
+      "series",
+      "books",
+      "travel",
+      "music"
+    ],
+    "checks": [
+      "Imagem temática na abertura e no catálogo",
+      "Imagem temática nas aulas e cenas de leitura",
+      "Imagens nos jogos de contexto visual",
+      "132 aulas preservadas",
+      "Sem arquivo ausente ou erro JavaScript",
+      "Layouts 1440/390/320 sem rolagem horizontal"
+    ]
+  }
+}

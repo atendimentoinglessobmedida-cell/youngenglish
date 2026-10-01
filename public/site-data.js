@@ -1,0 +1,13 @@
+// Identidade e WhatsApp reutilizados dos apps ISM de viagens e business.
+// Um e-mail só deve ser publicado após confirmação do responsável pela marca.
+const ismContact={name:'Márcio Guariba',phone:'5511976901015',phoneLabel:'(11) 97690-1015',email:null,instagram:'https://www.instagram.com/ingles.sob.medida/'};
+const ismPlans=[{name:'Mensal',days:30,price:58.99,months:1},{name:'Semestral',days:180,price:329.99,months:6},{name:'Anual',days:365,price:589.99,months:12}];
+const ismMoney=n=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(n);
+const ismWhatsApp=text=>'https://wa.me/'+ismContact.phone+'?text='+encodeURIComponent(text);
+document.querySelectorAll('[data-whatsapp]').forEach(a=>a.href=ismWhatsApp(a.dataset.whatsapp));
+document.querySelectorAll('[data-email]').forEach(host=>{if(ismContact.email){const a=document.createElement('a');a.className='primary';a.href='mailto:'+ismContact.email+'?subject='+encodeURIComponent('Contato sobre ISM Young English');a.textContent='Escrever por e-mail';host.replaceChildren(a);const p=document.createElement('p');p.className='contact-address';p.textContent=ismContact.email;host.append(p)}});
+const periods=document.querySelectorAll('[name="period"]');
+function updateSubscription(){const days=Number(document.querySelector('[name="period"]:checked')?.value)||30,p=ismPlans.find(p=>p.days===days);document.querySelector('#selected-period').textContent=p.name+' · '+p.days+' dias';document.querySelector('#selected-price').textContent=ismMoney(p.price);document.querySelector('#selected-equivalent').textContent=p.months===1?'Pagamento por período de 30 dias.':ismMoney(p.price/p.months)+' por mês equivalente. O valor total é pago pelo período; não representa parcelamento.';document.querySelector('#subscription-whatsapp').href=ismWhatsApp(`Olá, Professor Márcio! Sou responsável por um estudante e gostaria de consultar a proposta do ISM Young English Premium ${p.name}: ${ismMoney(p.price)} por ${p.days} dias. Poderia confirmar a disponibilidade, as condições de pagamento e a ativação?`);periods.forEach(r=>r.closest('label').classList.toggle('selected',r.checked))}
+periods.forEach(r=>r.addEventListener('change',updateSubscription));if(periods.length)updateSubscription();
+
+const copyContact=document.querySelector('#copy-contact');if(copyContact)copyContact.onclick=async()=>{try{await navigator.clipboard.writeText('+55 11 97690-1015');document.querySelector('#copy-feedback').textContent='Número copiado: +55 11 97690-1015.'}catch{document.querySelector('#copy-feedback').textContent='Copie o número exibido: +55 11 97690-1015.'}};

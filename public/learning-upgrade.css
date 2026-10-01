@@ -1,0 +1,9 @@
+.catalog-filterbar{display:flex;gap:12px;align-items:end;flex-wrap:wrap;margin:20px 0}.catalog-filterbar label{flex:1;min-width:180px}.catalog-filterbar select{width:100%}.resume-card{display:flex;align-items:center;justify-content:space-between;gap:20px;background:#fff8e9;border:1px solid #e4c285;border-radius:14px;padding:20px;margin-bottom:22px}.resume-card h3{margin:8px 0}.resume-card p{margin:0;color:#4a6478}.retry-question{margin-top:10px;font-size:14px}.creative-check label{display:flex;align-items:flex-start;gap:10px}.creative-check input{width:20px;height:20px;flex-shrink:0}.creative-check p{font-size:13px}.premium-lesson-art{object-fit:cover;display:block}.premium-story-art{width:min(100%,520px);border-radius:14px;display:block}.page-lesson[hidden],.premium-card[hidden]{display:none!important}.premium-filters label{min-width:140px}@media(max-width:600px){.resume-card{align-items:stretch;flex-direction:column}.catalog-filterbar{flex-direction:column;align-items:stretch}.catalog-filterbar label{min-width:0}.premium-filters label{min-width:100%}}
+
+/* Focus remains visible on both white cards and dark navigation. */
+:is(button,a,input,select,textarea,summary):focus-visible{outline:3px solid #102944;outline-offset:3px;box-shadow:0 0 0 3px #fff}
+/* Larger clickable areas for checklists and expandable lesson support. */
+.checklist label,.creative-check label,.progress-settings label{min-height:44px;padding-block:4px}
+summary{min-height:44px;display:list-item;padding-block:8px}
+/* Identify text links without relying on color alone. */
+main a:not(.primary):not(.secondary):not(.nav):not(.brand),footer a{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1.5px}
