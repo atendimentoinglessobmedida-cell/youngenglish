@@ -58,13 +58,13 @@ function learningRounds(id,l,title,instruction,items,kind){
    const normalize=kind==='vocabulary'||kind==='context'?learningText:learningSentence;
    if(q.accepted.some(a=>normalize(a)===normalize(value))){
     $('#learning-feedback').textContent='Conferiu com o modelo! '+(q.explanation||'');$('#learning-next').hidden=false;
-    document.querySelectorAll('[data-learning-choice],#learning-form button').forEach(b=>b.disabled=true);if($('#learning-input'))$('#learning-input').readOnly=true;
+    document.querySelectorAll('[data-learning-choice],#learning-form button').forEach(b=>b.disabled=true);if($('#learning-input'))$('#learning-input').readOnly=true;$('#learning-next').focus({preventScroll:true});
    }else $('#learning-feedback').textContent='Ainda não corresponde ao modelo pedido. Confira o apoio e tente novamente. '+(kind==='grammar'?q.explanation||'':'');
   };
   if(choice)document.querySelectorAll('[data-learning-choice]').forEach(b=>b.onclick=()=>check(q.options[+b.dataset.learningChoice]));
   else $('#learning-form').onsubmit=e=>{e.preventDefault();check($('#learning-input').value)};
   if(dictation)audio($('#learning-audio'),q.model);
-  $('#learning-next').onclick=()=>{stopAudio();round++;draw();$('#learning-input')?.focus()};
+  $('#learning-next').onclick=()=>{stopAudio();round++;draw();($('#learning-input')||$('#play [data-learning-choice]')||$('#restartgame'))?.focus({preventScroll:true})};
  }
  draw();
 }

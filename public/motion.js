@@ -29,7 +29,7 @@
   media.addEventListener('change', sync);
   sync();
   function celebrate() {
-    if (!enabled()) return;
+    if (!enabled() || typeof document.body.animate !== 'function') return;
     document.querySelectorAll('.reward-confetti').forEach(element => element.remove());
     const layer = document.createElement('div');
     layer.className = 'reward-confetti';
