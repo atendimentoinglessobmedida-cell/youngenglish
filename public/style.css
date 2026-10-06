@@ -7,3 +7,20 @@ html{scroll-padding-top:16px}button,a,select,textarea{scroll-margin:80px}button:
 
 /* Home CTA system */
 .nav-link,.nav-cta,.footer-cta{text-decoration:none}.nav-cta{display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.22);background:#183b5d;color:#fff;font-weight:700}.nav-cta:hover,.nav-cta:focus-visible{background:#2b566f;color:#fff}.install-cta{background:var(--yellow);color:var(--navy);font-weight:800;border:1px solid #e5b923}.install-cta:hover,.install-cta:focus-visible{background:#ffe078}.site-footer-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.footer-cta{display:inline-flex;min-height:44px;align-items:center;justify-content:center;padding:9px 14px;border:1px solid #c8d7e2;border-radius:10px;background:#fff;color:var(--navy);font-weight:700}.footer-cta:hover,.footer-cta:focus-visible{border-color:var(--teal);background:#e5f5f4}.install-help{position:fixed;inset:0;background:rgba(16,41,68,.58);display:grid;place-items:center;padding:20px;z-index:1000}.install-help-card{max-width:460px;background:#fff;border-radius:16px;padding:22px;box-shadow:0 18px 60px rgba(0,0,0,.25)}.install-help-card h2{margin-top:0}.install-help-card button{width:100%;margin-top:12px}@media(max-width:680px){.nav-cta,.install-cta{flex:1 0 auto}.site-footer-links{display:grid;grid-template-columns:1fr}.footer-cta{width:100%}}
+
+/* Mobile header refinement */
+@media(max-width:680px){
+  header{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;padding:14px 14px 16px;align-items:stretch}
+  .brand{width:100%;justify-content:flex-start;gap:12px;padding:2px 2px 8px}
+  .brand>b{font-size:28px;min-width:max-content}
+  .brand>span{min-width:0}
+  .brand small{font-size:17px}
+  header nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:100%;overflow:visible;padding:0}
+  header .nav{width:100%;min-width:0;min-height:46px;padding:9px 6px;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.15;border-radius:10px;font-size:13px;white-space:normal}
+  header .nav-link{display:flex}
+  header .install-cta{grid-column:1/-1;min-height:48px;font-size:14px}
+}
+@media(max-width:390px){
+  header nav{grid-template-columns:repeat(2,minmax(0,1fr))}
+  header .install-cta{grid-column:1/-1}
+}
