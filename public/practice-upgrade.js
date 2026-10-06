@@ -28,3 +28,10 @@ const practiceRender=render;render=function(){
 };
 // As novas lições existem após a leitura inicial das rotas. Resolver seus links agora.
 if(practiceLessons.some(l=>l.id===location.hash.slice(1)))readPageRoute();
+
+/* Exercise Engine pilot: persistent mistake queue without changing existing progress keys. */
+const ISM_MISTAKE_KEY='ism-young:practice-mistakes:v1';
+function ismMistakes(){try{const v=JSON.parse(localStorage.getItem(ISM_MISTAKE_KEY)||'{}');return v&&typeof v==='object'&&!Array.isArray(v)?v:{}}catch{return {}}}
+function ismSaveMistakes(v){try{localStorage.setItem(ISM_MISTAKE_KEY,JSON.stringify(v))}catch{}}
+function ismRegisterMistake(id,correct){const v=ismMistakes();if(correct)delete v[id];else v[id]={at:Date.now(),lesson:lessons[current]?.id||''};ismSaveMistakes(v)}
+const ismPracticeRender=render;render=function(){ismPracticeRender();if(view==='learn'&&lessons[current]?.practice){const host=$('#surface .course-head');if(host){const count=Object.keys(ismMistakes()).length;host.insertAdjacentHTML('beforeend',`<p class="teacher" role="status">Practice Engine · ${count?count+' item(ns) para revisar':'nenhum erro pendente'}</p>`)}}};
