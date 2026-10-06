@@ -11,7 +11,7 @@ const practiceStage=stageUI;stageUI=function(l){
   $('#dialogaudio').textContent='Ouvir texto';body.insertAdjacentHTML('afterbegin',`<span class="tag">${esc(l.practiceTextType)} · texto ISM</span>`);
  }
  if(step===2&&l.practiceTextType!=='Conversa')body.querySelector(':scope > p').textContent='Ouça o texto da aula ou consulte a transcrição. Repita quando quiser; a voz é sintetizada pelo navegador.';
- if(step===3)body.querySelectorAll('.feedback').forEach(p=>p.setAttribute('role','status'));
+ if(step===3){body.querySelectorAll('.feedback').forEach(p=>{p.setAttribute('role','status');p.setAttribute('aria-live','polite')});body.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>setTimeout(()=>{const f=body.querySelector('.feedback:not(:empty)');if(f){f.setAttribute('tabindex','-1');f.focus({preventScroll:true})}},0),{once:true}))}
  if(step===4)body.insertAdjacentHTML('afterbegin',`<details><summary>Consultar o texto original da aula</summary>${l.d.map(line=>`<p lang="en">${esc(line)}</p>`).join('')}</details>`);
  if(step===5){
   $('#writing').insertAdjacentHTML('afterend',`<p id="practice-word-count" role="status"></p><section class="note"><h3>Confira o objetivo desta aula</h3><ul>${l.practiceCriteria.map(c=>`<li>${esc(c)}</li>`).join('')}</ul><p>O contador verifica a extensão mínima de prática. Os critérios ajudam sua revisão; não corrigem automaticamente a qualidade do texto.</p></section>`);
