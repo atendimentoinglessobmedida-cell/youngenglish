@@ -35,3 +35,9 @@ const visualAuditRender=render;render=function(){visualAuditRender();if(view==='
 
 render();
 
+
+// Character-led visual system 2026-10-07
+const characterThemeArt={school:'assets/premium-series-960.webp',science:'assets/premium-cinema-960.webp',nature:'assets/premium-travel-960.webp',citizenship:'assets/premium-books-960.webp',food:'assets/premium-series-960.webp',esports:'assets/premium-cinema-960.webp'};
+const characterThemeAlt={school:'Adolescentes conversando e aprendendo juntos.',science:'Adolescentes criando um projeto e investigando ideias.',nature:'Adolescentes explorando um novo lugar.',citizenship:'Adolescentes lendo, conversando e compartilhando perspectivas.',food:'Adolescentes em uma situação cotidiana de convivência.',esports:'Adolescentes criando um projeto de mídia e tecnologia.'};
+function characterArt(theme,cls=''){const src=characterThemeArt[theme];return src?'<img class="theme-art '+cls+'" src="'+src+'" alt="'+characterThemeAlt[theme]+'" width="960" height="640" loading="lazy" decoding="async">':''}
+const characterVisualRender=render;render=function(){characterVisualRender();if(view==='learn'&&!lessons[current].premium&&characterThemeArt[lessons[current].theme]){const l=lessons[current],head=$('#surface .headscene');if(head)head.outerHTML=characterArt(l.theme,'headscene');if(step===1){const image=$('.story-scene .scene, .story-scene .theme-art');if(image)image.outerHTML=characterArt(l.theme,'story-theme-art')}}if(view==='levelpage'){const ls=freeLessons.filter(l=>l.level===selectedLevel);document.querySelectorAll('.page-lesson').forEach((card,i)=>{const thumb=card.querySelector('.lesson-thumbnail');if(thumb&&ls[i]&&characterThemeArt[ls[i].theme])thumb.outerHTML=characterArt(ls[i].theme,'lesson-thumbnail')})}};
