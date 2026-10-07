@@ -3,6 +3,9 @@ on:
   push:
     branches: [pwa-installable-2026-10-07]
     paths: ['android/**','.github/workflows/android-apk.yml']
+  pull_request:
+    branches: [master-next-cycle-2026-10-05]
+    paths: ['android/**','.github/workflows/android-apk.yml']
   workflow_dispatch:
 jobs:
   build:
