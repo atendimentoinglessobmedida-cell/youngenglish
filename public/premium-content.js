@@ -140,3 +140,68 @@ const premiumLessons=premiumRows.map((r,i)=>{
  premiumGrammar.push({id,topic:gr[0],exercises:[{type:'gap',prompt:gr[1],accepted:[gr[2]],explanation:gr[3]},{type:'choice',prompt:'Escolha a estrutura adequada ao contexto.',options:[gr[4],gr[5]],answer:0,explanation:gr[6]},{type:'rewrite',prompt:gr[7],accepted:gr[8],explanation:gr[9]}]});
  return {id,t,level,cefr:premiumCefr[li],premium:true,theme:theme.id,module:0,o:['Expressar preferências e possibilidades em um contexto de '+theme.name.toLowerCase()+'.','Contar uma experiência fictícia com sequência e plano futuro.','Imaginar alternativas e justificar uma escolha inclusiva.','Explicar um processo e relatar propostas sem alterar condições.','Avaliar perspectivas, delimitar certeza e propor um próximo passo.'][li],v:v.split('|').map(x=>{const [en,pt]=x.split('=');return{en,pt}}),g,d,tr,q:q.map((x,j)=>({prompt:x[0],options:x.slice(1,4),answer:0,explanation:x[4],type:j<2?'reading':'language'})),w,model,k:'Crie personagens e situações imaginárias. Desenhe sua ideia antes de escrever; use o modelo como apoio.',teen:'Apresente sua proposta fictícia para um clube e explique como ela inclui interesses diferentes.',s,tip:li<2?'Ouça em partes e repita o modelo. A transcrição pode ser usada como apoio.':'Identifique pausas, contrastes e grau de certeza. Repita o modelo e adapte a mensagem.',grammarTopic:gr[0],grammarExercises:premiumGrammar[premiumGrammar.length-1].exercises};
 });
+
+// Premium curriculum enrichment v2
+const premiumSkillTracks={
+ cinema:[
+  ['Escolher uma sessão','Interação','Perguntar e responder sobre preferências, horário e escolha.','Convide um colega fictício para uma sessão e combine horário e filme.'],
+  ['Contar como foi a filmagem','Narrativa','Relatar acontecimentos, problemas e decisões em sequência.','Grave um áudio de 30–45 segundos contando o que aconteceu na filmagem.'],
+  ['Apresentar um pitch','Criação','Imaginar um filme, justificar escolhas e negociar alternativas.','Faça um pitch de 60 segundos para um curta fictício.'],
+  ['Revisar uma produção','Media literacy','Distinguir sugestão, decisão, crédito e consentimento.','Produza uma ficha de revisão antes de uma exibição fictícia.'],
+  ['Avaliar uma crítica','Pensamento crítico','Separar evidência, interpretação e generalização.','Escreva uma crítica equilibrada e indique os limites das evidências.']
+ ],
+ comics:[
+  ['Apresentar um personagem','Descrição','Descrever aparência, personalidade e habilidades simples.','Apresente oralmente um herói original em 4–5 frases.'],
+  ['Reconstruir uma sequência','Narrativa visual','Ordenar acontecimentos e explicar o que mudou.','Narre três quadros de uma história fictícia em ordem.'],
+  ['Defender uma escolha narrativa','Decisão','Comparar alternativas e consequências.','Explique qual decisão o personagem deveria tomar e por quê.'],
+  ['Publicar em equipe','Colaboração','Relatar contribuições, revisão, prazo e créditos.','Crie regras de crédito para uma equipe fictícia de quadrinhos.'],
+  ['Mudar o ponto de vista','Pensamento crítico','Identificar enquadramento, omissão e agência.','Reescreva uma cena curta pelo ponto de vista de outro personagem.']
+ ],
+ series:[
+  ['Escolher o que assistir','Interação','Falar sobre duração, preferência e rotina.','Recomende um episódio fictício para uma noite de estudos.'],
+  ['Fazer um recap','Narrativa','Resumir acontecimentos passados sem perder a ordem.','Grave um recap de 30–45 segundos de um episódio inventado.'],
+  ['Prever o próximo episódio','Inferência','Usar pistas para formular previsões sem afirmar certeza.','Crie três previsões e associe uma pista a cada uma.'],
+  ['Checar um resumo','Precisão','Separar promessa, sugestão, condição e fato.','Edite um recap exagerado para deixá-lo preciso.'],
+  ['Comparar interpretações','Pensamento crítico','Sustentar leituras alternativas com evidências.','Defenda duas interpretações possíveis e diga qual é mais convincente.']
+ ],
+ books:[
+  ['Escolher uma leitura','Interação','Falar de título, capa, gênero e preferência.','Recomende um livro fictício para um colega.'],
+  ['Contar uma experiência de leitura','Narrativa','Relatar empréstimo, leitura e devolução.','Conte o percurso de um livro da biblioteca em 5–6 frases.'],
+  ['Recomendar com razões','Argumentação','Relacionar gênero, personagem, ritmo e perfil do leitor.','Escreva uma recomendação de 70–90 palavras.'],
+  ['Organizar um clube acessível','Colaboração','Discutir formatos, participação e acessibilidade.','Monte uma proposta de encontro inclusivo para um clube de leitura.'],
+  ['Questionar o narrador','Pensamento crítico','Identificar contradições e avaliar confiabilidade.','Compare duas afirmações de um narrador e formule uma conclusão cautelosa.']
+ ],
+ travel:[
+  ['Encontrar o caminho','Interação','Perguntar sobre transporte, direção, horário e plataforma.','Simule um diálogo para encontrar a plataforma correta.'],
+  ['Relatar um passeio','Narrativa','Contar trajeto, visita, clima e imprevisto.','Grave um diário de viagem fictício de 40 segundos.'],
+  ['Replanejar uma rota','Resolução de problemas','Comparar alternativas diante de atraso ou mudança.','Escolha uma rota alternativa e justifique a decisão.'],
+  ['Planejar com acessibilidade','Planejamento','Confirmar acesso, transporte e condições antes de reservar.','Crie um checklist de seis itens para um passeio inclusivo.'],
+  ['Avaliar impacto local','Pensamento crítico','Analisar afirmações sobre sustentabilidade e vozes locais.','Escreva uma proposta de visita responsável com ressalvas e próximos passos.']
+ ],
+ music:[
+  ['Entrar para um clube','Interação','Falar sobre instrumentos, volume, ritmo e preferência.','Convide um personagem para tocar e combine uma atividade simples.'],
+  ['Contar como foi o ensaio','Narrativa','Relatar prática, erro, repetição e melhoria.','Grave um relato curto sobre um primeiro ensaio fictício.'],
+  ['Montar uma banda','Colaboração','Distribuir papéis, imaginar alternativas e negociar.','Apresente uma formação de banda e explique as escolhas.'],
+  ['Reconhecer contribuições','Media literacy','Distinguir composição, arranjo, gravação e crédito.','Crie uma ficha de créditos justa para uma música fictícia.'],
+  ['Debater gosto e qualidade','Pensamento crítico','Distinguir popularidade, preferência, amostra e evidência.','Avalie uma pesquisa musical pequena sem generalizar seus resultados.']
+ ]
+};
+premiumLessons.forEach((l,i)=>{
+ const track=premiumSkillTracks[l.theme][i%5];
+ l.mission=track[0]; l.skill=track[1]; l.canDo=track[2]; l.finalChallenge=track[3];
+ l.listenPrompt=[
+  'Ouça o diálogo sem ler e identifique a escolha principal. Depois ouça novamente com a transcrição.',
+  'Ouça uma vez para entender a sequência; na segunda escuta, anote três marcadores de tempo ou mudança.',
+  'Ouça as duas propostas e identifique uma razão a favor de cada alternativa.',
+  'Ouça e classifique cada informação como fato, sugestão, condição ou decisão.',
+  'Ouça procurando marcadores de certeza, contraste e ressalva. Explique como eles mudam o sentido.'
+ ][i%5];
+ l.speakingPrompt=[
+  'Repita duas falas e depois personalize a proposta mantendo a mesma estrutura.',
+  'Reconstrua oralmente a sequência sem ler; consulte o texto somente depois da primeira tentativa.',
+  'Defenda uma alternativa por 30–60 segundos e inclua pelo menos uma razão.',
+  'Resuma o processo sem transformar sugestões em decisões confirmadas.',
+  'Apresente uma conclusão cautelosa, cite uma limitação e proponha um próximo passo.'
+ ][i%5];
+ l.reviewPrompt=i%5===0?'Retome duas palavras de uma aula gratuita e conecte-as a esta missão.':'Recupere sem consultar três expressões desta aula antes de avançar.';
+});
