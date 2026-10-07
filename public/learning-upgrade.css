@@ -7,3 +7,6 @@
 summary{min-height:44px;display:list-item;padding-block:8px}
 /* Identify text links without relying on color alone. */
 main a:not(.primary):not(.secondary):not(.nav):not(.brand),footer a{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1.5px}
+
+/* Visual audit: predictable crops and no overflow in lesson/media cards. */
+.theme-art{display:block;max-width:100%;object-fit:cover;object-position:center}.theme-art.headscene{width:180px;height:120px;aspect-ratio:3/2;border-radius:14px}.story-theme-art{width:100%;height:auto;aspect-ratio:3/2;border-radius:14px}.page-lesson .theme-art.lesson-thumbnail{width:150px;height:112px;aspect-ratio:4/3;border-radius:12px}.premium-cover,.premium-thumb,.premium-lesson-art,.premium-story-art,.teacher-cover-large img{object-fit:cover;object-position:center;display:block}.premium-thumb{aspect-ratio:3/2;height:auto}.premium-cover{aspect-ratio:3/2;height:auto;min-height:180px}.story-scene{overflow:hidden}.story-scene .theme-art{width:100%;height:auto}@media(max-width:600px){.theme-art.headscene{position:static;width:100%;height:auto;aspect-ratio:3/2;margin-top:16px}.illustrated-head{padding-right:24px}.page-lesson .theme-art.lesson-thumbnail{width:100%;height:auto;aspect-ratio:3/2}}
