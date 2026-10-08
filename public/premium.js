@@ -1,14 +1,12 @@
 
 // Per-lesson Premium visual variation
-const premiumLessonVisuals={
- cinema:['assets/premium-cinema-960.webp','assets/premium-series-960.webp','assets/premium-cinema-960.webp','assets/premium-books-960.webp','assets/premium-comics-960.webp'],
- comics:['assets/premium-comics-960.webp','assets/premium-books-960.webp','assets/premium-comics-960.webp','assets/premium-series-960.webp','assets/premium-cinema-960.webp'],
- series:['assets/premium-series-960.webp','assets/premium-travel-960.webp','assets/premium-series-960.webp','assets/premium-music-960.webp','assets/premium-books-960.webp'],
- books:['assets/premium-books-960.webp','assets/premium-comics-960.webp','assets/premium-books-960.webp','assets/premium-travel-960.webp','assets/premium-series-960.webp'],
- travel:['assets/premium-travel-960.webp','assets/premium-series-960.webp','assets/premium-travel-960.webp','assets/premium-books-960.webp','assets/premium-cinema-960.webp'],
- music:['assets/premium-music-960.webp','assets/premium-series-960.webp','assets/premium-music-960.webp','assets/premium-cinema-960.webp','assets/premium-books-960.webp']
-};
-function premiumLessonArt(l,cls='premium-thumb'){const themeLessons=premiumLessons.filter(x=>x.theme===l.theme),pos=Math.max(0,themeLessons.findIndex(x=>x.id===l.id)),src=premiumLessonVisuals[l.theme][pos%5];return '<img class="'+cls+'" src="'+src+'" width="960" height="640" alt="Cena com adolescentes contextualizando a missão '+esc(l.mission||l.t)+'" loading="lazy" decoding="async">'}
+// Premium artwork audit: do not mislabel reused art from another universe.
+const premiumLessonVisuals=Object.fromEntries(['cinema','comics','series','books','travel','music'].map(id=>[id,Array.from({length:5},()=>('assets/premium-'+id+'-960.webp'))]));
+function premiumLessonArt(l,cls='premium-thumb'){
+ const t=premiumThemes.find(x=>x.id===l.theme);
+ const src='assets/premium-'+l.theme+'-960.webp';
+ return '<img class="'+cls+'" src="'+src+'" width="960" height="640" alt="'+esc(t?.imageAlt||('Ilustração do tema '+l.theme))+'" loading="lazy" decoding="async">';
+}
 const freeLessons=lessons.slice();
 let premiumDemo=false,premiumTheme='all',premiumLevel='all',missionMode='practice',remember=false;
 const premiumPlans=[{name:'Mensal',price:58.99,days:30},{name:'Semestral',price:329.99,days:180},{name:'Anual',price:589.99,days:365}];
