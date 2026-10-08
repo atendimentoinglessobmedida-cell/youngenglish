@@ -7,3 +7,15 @@
 summary{min-height:44px;display:list-item;padding-block:8px}
 /* Identify text links without relying on color alone. */
 main a:not(.primary):not(.secondary):not(.nav):not(.brand),footer a{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1.5px}
+
+/* Visual audit: predictable crops and no overflow in lesson/media cards. */
+.theme-art{display:block;max-width:100%;object-fit:cover;object-position:center}.theme-art.headscene{width:180px;height:120px;aspect-ratio:3/2;border-radius:14px}.story-theme-art{width:100%;height:auto;aspect-ratio:3/2;border-radius:14px}.page-lesson .theme-art.lesson-thumbnail{width:150px;height:112px;aspect-ratio:4/3;border-radius:12px}.premium-cover,.premium-thumb,.premium-lesson-art,.premium-story-art,.teacher-cover-large img{object-fit:cover;object-position:center;display:block}.premium-thumb{aspect-ratio:3/2;height:auto}.premium-cover{aspect-ratio:3/2;height:auto;min-height:180px}.story-scene{overflow:hidden}.story-scene .theme-art{width:100%;height:auto}@media(max-width:600px){.theme-art.headscene{position:static;width:100%;height:auto;aspect-ratio:3/2;margin-top:16px}.illustrated-head{padding-right:24px}.page-lesson .theme-art.lesson-thumbnail{width:100%;height:auto;aspect-ratio:3/2}}
+
+/* Premium mission curriculum */
+.premium-mission-brief{background:#f7f9ff;border:1px solid #d9e3ef;border-radius:18px;padding:22px;margin:0 0 24px}.premium-mission-brief h3{margin:8px 0 6px}.premium-mission-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}.premium-mission-grid>div{background:#fff;border:1px solid #dfe7ef;border-radius:14px;padding:15px}.premium-mission-grid p{margin:6px 0 0;color:#52687d}.premium-card>p b{color:var(--navy)}@media(max-width:680px){.premium-mission-grid{grid-template-columns:1fr}}
+
+/* Premium visual variety: cards remain consistent while lesson contexts vary. */
+.premium-card .premium-thumb{width:100%;aspect-ratio:3/2;object-fit:cover;object-position:center;border-radius:14px 14px 0 0}.premium-card{overflow:hidden}.premium-card .card-tags,.premium-card h4,.premium-card>p,.premium-card>small,.premium-card>button{margin-left:16px;margin-right:16px}.premium-card>button{margin-bottom:16px}
+
+/* Home page navigation and call-to-action links: no underlines. */
+body>header a,main a.nav,main a.primary,main a.secondary,main a[class*="cta"],main a[class*="button"],main a[class*="btn"]{text-decoration:none!important}

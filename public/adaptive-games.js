@@ -2,7 +2,7 @@
 // A arte oferece contexto; as legendas são explícitas, inclusive para termos abstratos.
 function adaptiveLessonArt(l){
   if(l.premium){const t=premiumThemes.find(x=>x.id===l.theme);return themeArt(t,'premium-thumb')}
-  return scene(pageCatalog.find(x=>x.id===l.level)?.scene||0,'story-scene');
+  return typeof characterArt==='function'&&characterThemeArt[l.theme]?characterArt(l.theme,'story-theme-art'):scene(pageCatalog.find(x=>x.id===l.level)?.scene||0,'story-scene');
 }
 visualGame=function(l){
   gameShell('Explorador de imagens e palavras','A ilustração situa o tema. Leia a pista em português e escolha a legenda em inglês correspondente ao vocabulário desta aula. Não é necessário adivinhar detalhes da imagem.');

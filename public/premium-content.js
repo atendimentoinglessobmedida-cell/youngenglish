@@ -1,7 +1,7 @@
 // Conteúdo autoral: seis interesses, cinco graus de dificuldade, sem obras licenciadas.
 const premiumThemes=[
  {id:'cinema',name:'Cinema',icon:'🎬',description:'Do ingresso à crítica: invente filmes e descubra como contar histórias.',scene:3},
- {id:'comics',name:'Quadrinhos',icon:'💬',description:'Crie quadros, personagens e escolhas narrativas originais.',scene:8},
+ {id:'comics',name:'Leitura',icon:'📚',description:'Explore livros, quadrinhos e mangás com histórias originais.',scene:8},
  {id:'series',name:'Séries',icon:'📺',description:'Acompanhe episódios imaginários e converse sobre enredos.',scene:7},
  {id:'books',name:'Livros',icon:'📚',description:'Explore bibliotecas, recomendações e perspectivas de narradores.',scene:6},
  {id:'travel',name:'Viagens',icon:'🧭',description:'Planeje viagens fictícias, peça informações e avalie alternativas.',scene:4},
@@ -74,6 +74,36 @@ const premiumPt=[
  ['revisar','uma gravação compartilhada','antes de uma apresentação escolar','uma apresentação sem gravação','os créditos pouco claros','revisamos'],
  ['avaliar','uma afirmação sobre preferências musicais','com uma pequena pesquisa do clube','uma discussão mais ampla sobre escuta','a amostra enviesada','avaliamos']
 ];
+
+// Additional Premium tracks: sports and gaming, five CEFR stages each.
+const premiumNewTracks=[
+ ['sports','My favorite sport','team=time|ball=bola|match=partida|play=jogar|score=placar|friend=amigo|practice=praticar|fun=diversão','play','a friendly match','after school','a tennis game','the busy court'],
+ ['sports','Our match yesterday','coach=treinador|goal=gol|pass=passe|win=vencer|lose=perder|train=treinar|yesterday=ontem|teamwork=trabalho em equipe','describe','a school match','yesterday afternoon','a training session','the rain'],
+ ['sports','If we organized a tournament','tournament=torneio|rule=regra|fair=justo|referee=árbitro|schedule=programação|support=apoiar|respect=respeito|inclusive=inclusivo','plan','a school tournament','with mixed teams','a friendly league','the limited time'],
+ ['sports','Fair play in competition','sportsmanship=espírito esportivo|decision=decisão|appeal=recurso|evidence=evidência|penalty=penalidade|respect=respeito|report=relatar|review=revisar','review','a disputed decision','after the match','a replay review','the unclear rule'],
+ ['sports','The impact of major sports events','legacy=legado|investment=investimento|community=comunidade|impact=impacto|claim=afirmação|evidence=evidência|sustainable=sustentável|perspective=perspectiva','evaluate','a sports event proposal','with community feedback','a smaller event','the incomplete evidence'],
+ ['gaming','Choose a video game','game=jogo|level=nível|player=jogador|controller=controle|quest=missão|fun=divertido|team=equipe|start=começar','play','a cooperative game','after homework','a puzzle game','the difficult level'],
+ ['gaming','Our first co-op mission','mission=missão|teammate=colega de equipe|solve=resolver|puzzle=enigma|collect=coletar|restart=reiniciar|yesterday=ontem|together=juntos','describe','a cooperative mission','together yesterday','a new puzzle','the missing clue'],
+ ['gaming','If we designed a game','design=projetar|mechanic=mecânica|challenge=desafio|reward=recompensa|balance=equilíbrio|accessible=acessível|choice=escolha|prototype=protótipo','create','an accessible game','with clear instructions','a puzzle adventure','the limited budget'],
+ ['gaming','Communication in e-sports','strategy=estratégia|captain=capitão|teamwork=trabalho em equipe|feedback=retorno|tournament=torneio|practice=praticar|respect=respeito|decision=decisão','review','a team strategy','before the competition','a new formation','the unclear roles'],
+ ['gaming','Games and the future','innovation=inovação|privacy=privacidade|community=comunidade|accessibility=acessibilidade|evidence=evidência|prediction=previsão|impact=impacto|responsibility=responsabilidade','evaluate','a proposal for future games','with player feedback','a more inclusive design','the narrow sample']
+];
+// Two new Premium tracks, one mission for each CEFR level.
+const newPremiumTracks=premiumNewTracks.map(x=>x.slice(1));
+const newPremiumPt=[
+['jogar','uma partida amistosa','depois da escola','uma partida de tênis','a quadra ocupada','jogamos'],
+['descrever','uma partida escolar','ontem à tarde','um treino','a chuva','descrevemos'],
+['planejar','um torneio escolar','com equipes mistas','uma liga amistosa','o tempo limitado','planejamos'],
+['revisar','uma decisão contestada','depois da partida','uma revisão em vídeo','a regra pouco clara','revisamos'],
+['avaliar','uma proposta de evento esportivo','com opiniões da comunidade','um evento menor','as evidências incompletas','avaliamos'],
+['jogar','um jogo cooperativo','depois da lição de casa','um jogo de enigmas','a fase difícil','jogamos'],
+['descrever','uma missão cooperativa','juntos ontem','um novo enigma','a pista ausente','descrevemos'],
+['criar','um jogo acessível','com instruções claras','uma aventura de enigmas','o orçamento limitado','criamos'],
+['revisar','uma estratégia de equipe','antes da competição','uma nova formação','os papéis pouco claros','revisamos'],
+['avaliar','uma proposta para jogos futuros','com opiniões dos jogadores','um design mais inclusivo','a amostra limitada','avaliamos']
+];
+premiumRows.push(...newPremiumTracks);premiumPt.push(...newPremiumPt);
+premiumThemes.push({id:'sports',name:'Esportes',icon:'⚽',description:'Esportes, trabalho em equipe e fair play.',scene:2},{id:'gaming',name:'Jogos Eletrônicos',icon:'🎮',description:'Games, cooperação e e-sports.',scene:8});
 const premiumGrammar=[];
 const premiumLessons=premiumRows.map((r,i)=>{
  const li=i%5,theme=premiumThemes[Math.floor(i/5)],level=premiumLevels[li],id=`premium${String(i+1).padStart(2,'0')}`;
@@ -139,4 +169,83 @@ const premiumLessons=premiumRows.map((r,i)=>{
  if(li===4)tr=[`Nosso grupo quer ${pv} ${po} ${pd}. Alguns dizem que isso basta para uma conclusão definitiva.`,`A informação pode apoiar uma interpretação provisória, mas ${pp} limita a afirmação. Devemos distinguir o que o material estabelece do que inferimos.`,`Reconhecidamente, considerar ${pa} exigiria tempo adicional; ainda assim, poderia revelar perspectivas ignoradas. Os comentários existentes devem ser atribuídos a quem os fez, em vez de apresentados como opinião de todos.`,'Isso parece justificável. A proposta não apenas precisa de esclarecimento, mas também de um relato mais cuidadoso da incerteza. Podemos propor um próximo passo sem fingir que as perguntas abertas já foram respondidas.'];
  premiumGrammar.push({id,topic:gr[0],exercises:[{type:'gap',prompt:gr[1],accepted:[gr[2]],explanation:gr[3]},{type:'choice',prompt:'Escolha a estrutura adequada ao contexto.',options:[gr[4],gr[5]],answer:0,explanation:gr[6]},{type:'rewrite',prompt:gr[7],accepted:gr[8],explanation:gr[9]}]});
  return {id,t,level,cefr:premiumCefr[li],premium:true,theme:theme.id,module:0,o:['Expressar preferências e possibilidades em um contexto de '+theme.name.toLowerCase()+'.','Contar uma experiência fictícia com sequência e plano futuro.','Imaginar alternativas e justificar uma escolha inclusiva.','Explicar um processo e relatar propostas sem alterar condições.','Avaliar perspectivas, delimitar certeza e propor um próximo passo.'][li],v:v.split('|').map(x=>{const [en,pt]=x.split('=');return{en,pt}}),g,d,tr,q:q.map((x,j)=>({prompt:x[0],options:x.slice(1,4),answer:0,explanation:x[4],type:j<2?'reading':'language'})),w,model,k:'Crie personagens e situações imaginárias. Desenhe sua ideia antes de escrever; use o modelo como apoio.',teen:'Apresente sua proposta fictícia para um clube e explique como ela inclui interesses diferentes.',s,tip:li<2?'Ouça em partes e repita o modelo. A transcrição pode ser usada como apoio.':'Identifique pausas, contrastes e grau de certeza. Repita o modelo e adapte a mensagem.',grammarTopic:gr[0],grammarExercises:premiumGrammar[premiumGrammar.length-1].exercises};
+});
+
+// Premium curriculum enrichment v2
+const premiumSkillTracks={
+ cinema:[
+  ['Escolher uma sessão','Interação','Perguntar e responder sobre preferências, horário e escolha.','Convide um colega fictício para uma sessão e combine horário e filme.'],
+  ['Contar como foi a filmagem','Narrativa','Relatar acontecimentos, problemas e decisões em sequência.','Grave um áudio de 30–45 segundos contando o que aconteceu na filmagem.'],
+  ['Apresentar um pitch','Criação','Imaginar um filme, justificar escolhas e negociar alternativas.','Faça um pitch de 60 segundos para um curta fictício.'],
+  ['Revisar uma produção','Media literacy','Distinguir sugestão, decisão, crédito e consentimento.','Produza uma ficha de revisão antes de uma exibição fictícia.'],
+  ['Avaliar uma crítica','Pensamento crítico','Separar evidência, interpretação e generalização.','Escreva uma crítica equilibrada e indique os limites das evidências.']
+ ],
+ comics:[
+  ['Apresentar um personagem','Descrição','Descrever aparência, personalidade e habilidades simples.','Apresente oralmente um herói original em 4–5 frases.'],
+  ['Reconstruir uma sequência','Narrativa visual','Ordenar acontecimentos e explicar o que mudou.','Narre três quadros de uma história fictícia em ordem.'],
+  ['Defender uma escolha narrativa','Decisão','Comparar alternativas e consequências.','Explique qual decisão o personagem deveria tomar e por quê.'],
+  ['Publicar em equipe','Colaboração','Relatar contribuições, revisão, prazo e créditos.','Crie regras de crédito para uma equipe fictícia de quadrinhos.'],
+  ['Mudar o ponto de vista','Pensamento crítico','Identificar enquadramento, omissão e agência.','Reescreva uma cena curta pelo ponto de vista de outro personagem.']
+ ],
+ series:[
+  ['Escolher o que assistir','Interação','Falar sobre duração, preferência e rotina.','Recomende um episódio fictício para uma noite de estudos.'],
+  ['Fazer um recap','Narrativa','Resumir acontecimentos passados sem perder a ordem.','Grave um recap de 30–45 segundos de um episódio inventado.'],
+  ['Prever o próximo episódio','Inferência','Usar pistas para formular previsões sem afirmar certeza.','Crie três previsões e associe uma pista a cada uma.'],
+  ['Checar um resumo','Precisão','Separar promessa, sugestão, condição e fato.','Edite um recap exagerado para deixá-lo preciso.'],
+  ['Comparar interpretações','Pensamento crítico','Sustentar leituras alternativas com evidências.','Defenda duas interpretações possíveis e diga qual é mais convincente.']
+ ],
+ books:[
+  ['Escolher uma leitura','Interação','Falar de título, capa, gênero e preferência.','Recomende um livro fictício para um colega.'],
+  ['Contar uma experiência de leitura','Narrativa','Relatar empréstimo, leitura e devolução.','Conte o percurso de um livro da biblioteca em 5–6 frases.'],
+  ['Recomendar com razões','Argumentação','Relacionar gênero, personagem, ritmo e perfil do leitor.','Escreva uma recomendação de 70–90 palavras.'],
+  ['Organizar um clube acessível','Colaboração','Discutir formatos, participação e acessibilidade.','Monte uma proposta de encontro inclusivo para um clube de leitura.'],
+  ['Questionar o narrador','Pensamento crítico','Identificar contradições e avaliar confiabilidade.','Compare duas afirmações de um narrador e formule uma conclusão cautelosa.']
+ ],
+ travel:[
+  ['Encontrar o caminho','Interação','Perguntar sobre transporte, direção, horário e plataforma.','Simule um diálogo para encontrar a plataforma correta.'],
+  ['Relatar um passeio','Narrativa','Contar trajeto, visita, clima e imprevisto.','Grave um diário de viagem fictício de 40 segundos.'],
+  ['Replanejar uma rota','Resolução de problemas','Comparar alternativas diante de atraso ou mudança.','Escolha uma rota alternativa e justifique a decisão.'],
+  ['Planejar com acessibilidade','Planejamento','Confirmar acesso, transporte e condições antes de reservar.','Crie um checklist de seis itens para um passeio inclusivo.'],
+  ['Avaliar impacto local','Pensamento crítico','Analisar afirmações sobre sustentabilidade e vozes locais.','Escreva uma proposta de visita responsável com ressalvas e próximos passos.']
+ ],
+ sports:[
+  ['Participar de uma partida','Interação','Falar sobre esportes, preferências e regras simples.','Convide um personagem para uma partida e combine uma regra.'],
+  ['Relatar uma partida','Narrativa','Contar lances, dificuldades e trabalho em equipe no passado.','Conte uma partida fictícia em 5–6 frases, incluindo uma dificuldade e sua solução.'],
+  ['Organizar um torneio','Colaboração','Distribuir tarefas e comparar formatos inclusivos de competição.','Proponha um torneio escolar e justifique duas escolhas para incluir todos.'],
+  ['Explicar o fair play','Media literacy','Distinguir regras, decisões e respeito entre participantes.','Escreva um relato de uma decisão esportiva distinguindo fato e opinião.'],
+  ['Avaliar impacto esportivo','Pensamento crítico','Comparar benefícios, custos e evidências sobre eventos esportivos.','Avalie uma proposta fictícia de evento, cite uma limitação e um próximo passo.']
+ ],
+ gaming:[
+  ['Escolher um jogo','Interação','Perguntar sobre preferências, cooperação e regras de um jogo.','Escolha um jogo fictício com um colega e explique uma regra.'],
+  ['Relatar uma missão cooperativa','Narrativa','Descrever estratégias, dificuldades e resultados de uma missão passada.','Conte uma missão fictícia em 5–6 frases com uma contribuição de cada personagem.'],
+  ['Projetar um jogo','Criação','Imaginar mecânicas e negociar uma experiência acessível.','Apresente uma ideia de jogo e explique duas decisões de acessibilidade.'],
+  ['Comunicar em equipe','Colaboração','Relatar instruções e decisões com clareza em uma equipe de e-sports.','Crie um diálogo curto que esclareça uma instrução sem culpar colegas.'],
+  ['Avaliar o futuro dos jogos','Pensamento crítico','Comparar inovação, privacidade e inclusão usando evidências e ressalvas.','Avalie uma proposta de jogo, cite uma limitação e uma alternativa inclusiva.']
+ ],
+ music:[
+  ['Entrar para um clube','Interação','Falar sobre instrumentos, volume, ritmo e preferência.','Convide um personagem para tocar e combine uma atividade simples.'],
+  ['Contar como foi o ensaio','Narrativa','Relatar prática, erro, repetição e melhoria.','Grave um relato curto sobre um primeiro ensaio fictício.'],
+  ['Montar uma banda','Colaboração','Distribuir papéis, imaginar alternativas e negociar.','Apresente uma formação de banda e explique as escolhas.'],
+  ['Reconhecer contribuições','Media literacy','Distinguir composição, arranjo, gravação e crédito.','Crie uma ficha de créditos justa para uma música fictícia.'],
+  ['Debater gosto e qualidade','Pensamento crítico','Distinguir popularidade, preferência, amostra e evidência.','Avalie uma pesquisa musical pequena sem generalizar seus resultados.']
+ ]
+};
+premiumLessons.forEach((l,i)=>{
+ const track=(premiumSkillTracks[l.theme]||premiumSkillTracks.music)[i%5];
+ l.mission=track[0]; l.skill=track[1]; l.canDo=track[2]; l.finalChallenge=track[3];
+ l.listenPrompt=[
+  'Ouça o diálogo sem ler e identifique a escolha principal. Depois ouça novamente com a transcrição.',
+  'Ouça uma vez para entender a sequência; na segunda escuta, anote três marcadores de tempo ou mudança.',
+  'Ouça as duas propostas e identifique uma razão a favor de cada alternativa.',
+  'Ouça e classifique cada informação como fato, sugestão, condição ou decisão.',
+  'Ouça procurando marcadores de certeza, contraste e ressalva. Explique como eles mudam o sentido.'
+ ][i%5];
+ l.speakingPrompt=[
+  'Repita duas falas e depois personalize a proposta mantendo a mesma estrutura.',
+  'Reconstrua oralmente a sequência sem ler; consulte o texto somente depois da primeira tentativa.',
+  'Defenda uma alternativa por 30–60 segundos e inclua pelo menos uma razão.',
+  'Resuma o processo sem transformar sugestões em decisões confirmadas.',
+  'Apresente uma conclusão cautelosa, cite uma limitação e proponha um próximo passo.'
+ ][i%5];
+ l.reviewPrompt=i%5===0?'Retome duas palavras de uma aula gratuita e conecte-as a esta missão.':'Recupere sem consultar três expressões desta aula antes de avançar.';
 });
