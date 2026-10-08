@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "check": "node scripts/build.cjs --check",
+    "test": "node --test tests/offline.test.cjs",
     "build": "node scripts/build.cjs"
   }
 }
