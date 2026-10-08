@@ -88,6 +88,22 @@ const premiumNewTracks=[
  ['gaming','Communication in e-sports','strategy=estratégia|captain=capitão|teamwork=trabalho em equipe|feedback=retorno|tournament=torneio|practice=praticar|respect=respeito|decision=decisão','review','a team strategy','before the competition','a new formation','the unclear roles'],
  ['gaming','Games and the future','innovation=inovação|privacy=privacidade|community=comunidade|accessibility=acessibilidade|evidence=evidência|prediction=previsão|impact=impacto|responsibility=responsabilidade','evaluate','a proposal for future games','with player feedback','a more inclusive design','the narrow sample']
 ];
+// Two new Premium tracks, one mission for each CEFR level.
+const newPremiumTracks=premiumNewTracks.map(x=>x.slice(1));
+const newPremiumPt=[
+['jogar','uma partida amistosa','depois da escola','uma partida de tênis','a quadra ocupada','jogamos'],
+['descrever','uma partida escolar','ontem à tarde','um treino','a chuva','descrevemos'],
+['planejar','um torneio escolar','com equipes mistas','uma liga amistosa','o tempo limitado','planejamos'],
+['revisar','uma decisão contestada','depois da partida','uma revisão em vídeo','a regra pouco clara','revisamos'],
+['avaliar','uma proposta de evento esportivo','com opiniões da comunidade','um evento menor','as evidências incompletas','avaliamos'],
+['jogar','um jogo cooperativo','depois da lição de casa','um jogo de enigmas','a fase difícil','jogamos'],
+['descrever','uma missão cooperativa','juntos ontem','um novo enigma','a pista ausente','descrevemos'],
+['criar','um jogo acessível','com instruções claras','uma aventura de enigmas','o orçamento limitado','criamos'],
+['revisar','uma estratégia de equipe','antes da competição','uma nova formação','os papéis pouco claros','revisamos'],
+['avaliar','uma proposta para jogos futuros','com opiniões dos jogadores','um design mais inclusivo','a amostra limitada','avaliamos']
+];
+premiumRows.push(...newPremiumTracks);premiumPt.push(...newPremiumPt);
+premiumThemes.push({id:'sports',name:'Esportes',icon:'⚽',description:'Esportes, trabalho em equipe e fair play.',scene:2},{id:'gaming',name:'Jogos Eletrônicos',icon:'🎮',description:'Games, cooperação e e-sports.',scene:8});
 const premiumGrammar=[];
 const premiumLessons=premiumRows.map((r,i)=>{
  const li=i%5,theme=premiumThemes[Math.floor(i/5)],level=premiumLevels[li],id=`premium${String(i+1).padStart(2,'0')}`;
@@ -201,7 +217,7 @@ const premiumSkillTracks={
  ]
 };
 premiumLessons.forEach((l,i)=>{
- const track=premiumSkillTracks[l.theme][i%5];
+ const track=(premiumSkillTracks[l.theme]||premiumSkillTracks.music)[i%5];
  l.mission=track[0]; l.skill=track[1]; l.canDo=track[2]; l.finalChallenge=track[3];
  l.listenPrompt=[
   'Ouça o diálogo sem ler e identifique a escolha principal. Depois ouça novamente com a transcrição.',
