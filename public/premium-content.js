@@ -208,6 +208,20 @@ const premiumSkillTracks={
   ['Planejar com acessibilidade','Planejamento','Confirmar acesso, transporte e condições antes de reservar.','Crie um checklist de seis itens para um passeio inclusivo.'],
   ['Avaliar impacto local','Pensamento crítico','Analisar afirmações sobre sustentabilidade e vozes locais.','Escreva uma proposta de visita responsável com ressalvas e próximos passos.']
  ],
+ sports:[
+  ['Participar de uma partida','Interação','Falar sobre esportes, preferências e regras simples.','Convide um personagem para uma partida e combine uma regra.'],
+  ['Relatar uma partida','Narrativa','Contar lances, dificuldades e trabalho em equipe no passado.','Conte uma partida fictícia em 5–6 frases, incluindo uma dificuldade e sua solução.'],
+  ['Organizar um torneio','Colaboração','Distribuir tarefas e comparar formatos inclusivos de competição.','Proponha um torneio escolar e justifique duas escolhas para incluir todos.'],
+  ['Explicar o fair play','Media literacy','Distinguir regras, decisões e respeito entre participantes.','Escreva um relato de uma decisão esportiva distinguindo fato e opinião.'],
+  ['Avaliar impacto esportivo','Pensamento crítico','Comparar benefícios, custos e evidências sobre eventos esportivos.','Avalie uma proposta fictícia de evento, cite uma limitação e um próximo passo.']
+ ],
+ gaming:[
+  ['Escolher um jogo','Interação','Perguntar sobre preferências, cooperação e regras de um jogo.','Escolha um jogo fictício com um colega e explique uma regra.'],
+  ['Relatar uma missão cooperativa','Narrativa','Descrever estratégias, dificuldades e resultados de uma missão passada.','Conte uma missão fictícia em 5–6 frases com uma contribuição de cada personagem.'],
+  ['Projetar um jogo','Criação','Imaginar mecânicas e negociar uma experiência acessível.','Apresente uma ideia de jogo e explique duas decisões de acessibilidade.'],
+  ['Comunicar em equipe','Colaboração','Relatar instruções e decisões com clareza em uma equipe de e-sports.','Crie um diálogo curto que esclareça uma instrução sem culpar colegas.'],
+  ['Avaliar o futuro dos jogos','Pensamento crítico','Comparar inovação, privacidade e inclusão usando evidências e ressalvas.','Avalie uma proposta de jogo, cite uma limitação e uma alternativa inclusiva.']
+ ],
  music:[
   ['Entrar para um clube','Interação','Falar sobre instrumentos, volume, ritmo e preferência.','Convide um personagem para tocar e combine uma atividade simples.'],
   ['Contar como foi o ensaio','Narrativa','Relatar prática, erro, repetição e melhoria.','Grave um relato curto sobre um primeiro ensaio fictício.'],
