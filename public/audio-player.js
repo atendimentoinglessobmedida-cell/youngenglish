@@ -75,8 +75,10 @@ function createDialoguePlayer(options) {
     };
     next();
   }
-  return {play,stop,repeat:()=>play(last,{...lastSettings,from:0,single:false}),line:index=>last[index]?play(last,{...lastSettings,from:index,single:true}):undefined};
+  function clear(){stop(true);last=[];lastSettings={};publish('stopped');}
+  return {play,stop,clear,repeat:()=>play(last,{...lastSettings,from:0,single:false}),line:index=>last[index]?play(last,{...lastSettings,from:index,single:true}):undefined};
 }
+
 
 
 
@@ -107,11 +109,11 @@ function createDialoguePlayer(options) {
   panel.innerHTML='<summary>Áudio · vozes e diálogo</summary><label>Voz em inglês <select id="young-audio-voice"></select></label><label>Segunda voz do diálogo <select id="young-audio-voice-b"></select></label><label>Velocidade <select id="young-audio-rate"><option value=".7">Lento</option><option value=".85" selected>Normal</option><option value="1">Velocidade original</option></select></label><button type="button" id="young-audio-repeat">Repetir</button><button type="button" id="young-audio-stop">Parar</button><p id="young-audio-status" role="status">A disponibilidade de voz e uso offline dependem do aparelho. Use a transcrição quando necessário.</p>';
   const rewards=main.querySelector('#rewardbar');if(rewards)rewards.after(panel);else main.prepend(panel);
   const refresh=()=>{const second=panel.querySelector('#young-audio-voice-b'),previous=second.value;second.replaceChildren(new Option('Automática · outra voz',''));for(const voice of synth?.getVoices()||[])if(/^en(?:-|_)/i.test(voice.lang))second.add(new Option(voice.name,voice.voiceURI));second.value=previous;const select=panel.querySelector('#young-audio-voice');select.replaceChildren(new Option('Automática · inglês',''));for(const voice of synth?.getVoices()||[])if(/^en(?:-|_)/i.test(voice.lang))select.add(new Option(voice.name,voice.voiceURI));select.value=voiceId;};refresh();synth?.addEventListener('voiceschanged',refresh);
-  panel.querySelector('#young-audio-voice-b').onchange=()=>stop();panel.querySelector('#young-audio-voice').onchange=e=>{voiceId=e.target.value;stop()};panel.querySelector('#young-audio-rate').onchange=e=>{rate=Number(e.target.value);stop()};panel.querySelector('#young-audio-repeat').onclick=()=>lastDialogue?dialogue.repeat():speak(last);panel.querySelector('#young-audio-stop').onclick=stop;
+  panel.querySelector('#young-audio-voice-b').onchange=()=>stop();panel.querySelector('#young-audio-voice').onchange=e=>{voiceId=e.target.value;stop()};panel.querySelector('#young-audio-rate').onchange=e=>{rate=Number(e.target.value);stop()};panel.querySelector('#young-audio-repeat').onclick=()=>lastDialogue?dialogue.repeat():speak(last);panel.querySelector('#young-audio-stop').onclick=()=>stop();
  }
 
  function updateDialogue(event){
-  if(!panel)return;let box=panel.querySelector('[data-dialogue]');
+  if(!panel)return;if(!event.segments.length){panel.querySelector("[data-dialogue]")?.remove();return;}let box=panel.querySelector('[data-dialogue]');
   if(!box){box=document.createElement('section');box.dataset.dialogue='';box.setAttribute('aria-label','Transcrição e falas do diálogo');panel.append(box);}
   if(event.state==='loading'){
    box.replaceChildren();const heading=document.createElement('p');heading.textContent='Diálogo · transcrição e reprodução por fala';box.append(heading);
@@ -124,6 +126,7 @@ function createDialoguePlayer(options) {
 
  let lastDialogue=false;
  dialogue=createDialoguePlayer({synthesis:synth,origin:window.location?.origin||'http://localhost',prepare:async()=>{if(synth&&!synth.getVoices().length)await new Promise(resolve=>{let done=false;const finish=()=>{if(done)return;done=true;clearTimeout(wait);synth.removeEventListener('voiceschanged',finish);resolve()};const wait=setTimeout(finish,900);synth.addEventListener('voiceschanged',finish)});return synth?synth.getVoices():[]},makeUtterance:text=>new SpeechSynthesisUtterance(text),makeAudio:url=>new Audio(url),voiceA:()=>voiceId,voiceB:()=>panel?.querySelector('#young-audio-voice-b').value,rate:()=>rate,cancelOther:()=>stop(true),publish:updateDialogue});
- window.ISMYoungAudio={speak,stop,speakDialogue:(lines,settings={})=>{lastDialogue=true;return dialogue.play(lines,settings)}};window.addEventListener('hashchange',()=>stop());document.addEventListener('visibilitychange',()=>{if(document.hidden)stop()});window.addEventListener('pagehide',stop);
+ function clearDialogue(){stop();dialogue.clear();lastDialogue=false;last='';}
+ window.ISMYoungAudio={speak,stop:clearDialogue,speakDialogue:(lines,settings={})=>{lastDialogue=true;return dialogue.play(lines,settings)}};window.addEventListener('hashchange',clearDialogue);document.addEventListener('visibilitychange',()=>{if(document.hidden)stop()});window.addEventListener('pagehide',stop);
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
 })();

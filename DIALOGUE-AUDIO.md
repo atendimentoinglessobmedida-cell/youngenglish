@@ -4,6 +4,8 @@ Dois perfis de voz inglesa, estáveis por personagem, com pausa de 320 ms entre 
 
 Com apenas uma voz inglesa, o app avisa que há uma voz com pequenas variações, sem prometer duas vozes reais. Sem voz inglesa, a transcrição continua disponível. As vozes carregadas posteriormente são aguardadas por até 900 ms. Mudança de atividade, ocultação da página e controles de parar cancelam a reprodução pendente.
 
+Ao trocar de atividade ou conta, o histórico e a transcrição do player são apagados. Parar na mesma atividade mantém a transcrição para repetir. O conteúdo não é persistido pelo player, e não pode ser repetido depois de limpar o contexto.
+
 ## Contrato para gravações expressivas futuras
 
 Cada fala aceita `{speaker, text, voiceSlot: 0 | 1, audioUrl?: string}`. `voiceSlot` mantém o perfil em falas individuais e repetidas; não se alterna a cada frase. Quando omitido, a primeira ocorrência do personagem determina seu perfil. Transcrições antigas com `Nome: fala` são convertidas em segmentos sem alterar o conteúdo.
