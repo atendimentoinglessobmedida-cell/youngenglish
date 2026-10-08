@@ -16,3 +16,6 @@ main a:not(.primary):not(.secondary):not(.nav):not(.brand),footer a{text-decorat
 
 /* Premium visual variety: cards remain consistent while lesson contexts vary. */
 .premium-card .premium-thumb{width:100%;aspect-ratio:3/2;object-fit:cover;object-position:center;border-radius:14px 14px 0 0}.premium-card{overflow:hidden}.premium-card .card-tags,.premium-card h4,.premium-card>p,.premium-card>small,.premium-card>button{margin-left:16px;margin-right:16px}.premium-card>button{margin-bottom:16px}
+
+/* Home page navigation and call-to-action links: no underlines. */
+body>header a,main a.nav,main a.primary,main a.secondary,main a[class*="cta"],main a[class*="button"],main a[class*="btn"]{text-decoration:none!important}
