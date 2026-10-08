@@ -74,6 +74,20 @@ const premiumPt=[
  ['revisar','uma gravação compartilhada','antes de uma apresentação escolar','uma apresentação sem gravação','os créditos pouco claros','revisamos'],
  ['avaliar','uma afirmação sobre preferências musicais','com uma pequena pesquisa do clube','uma discussão mais ampla sobre escuta','a amostra enviesada','avaliamos']
 ];
+
+// Additional Premium tracks: sports and gaming, five CEFR stages each.
+const premiumNewTracks=[
+ ['sports','My favorite sport','team=time|ball=bola|match=partida|play=jogar|score=placar|friend=amigo|practice=praticar|fun=diversão','play','a friendly match','after school','a tennis game','the busy court'],
+ ['sports','Our match yesterday','coach=treinador|goal=gol|pass=passe|win=vencer|lose=perder|train=treinar|yesterday=ontem|teamwork=trabalho em equipe','describe','a school match','yesterday afternoon','a training session','the rain'],
+ ['sports','If we organized a tournament','tournament=torneio|rule=regra|fair=justo|referee=árbitro|schedule=programação|support=apoiar|respect=respeito|inclusive=inclusivo','plan','a school tournament','with mixed teams','a friendly league','the limited time'],
+ ['sports','Fair play in competition','sportsmanship=espírito esportivo|decision=decisão|appeal=recurso|evidence=evidência|penalty=penalidade|respect=respeito|report=relatar|review=revisar','review','a disputed decision','after the match','a replay review','the unclear rule'],
+ ['sports','The impact of major sports events','legacy=legado|investment=investimento|community=comunidade|impact=impacto|claim=afirmação|evidence=evidência|sustainable=sustentável|perspective=perspectiva','evaluate','a sports event proposal','with community feedback','a smaller event','the incomplete evidence'],
+ ['gaming','Choose a video game','game=jogo|level=nível|player=jogador|controller=controle|quest=missão|fun=divertido|team=equipe|start=começar','play','a cooperative game','after homework','a puzzle game','the difficult level'],
+ ['gaming','Our first co-op mission','mission=missão|teammate=colega de equipe|solve=resolver|puzzle=enigma|collect=coletar|restart=reiniciar|yesterday=ontem|together=juntos','describe','a cooperative mission','together yesterday','a new puzzle','the missing clue'],
+ ['gaming','If we designed a game','design=projetar|mechanic=mecânica|challenge=desafio|reward=recompensa|balance=equilíbrio|accessible=acessível|choice=escolha|prototype=protótipo','create','an accessible game','with clear instructions','a puzzle adventure','the limited budget'],
+ ['gaming','Communication in e-sports','strategy=estratégia|captain=capitão|teamwork=trabalho em equipe|feedback=retorno|tournament=torneio|practice=praticar|respect=respeito|decision=decisão','review','a team strategy','before the competition','a new formation','the unclear roles'],
+ ['gaming','Games and the future','innovation=inovação|privacy=privacidade|community=comunidade|accessibility=acessibilidade|evidence=evidência|prediction=previsão|impact=impacto|responsibility=responsabilidade','evaluate','a proposal for future games','with player feedback','a more inclusive design','the narrow sample']
+];
 const premiumGrammar=[];
 const premiumLessons=premiumRows.map((r,i)=>{
  const li=i%5,theme=premiumThemes[Math.floor(i/5)],level=premiumLevels[li],id=`premium${String(i+1).padStart(2,'0')}`;
