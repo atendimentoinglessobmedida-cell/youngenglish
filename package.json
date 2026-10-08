@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "check": "node scripts/build.cjs --check",
-    "test": "node --test tests/offline.test.cjs tests/pedagogy.test.cjs tests/audio.test.cjs",
+    "test": "node --test tests/offline.test.cjs tests/pedagogy.test.cjs tests/audio.test.cjs tests/dialogue-playback.test.cjs",
     "build": "node scripts/build.cjs"
   }
 }
