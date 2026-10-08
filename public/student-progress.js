@@ -1,5 +1,6 @@
 // Local saving is optional and available to regular and Premium learners.
 (()=>{
+ const nav=document.querySelector('header nav');if(nav){const tools=document.createElement('details'),info=document.createElement('details');tools.innerHTML='<summary>Ferramentas</summary>';info.innerHTML='<summary>Informações</summary>';tools.className=info.className='nav-group';for(const selector of ['#videos','a[href="speaking-coach.html"]','a[href="listening-lab.html"]','#projects']){const node=nav.querySelector(selector);if(node)tools.append(node)}for(const selector of ['#guide','a[href="professor.html"]','a[href="contato.html"]','a[href="assinatura.html"]']){const node=nav.querySelector(selector);if(node)info.append(node)}nav.append(tools,info)}
  const oldRender=render;
  function refresh(){
   let panel=document.getElementById('student-progress');

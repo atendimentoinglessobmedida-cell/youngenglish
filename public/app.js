@@ -1,8 +1,8 @@
 const $=s=>document.querySelector(s), esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let current=0,step=0,view='learn',age='kids',translation=false,points=0;const answers={},drafts={},done=new Set(),stageNames=['Palavras','História','Ouvir','Entender','Praticar','Criar'];
 function toast(s){$('#toast').textContent=s;$('#toast').style.display='block';clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('#toast').style.display='none',4500)}
-function stopAudio(){if('speechSynthesis'in window)window.speechSynthesis.cancel()}
-function say(t){stopAudio();if(!('speechSynthesis'in window)){toast('Este navegador não oferece voz. Leia a transcrição para continuar.');return}const voices=speechSynthesis.getVoices(),v=voices.find(v=>v.lang==='en-US')||voices.find(v=>v.lang.startsWith('en'));if(!v){toast('Não há voz em inglês disponível neste aparelho. Você pode continuar pela transcrição.');return}const u=new SpeechSynthesisUtterance(t);u.lang=v.lang;u.voice=v;u.rate=.85;u.onerror=()=>toast('O áudio não ficou disponível. Tente novamente ou leia a transcrição.');speechSynthesis.speak(u)}
+function stopAudio(){window.ISMYoungAudio.stop()}
+function say(t){void window.ISMYoungAudio.speak(t)}
 function audio(b,t){b.onclick=()=>say(t)}
 function mark(key,correct){if(!(key in answers)){answers[key]=correct;if(correct)points+=10;$('#session-score').textContent=`${points} pontos nesta sessão`}}
 function modulesUI(){const m=lessons[current].module;$('#modules').innerHTML=modules.map((x,i)=>`<button class="module ${i===m&&view==='learn'?'active':''}" data-module="${i}" aria-pressed="${i===m&&view==='learn'}"><small>MÓDULO ${x[3]} <em>${x[1]}</em></small><b>${esc(x[0])}</b></button>`).join('');document.querySelectorAll('[data-module]').forEach(b=>b.onclick=()=>{current=Number(b.dataset.module)*3;step=0;view='learn';translation=false;render()})}
