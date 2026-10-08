@@ -1,7 +1,7 @@
 // Conteúdo autoral: seis interesses, cinco graus de dificuldade, sem obras licenciadas.
 const premiumThemes=[
  {id:'cinema',name:'Cinema',icon:'🎬',description:'Do ingresso à crítica: invente filmes e descubra como contar histórias.',scene:3},
- {id:'comics',name:'Quadrinhos',icon:'💬',description:'Crie quadros, personagens e escolhas narrativas originais.',scene:8},
+ {id:'comics',name:'Leitura',icon:'📚',description:'Explore livros, quadrinhos e mangás com histórias originais.',scene:8},
  {id:'series',name:'Séries',icon:'📺',description:'Acompanhe episódios imaginários e converse sobre enredos.',scene:7},
  {id:'books',name:'Livros',icon:'📚',description:'Explore bibliotecas, recomendações e perspectivas de narradores.',scene:6},
  {id:'travel',name:'Viagens',icon:'🧭',description:'Planeje viagens fictícias, peça informações e avalie alternativas.',scene:4},
