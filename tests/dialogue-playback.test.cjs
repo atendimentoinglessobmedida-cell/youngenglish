@@ -38,6 +38,9 @@ for(const candidate of candidates){
   const api=context.factory({synthesis:{cancel(){},speak:u=>f.calls.push(u)},origin:'https://ism.test',prepare:()=>new Promise(done=>resolve=done),makeUtterance:text=>({text})});
   const waiting=api.play('Alex: Hello');api.stop();resolve([{lang:'en-US'}]);await waiting;assert.equal(f.calls.length,0);
  });
+ test(candidate+': leaving the activity erases transcript and disables replay of previous content',async()=>{
+  const f=fixture();await f.api.play([{speaker:'Premium learner',text:'Private practice'}]);f.api.clear();assert.equal(f.events.at(-1).segments.length,0);const count=f.calls.length;await f.api.repeat();assert.equal(f.calls.length,count);assert.equal(f.api.line(0),undefined);
+ });
  test(candidate+': failed same-origin file falls back; external URL is not requested; stopped files stay silent',async()=>{
   const f=fixture();await f.api.play([{speaker:'Alex',text:'Hello',audioUrl:'/audio/hello.mp3'}]);await Promise.resolve();assert.equal(f.calls[0].url,'https://ism.test/audio/hello.mp3');f.calls[0].onerror();assert.equal(f.calls[1].text,'Hello');f.api.stop();
   const external=fixture();await external.api.play([{speaker:'Alex',text:'Hello',audioUrl:'https://outside.test/a.mp3'}]);assert.equal(external.calls[0].text,'Hello');external.api.stop();
