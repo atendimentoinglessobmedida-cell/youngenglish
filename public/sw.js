@@ -1,4 +1,4 @@
-const CACHE='ism-young-shell-v7';
+const CACHE='ism-young-shell-v8';
 const SHELL=['./audio-player.js','./install.html','./content.js','./advanced.js','./grammar.js','./app.js','./games.js','./level-pages.js','./premium-content.js','./expansion-content.js','./expansion-integrate.js','./elementary-content.js','./more-games.js','./learning-games.js','./practice-content.js','./video-content.js','./premium.js','./quality-content.js','./adaptive-games.js','./learning-upgrade.js','./quality-ui.js','./practice-upgrade.js','./videos.js','./institutional-state.js','./motion.js','./student-progress.js','./','./index.html','./manifest.webmanifest','./app-icon-v2.svg','./icon-192-v2.png','./icon-512-v2.png','./icon-maskable-512-v2.png','./apple-touch-icon-v2.png','./style.css','./games.css','./level-pages.css','./premium.css','./learning-games.css','./videos.css','./learning-upgrade.css','./site-pages.css','./motion.css','./install.js','./favicon.svg','./icon-192.png','./icon-512.png','./icon-maskable-512.png','./assets/theme-school.svg','./assets/theme-science.svg','./assets/theme-nature.svg','./assets/theme-citizenship.svg','./assets/theme-food.svg','./assets/theme-esports.svg'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('ism-young-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
@@ -19,3 +19,4 @@ self.addEventListener('fetch',event=>{
   }
  })());
 });
+

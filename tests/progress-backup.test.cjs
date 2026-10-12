@@ -1,0 +1,12 @@
+const fs=require('fs'),vm=require('vm'),assert=require('node:assert/strict'),test=require('node:test');
+const premium=fs.readFileSync('public/premium.js','utf8');const validation=premium.slice(premium.indexOf('function validatedProgress'),premium.indexOf('function progressSnapshot'));
+const backup=fs.readFileSync('public/student-progress.js','utf8').split('// Local saving')[0];
+const context=vm.createContext({TextEncoder,lessons:[{id:'lesson1'}],videoMissions:[],gameTypes:[{id:'memory'}]});vm.runInContext(validation+backup,context);
+const fixture=()=>({app:'ism-young-english',formatVersion:1,data:{version:4,appVersion:15,points:12,answers:{'lesson1:q0':true},drafts:{lesson1:'A fictional sentence.'},done:['lesson1'],stars:{lesson1:2},gameWins:['lesson1:memory'],themeAchievements:[],missionMode:'practice',age:'teens',resume:{id:'lesson1',step:5},filters:{}}});
+const decode=value=>context.decodeYoungBackup(JSON.stringify(value));
+test('valid portable backup preserves typed lesson progress and drafts',()=>{const result=decode(fixture());assert.equal(result.drafts.lesson1,'A fictional sentence.');assert.equal(result.done[0],'lesson1');assert.equal(result.points,12)});
+test('another app, invalid format and malformed JSON are rejected',()=>{for(const value of [{...fixture(),app:'easy'}, {...fixture(),formatVersion:99}])assert.throws(()=>decode(value));assert.throws(()=>context.decodeYoungBackup('{'))});
+test('account and Premium flags cannot be imported',()=>{for(const key of ['premiumDemo','license','session','user','_sessionOnly','__proto__']){const value=fixture();Object.defineProperty(value.data,key,{value:true,enumerable:true});assert.throws(()=>decode(value))}});
+test('unknown lessons, unsupported activities and invalid values are rejected',()=>{for(const change of [d=>d.done.push('foreign'),d=>d.answers['foreign:q0']=true,d=>d.points=-1,d=>d.age='admin',d=>d.resume.id='foreign',d=>d.drafts.lesson1='x'.repeat(20001)]){const value=fixture();change(value.data);assert.throws(()=>decode(value))}});
+test('oversized files are rejected before parsing',()=>{assert.throws(()=>context.decodeYoungBackup('x'.repeat(1000001)))});
+
