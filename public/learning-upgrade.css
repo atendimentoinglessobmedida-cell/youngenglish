@@ -19,3 +19,11 @@ main a:not(.primary):not(.secondary):not(.nav):not(.brand),footer a{text-decorat
 
 /* Home page navigation and call-to-action links: no underlines. */
 body>header a,main a.nav,main a.primary,main a.secondary,main a[class*="cta"],main a[class*="button"],main a[class*="btn"]{text-decoration:none!important}
+
+/* Keep level descriptions below illustrations and navigation explicit. */
+.levels-grid .level-card{display:flex;flex-direction:column;min-width:0}
+.level-card>.scene{display:block;position:static;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;flex-shrink:0}
+.level-card .level-info{display:flex;flex-direction:column;flex:1;min-width:0}
+.level-card .level-info p{overflow-wrap:anywhere}
+main .level-card a.level-access{display:flex;align-items:center;justify-content:center;min-height:48px;margin-top:18px;text-decoration:none;font-weight:700;border-radius:10px}
+main .level-card,main .level-card *{text-decoration:none}
