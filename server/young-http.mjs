@@ -4,7 +4,7 @@ const uuid=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const fail=(status,message)=>{const error=new Error(message);error.status=status;throw error;};
 const reply=(status,data)=>new Response(JSON.stringify(data),{status,headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'private, no-store','Vary':'Authorization','X-Content-Type-Options':'nosniff'}});
 
-// Local preparation only: this factory is not yet mounted as a production route.
+// Mounted by api/young.mjs through the dedicated Young runtime.
 // Uses the caller's verified token and RLS; never a service-role key.
 export function createYoungHandler({baseUrl,publishableKey,appOrigin,lessonIds,fetcher=fetch,now=()=>Date.now()}) {
   const base=new URL(baseUrl);

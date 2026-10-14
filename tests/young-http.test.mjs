@@ -33,6 +33,31 @@ function setup(options={}) {
 }
 const request=(action,{method='GET',token='valid',body,requestOrigin=origin}={})=>new Request(`${origin}/api/young/${action}?profile=${profile}`,{method,headers:{...(token?{Authorization:`Bearer ${token}`}:{ }),Origin:requestOrigin,...(body?{'Content-Type':'application/json'}:{})},...(body?{body:JSON.stringify(body)}:{})});
 
+test('foreign guardian cannot read, save or erase another profile progress',async()=>{
+  for(const method of ['GET','PUT','DELETE']){
+    const {handler,calls}=setup({foreign:true});
+    const response=await handler(request('progress',{method,body:method==='GET'?undefined:{confirmed:true,revision:1,sharing:false,payload:{version:1,done:[],drafts:{}}}}));
+    assert.equal(response.status,403);
+    assert.ok(!calls.some(c=>new URL(c.url).pathname.includes('young_save_progress')||new URL(c.url).pathname.includes('young_remove_progress')));
+  }
+});
+
+test('profile creation forwards only nickname and ignores extra personal fields',async()=>{
+  const {handler,calls}=setup();
+  const response=await handler(request('profiles',{method:'POST',body:{nickname:' Fictional Owl ',fullName:'Synthetic name',birthDate:'2014-01-01',school:'Synthetic school',guardian_id:other}}));
+  assert.equal(response.status,201);
+  assert.deepEqual(JSON.parse(calls.at(-1).init.body),{profile_nickname:'Fictional Owl'});
+});
+
+test('unverified accounts cannot create profiles or erase progress',async()=>{
+  for(const action of ['profiles','progress']){
+    const {handler,calls}=setup({unverified:true});
+    const response=await handler(request(action,{method:action==='profiles'?'POST':'DELETE',body:{nickname:'Owl',confirmed:true,revision:1}}));
+    assert.equal(response.status,401);
+    assert.equal(calls.length,1);
+  }
+});
+
 test('anonymous, forged, unverified, foreign, disabled, expired and suspended callers never receive private lessons',async()=>{
   for(const [options,token,status] of [[{},null,401],[{},'forged',401],[{unverified:true},'valid',401],[{foreign:true},'valid',403],[{disabled:true},'valid',403],[{expired:true},'valid',403],[{suspended:true},'valid',403]]){
     const {handler}=setup(options),response=await handler(request('premium',{token}));assert.equal(response.status,status);assert.equal(response.headers.get('cache-control'),'private, no-store');assert.ok(!(await response.text()).includes(privateText));
