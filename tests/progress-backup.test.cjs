@@ -9,4 +9,3 @@ test('another app, invalid format and malformed JSON are rejected',()=>{for(cons
 test('account and Premium flags cannot be imported',()=>{for(const key of ['premiumDemo','license','session','user','_sessionOnly','__proto__']){const value=fixture();Object.defineProperty(value.data,key,{value:true,enumerable:true});assert.throws(()=>decode(value))}});
 test('unknown lessons, unsupported activities and invalid values are rejected',()=>{for(const change of [d=>d.done.push('foreign'),d=>d.answers['foreign:q0']=true,d=>d.points=-1,d=>d.age='admin',d=>d.resume.id='foreign',d=>d.drafts.lesson1='x'.repeat(20001)]){const value=fixture();change(value.data);assert.throws(()=>decode(value))}});
 test('oversized files are rejected before parsing',()=>{assert.throws(()=>context.decodeYoungBackup('x'.repeat(1000001)))});
-

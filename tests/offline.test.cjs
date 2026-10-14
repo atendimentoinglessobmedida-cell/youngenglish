@@ -10,8 +10,7 @@ test('unvisited offline navigation explains how to recover',async()=>{const r=aw
 test('an uncached script never receives the home HTML',async()=>{const r=await app().fetch('cors');assert.equal(r.type,'error');assert.equal(await r.text(),'')});
 test('visited pages remain available offline',async()=>{const r=await app({cached:new Response('saved lesson')}).fetch();assert.equal(await r.text(),'saved lesson')});
 test('cache quota does not turn a successful request into an offline error',async()=>{const r=await app({online:true,quota:true}).fetch();assert.equal(await r.text(),'online')});
-test('updates preserve the current shell and caches belonging to other apps',async()=>{const a=app();await a.activate();assert.deepEqual(a.deleted,['ism-young-shell-v3','ism-young-shell-v4','ism-young-shell-v5','ism-young-shell-v6','ism-young-shell-v7'])});
+test('updates preserve the current shell and caches belonging to other apps',async()=>{const a=app();await a.activate();assert.deepEqual(a.deleted,['ism-young-shell-v3','ism-young-shell-v4','ism-young-shell-v5','ism-young-shell-v6','ism-young-shell-v7','ism-young-shell-v8'])});
 test('API, account and authenticated requests bypass cached content',()=>{const a=app({cached:new Response('previous account')});for(const pathname of ['/api/young/progress','/account','/account.html'])assert.equal(a.fetch('cors',pathname),undefined);assert.equal(a.fetch('cors','/other',new Headers({Authorization:'Bearer fixture'})),undefined);assert.equal(a.written.length,0)});
 test('private and no-store responses are never written to the offline cache',async()=>{for(const cacheControl of ['private, max-age=0','no-store']){const a=app({online:true,cacheControl});assert.equal((await a.fetch()).status,200);assert.equal(a.written.length,0)}});
-
 

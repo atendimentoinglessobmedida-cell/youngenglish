@@ -9,5 +9,5 @@ test('sports and gaming missions match their own contexts across five levels',()
   assert.doesNotMatch(x.canDo+' '+x.finalChallenge,/instrumentos|banda|ensaio|musical|melodia/);
  }
  assert.match(sports[0].canDo,/esportes/);assert.match(gaming[0].canDo,/jogo/);
- assert.match(sports[4].finalChallenge,/evento/);assert.match(gaming[4].finalChallenge,/jogo/);
+  assert.match(sports[4].finalChallenge,/evento/);assert.match(gaming[4].finalChallenge,/jogo/);
 });

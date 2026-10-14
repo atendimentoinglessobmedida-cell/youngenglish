@@ -39,4 +39,3 @@ function decodeYoungBackup(text){
  }
  render=function(){oldRender();refresh()};refresh();
 })();
-
