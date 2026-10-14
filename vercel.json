@@ -3,5 +3,6 @@
   "framework": null,
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "cleanUrls": false
+  "cleanUrls": false,
+  "rewrites": [{"source":"/api/young/:action","destination":"/api/young?action=:action"}]
 }
