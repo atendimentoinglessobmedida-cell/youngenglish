@@ -14,7 +14,7 @@ export function createYoungHandler({baseUrl,publishableKey,appOrigin,lessonIds,f
   return async function handle(request) {
     try {
       const url=new URL(request.url),action=url.pathname.split('/').filter(Boolean).at(-1);
-      const supported={session:['GET'],profiles:['GET','POST'],progress:['GET','PUT','DELETE'],premium:['GET'],license:['GET'],period:['POST'],teacher:['GET'],feedback:['GET','POST']};
+      const supported={session:['GET'],profiles:['GET','POST'],progress:['GET','PUT','DELETE'],premium:['GET'],license:['GET'],period:['POST'],teacher:['GET'],feedback:['GET','POST'],'access-link':['POST']};
       if(!Object.hasOwn(supported,action))return reply(404,{error:'Rota indisponível.'});
       if(!supported[action].includes(request.method))return reply(405,{error:'Método indisponível.'});
       if(request.headers.has('origin')&&request.headers.get('origin')!==origin)fail(403,'Origem indisponível.');
@@ -43,6 +43,12 @@ export function createYoungHandler({baseUrl,publishableKey,appOrigin,lessonIds,f
         if(!value||typeof value!=='object'||Array.isArray(value))fail(400,'Dados inválidos.');
         return value;
       };
+      if(action==='access-link'){
+        if(request.headers.get('origin')!==origin)fail(403,'Origem indisponível.');
+        const input=await body();
+        if(Object.keys(input).some(key=>!['email','confirmed'].includes(key)))fail(400,'Dados inválidos.');
+        return reply(200,await call('/functions/v1/young-manual-access',{method:'POST',headers:{'Content-Type':'application/json',Origin:origin},body:JSON.stringify(input)}));
+      }
       if(action==='session')return reply(200,{account:{id:user.id,email:user.email},permissions:await call('/rest/v1/rpc/young_account_permissions',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'})});
       if(action==='teacher'){
         const target=url.searchParams.get('profile'),cursor=url.searchParams.get('after');
