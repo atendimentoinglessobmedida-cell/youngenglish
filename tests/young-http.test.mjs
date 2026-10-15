@@ -136,3 +136,8 @@ test('removing cloud progress requires confirmation, ownership and a current rev
   assert.equal((await setup({conflict:true}).handler(request('progress',{method:'DELETE',body:input}))).status,409);
   const response=await setup({disabled:true}).handler(request('progress',{method:'DELETE',body:input}));assert.equal(response.status,200);assert.deepEqual(await response.json(),{removed:true,revision:2});
 });
+
+test('manual plan choices are provided only to administrators from the server catalogue',async()=>{
+ const ordinary=await setup().handler(request('session'));assert.equal('plans' in await ordinary.json(),false);
+ const response=await setup({admin:true}).handler(request('session'));const data=await response.json();assert.equal(data.permissions.administrator,true);assert.equal(data.plans.monthly.priceCents,5899);assert.equal(data.plans.semiannual.days,180);assert.equal(data.plans.annual.priceCents,58999);
+});
