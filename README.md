@@ -1,6 +1,8 @@
 # ISM Young English
 
-Aplicativo de inglês para estudantes de 10–15 anos, versão 15. São 156 aulas em seis níveis e quinze modalidades de jogos. Os cinco novos jogos trabalham vocabulário, palavras em contexto, gramática, reconstrução de frases e escrita com autoavaliação. Esta distribuição é uma demonstração; os planos não implementam cobrança ou controle de acesso no servidor.
+Aplicativo de inglês para estudantes de 10–15 anos. O catálogo atual reúne 96 aulas regulares e 70 Premium em seis níveis e quinze modalidades de jogos. Os cinco novos jogos trabalham vocabulário, palavras em contexto, gramática, reconstrução de frases e escrita com autoavaliação. Esta distribuição é uma demonstração; os planos não implementam cobrança ou controle de acesso no servidor.
+
+Versão para alunos: https://youngenglish.vercel.app/. Esta alteração acrescenta a página compartilhável `/install.html`, salvamento opcional nas telas regulares e recuperação offline. Consulte [STUDENT-READINESS.md](STUDENT-READINESS.md). Execute também `npm test` para verificar a recuperação offline.
 
 ## Verificar e construir
 

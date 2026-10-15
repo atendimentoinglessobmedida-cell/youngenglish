@@ -1,0 +1,28 @@
+import test from 'node:test';import assert from 'node:assert/strict';import{plans,authorizePremium,recordConfirmedPeriod,saveRevision,teacherCanRead}from'../server/commercial-policy.mjs';
+const now=Date.parse('2026-10-12T12:00:00Z'),actor={id:'guardian-a',verifiedByServer:true},profile={id:'learner-a',guardianId:'guardian-a'},operator={id:'teacher',verifiedByServer:true,permissions:['manage_young_licenses','read_young_progress']},license={profileId:profile.id,status:'active',startsAt:new Date(now-86400000).toISOString(),expiresAt:new Date(now+10*86400000).toISOString()};
+
+test('Premium accepts exact start and rejects exact expiry and malformed dates',()=>{
+ const startsAt=new Date(now).toISOString(),expiresAt=new Date(now+1000).toISOString();
+ assert.ok(authorizePremium({actor,profile,license:{...license,startsAt,expiresAt},now}));
+ assert.throws(()=>authorizePremium({actor,profile,license:{...license,startsAt,expiresAt},now:now+1000}),error=>error.status===403);
+ for(const field of ['startsAt','expiresAt'])assert.throws(()=>authorizePremium({actor,profile,license:{...license,[field]:'invalid'},now}),error=>error.status===400);
+});
+
+test('expired renewal begins now and suspended renewal requires intervention',()=>{
+ const planId='monthly',payment={id:'synthetic-payment',profileId:profile.id,planId,status:'confirmed',confirmedBy:operator.id,confirmedAt:new Date(now).toISOString(),amountCents:plans.monthly.priceCents};
+ const args={operator,profile,payment,planId,requestId:'synthetic_request_2026',now};
+ const renewed=recordConfirmedPeriod({...args,existing:{...license,expiresAt:new Date(now-1000).toISOString()}});
+ assert.equal(Date.parse(renewed.license.startsAt),now);
+ assert.equal(Date.parse(renewed.license.expiresAt),now+30*86400000);
+ assert.throws(()=>recordConfirmedPeriod({...args,existing:{...license,status:'suspended'}}),error=>error.status===409);
+});
+
+test('payment confirmation for another profile or operator never creates a period',()=>{
+ const planId='monthly',payment={id:'synthetic-payment',profileId:profile.id,planId,status:'confirmed',confirmedBy:operator.id,confirmedAt:new Date(now).toISOString(),amountCents:plans.monthly.priceCents};
+ const args={operator,profile,payment,planId,requestId:'synthetic_request_2026',now};
+ for(const changed of [{profileId:'another-profile'},{confirmedBy:'another-operator'},{planId:'annual'}])assert.throws(()=>recordConfirmedPeriod({...args,payment:{...payment,...changed}}),error=>error.status===400);
+});
+test('plan lookup rejects inherited object keys before calculating a paid period',()=>{for(const planId of ['__proto__','constructor','toString'])assert.throws(()=>recordConfirmedPeriod({operator,profile,planId,requestId:'request_unknown_2026',now}),error=>error.status===400);});
+test('Premium requires a verified guardian session, owned profile and valid license',()=>{assert.ok(authorizePremium({actor,profile,license,now}));for(const changes of [{actor:{...actor,verifiedByServer:false}},{profile:{...profile,guardianId:'guardian-b'}},{license:{...license,status:'suspended'}},{license:{...license,expiresAt:new Date(now).toISOString()}},{license:{...license,startsAt:new Date(now+86400000).toISOString()}}])assert.throws(()=>authorizePremium({actor,profile,license,now,...changes}));});
+test('periods preserve price and remaining time, reject client payment and replay idempotently',()=>{for(const[planId,plan]of Object.entries(plans)){const payment={id:'payment-'+planId,profileId:profile.id,planId,status:'confirmed',confirmedBy:operator.id,confirmedAt:new Date(now).toISOString(),amountCents:plan.priceCents},args={operator,profile,payment,planId,requestId:'request_'+planId+'_2026',existing:license,now},first=recordConfirmedPeriod(args);assert.equal(Date.parse(first.license.expiresAt),now+(10+plan.days)*86400000);assert.deepEqual(recordConfirmedPeriod({...args,priorOperation:first}).license,first.license);assert.throws(()=>recordConfirmedPeriod({...args,operator:actor}));assert.throws(()=>recordConfirmedPeriod({...args,payment:{...payment,status:'pending'}}));assert.throws(()=>recordConfirmedPeriod({...args,payment:{...payment,amountCents:1}}));assert.throws(()=>recordConfirmedPeriod({...args,priorOperation:{...first,fingerprint:'different'}}));}});
+test('progress isolates guardians, detects conflicts and defaults to no teacher sharing',()=>{const payload={version:1,done:['lesson-a','lesson-a'],drafts:{'lesson-a':'Hello.'}},first=saveRevision({actor,profile,expectedRevision:0,record:null,payload});assert.equal(first.sharing,false);assert.deepEqual(first.payload.done,['lesson-a']);assert.throws(()=>saveRevision({actor,profile,expectedRevision:0,record:first,payload}));assert.throws(()=>saveRevision({actor:{...actor,id:'guardian-b'},profile,expectedRevision:1,record:first,payload}));const second=saveRevision({actor,profile,expectedRevision:1,record:first,payload,sharing:true});assert.equal(teacherCanRead({operator,record:second}),true);assert.equal(teacherCanRead({operator:actor,record:second}),false);const third=saveRevision({actor,profile,expectedRevision:2,record:second,payload,sharing:false});assert.equal(teacherCanRead({operator,record:third}),false);});

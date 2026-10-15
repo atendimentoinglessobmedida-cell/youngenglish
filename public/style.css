@@ -24,3 +24,16 @@ html{scroll-padding-top:16px}button,a,select,textarea{scroll-margin:80px}button:
   header nav{grid-template-columns:repeat(2,minmax(0,1fr))}
   header .install-cta{grid-column:1/-1}
 }
+
+/* Header audit: one consistent control system for buttons and links. */
+header nav .nav{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;min-height:46px;height:46px;padding:0 14px;border:1px solid rgba(255,255,255,.22);border-radius:10px;background:#183b5d;color:#fff;font-size:13px;font-weight:700;line-height:1.1;text-decoration:none;white-space:nowrap;transition:background .15s ease,border-color .15s ease,transform .15s ease}
+header nav .nav:hover,header nav .nav:focus-visible{background:#2b566f;border-color:rgba(255,255,255,.42);color:#fff}
+header nav .nav.active{background:#fff;color:var(--navy);border-color:#fff}
+header nav .install-cta{background:var(--yellow);color:var(--navy);border-color:#e5b923;font-weight:800}
+header nav .install-cta:hover,header nav .install-cta:focus-visible{background:#ffe078;color:var(--navy);border-color:#e5b923}
+.home-level-art{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;object-position:center}
+@media(max-width:680px){header nav .nav{width:100%;height:48px;min-height:48px;padding:0 8px;font-size:13px;white-space:normal;text-align:center}header nav .install-cta{grid-column:1/-1}.home-level-art{aspect-ratio:3/2}}
+
+header nav{flex-wrap:wrap}header nav .nav-group{position:relative;padding:0;margin:0;background:transparent;border:0;color:white}header nav .nav-group summary{cursor:pointer;min-height:44px;padding:12px;border:1px solid #54738a;border-radius:10px;color:white;background:#1c3b58;font-size:14px}header nav .nav-group[open]{display:flex;flex-wrap:wrap;gap:8px}header nav .nav-group summary:focus-visible{outline:3px solid #ffcf36}header nav .nav-group .nav{margin:4px}header nav .nav.active{background:white;color:#102944}.review-rubric{margin:16px 0;padding:16px;border:1px solid #b1cbd8;border-radius:12px}.review-rubric label{display:block;margin:10px 0}.review-rubric select{min-height:44px;max-width:100%}@media(max-width:600px){header nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}header nav .nav,header nav .nav-group summary{padding:10px 6px;font-size:13px;width:100%}header nav .nav-group[open]{grid-column:1/-1}header{padding:16px}}
+
+#young-audio-controls summary{min-height:44px;cursor:pointer}#young-audio-controls button{min-height:44px;min-width:44px;display:block;margin:6px 0;padding:8px 12px}#young-audio-controls [data-line]{overflow-wrap:anywhere;padding:6px}#young-audio-controls :focus-visible{outline:3px solid currentColor;outline-offset:3px}
