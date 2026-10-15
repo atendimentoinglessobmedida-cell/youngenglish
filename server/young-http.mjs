@@ -49,7 +49,7 @@ export function createYoungHandler({baseUrl,publishableKey,appOrigin,lessonIds,f
         if(Object.keys(input).some(key=>!['email','confirmed'].includes(key)))fail(400,'Dados inválidos.');
         return reply(200,await call('/functions/v1/young-manual-access',{method:'POST',headers:{'Content-Type':'application/json',Origin:origin},body:JSON.stringify(input)}));
       }
-      if(action==='session')return reply(200,{account:{id:user.id,email:user.email},permissions:await call('/rest/v1/rpc/young_account_permissions',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'})});
+      if(action==='session'){const permissions=await call('/rest/v1/rpc/young_account_permissions',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});return reply(200,{account:{id:user.id,email:user.email},permissions,...(permissions.administrator===true?{plans}:{})});}
       if(action==='teacher'){
         const target=url.searchParams.get('profile'),cursor=url.searchParams.get('after');
         if((target&&!uuid.test(target))||(cursor&&!uuid.test(cursor))||(target&&cursor))fail(400,'Seleção de aluno inválida.');
