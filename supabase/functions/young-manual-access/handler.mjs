@@ -3,21 +3,23 @@ const endpoint='https://pttmctaxklaotdvnmjqc.supabase.co';
 const reply=(status,data)=>new Response(JSON.stringify(data),{status,headers:{'Content-Type':'application/json','Cache-Control':'private, no-store','Vary':'Authorization, Origin','X-Content-Type-Options':'nosniff'}});
 
 // Shared with Node tests. Secrets are injected by the hosted Edge runtime only.
-export function createManualAccess({serviceKey,publishableKey,fetcher=fetch,now=Date.now}){
+export function createManualAccess({serviceKey,publishableKey,operatorKeys=[],fetcher=fetch,now=Date.now}){
   const limits=new Map();
   return async request=>{
     if(request.method!=='POST')return reply(405,{error:'Use POST para gerar um acesso individual.'});
     const requestOrigin=request.headers.get('origin');
     if(requestOrigin&&requestOrigin!==origin)return reply(403,{error:'Origem indisponível.'});
     const authorization=request.headers.get('authorization')||'';
-    if(!/^Bearer [A-Za-z0-9._-]{1,8192}$/.test(authorization))return reply(401,{error:'Entre com uma conta administrativa.'});
+    const apiKey=request.headers.get('apikey')||'';
+    const trustedOperator=operatorKeys.some(key=>typeof key==='string'&&key.startsWith('sb_secret_')&&key===apiKey);
+    if(!trustedOperator&&!/^Bearer [A-Za-z0-9._-]{1,8192}$/.test(authorization))return reply(401,{error:'Entre com uma conta administrativa.'});
     if(!serviceKey||!publishableKey)return reply(503,{error:'Serviço administrativo indisponível.'});
     const token=authorization.slice(7);
     try{
       let actor;
       // Supabase dashboard operators may bootstrap their own account without SMTP.
       // The service key is never accepted from, or exposed to, the public app UI.
-      if(token===serviceKey){actor='project-operator';}
+      if(trustedOperator||token===serviceKey){actor='project-operator';}
       else{
         const headers={apikey:publishableKey,Authorization:authorization};
         const verified=await fetcher(endpoint+'/auth/v1/user',{headers,signal:AbortSignal.timeout(8000)});

@@ -4,7 +4,7 @@ import {createManualAccess} from '../supabase/functions/young-manual-access/hand
 const root='https://youngenglish.vercel.app',base='https://pttmctaxklaotdvnmjqc.supabase.co';
 const secret='fixture.server.only',email='guardian@example.test';
 const req=(token='valid',body={email,confirmed:true},headers={})=>new Request(base+'/functions/v1/young-manual-access',{method:'POST',headers:{Authorization:'Bearer '+token,'Content-Type':'application/json',Origin:root,...headers},body:JSON.stringify(body)});
-function setup(options={}){const calls=[];const handler=createManualAccess({serviceKey:secret,publishableKey:'fixture-public',fetcher:async(url,init)=>{calls.push({url,init});if(url.endsWith('/user'))return Response.json({id:'fixture-admin',email_confirmed_at:options.unverified?null:'2026-10-15'}, {status:options.invalid?401:200});if(url.includes('young_account_permissions'))return Response.json({administrator:!options.denied});return Response.json({action_link:options.malformed?'https://other.example.test/':base+'/auth/v1/verify?token=fixture-single-use&type=magiclink&redirect_to='+encodeURIComponent(root+'/index.html')});}});return {handler,calls};}
+function setup(options={}){const calls=[];const handler=createManualAccess({serviceKey:secret,publishableKey:'fixture-public',operatorKeys:['sb_secret_fixture_operator'],fetcher:async(url,init)=>{calls.push({url,init});if(url.endsWith('/user'))return Response.json({id:'fixture-admin',email_confirmed_at:options.unverified?null:'2026-10-15'}, {status:options.invalid?401:200});if(url.includes('young_account_permissions'))return Response.json({administrator:!options.denied});return Response.json({action_link:options.malformed?'https://other.example.test/':base+'/auth/v1/verify?token=fixture-single-use&type=magiclink&redirect_to='+encodeURIComponent(root+'/index.html')});}});return {handler,calls};}
 test('anonymous, forged, unverified, foreign-origin and ordinary accounts cannot mint links',async()=>{
  for(const [options,request,status]of [[{},new Request(base,{method:'POST'}),401],[{invalid:true},req(),401],[{unverified:true},req(),401],[{denied:true},req(),403],[{},req('valid',{email,confirmed:true},{Origin:'https://foreign.example.test'}),403]]){const {handler,calls}=setup(options);assert.equal((await handler(request)).status,status);assert(!calls.some(x=>x.url.includes('generate_link')));}
 });
@@ -17,3 +17,9 @@ test('unconfirmed recipients, injected redirects, oversized input and malformed 
  const {handler}=setup({malformed:true});const r=await handler(req());assert.equal(r.status,503);assert(!JSON.stringify(await r.json()).includes('other.example'));
 });
 test('per-instance issuance limit caps authenticated operator attempts',async()=>{const {handler,calls}=setup();for(let i=0;i<10;i++)assert.equal((await handler(req())).status,200);assert.equal((await handler(req())).status,429);assert.equal(calls.filter(x=>x.url.includes('generate_link')).length,10);});
+
+test('dashboard secret-key bootstrap requires an exact injected project secret',async()=>{
+ const {handler,calls}=setup();const headers={'Content-Type':'application/json',apikey:'sb_secret_fixture_operator'};const input=()=>JSON.stringify({email,confirmed:true});
+ assert.equal((await handler(new Request(base,{method:'POST',headers,body:input()}))).status,200);assert.equal(calls.length,1);
+ for(const key of ['sb_secret_forged','sb_publishable_fixture']){const {handler,calls}=setup();assert.equal((await handler(new Request(base,{method:'POST',headers:{...headers,apikey:key},body:input()}))).status,401);assert.equal(calls.length,0);}
+});
