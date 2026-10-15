@@ -1,5 +1,5 @@
 import {createYoungHandler} from './young-http.mjs';
-const actions=new Set(['session','profiles','progress','premium','license','period','teacher','feedback']);
+const actions=new Set(['session','profiles','progress','premium','license','period','teacher','feedback','access-link']);
 const unavailable=()=>new Response(JSON.stringify({error:'O acesso por conta está em preparação.'}),{status:503,headers:{'Content-Type':'application/json; charset=utf-8','Cache-Control':'private, no-store','X-Content-Type-Options':'nosniff'}});
 
 // Configure only after provisioning the dedicated Young project. No service key.
