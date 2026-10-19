@@ -22,5 +22,8 @@
   return out;
  }
  function record(state,key,correct){const old=state[key]||{attempts:0,solved:false,firstTry:false};if(old.solved)return state;return {...state,[key]:{attempts:old.attempts+1,solved:correct,firstTry:correct&&old.attempts===0}};}
- root.ISMReviewModel={shuffle,blocks,build,record};
+ // Results are derived from the first pass; focused practice cannot inflate them.
+ function summary(answers,total){const values=Object.values(answers);return {total,solved:values.filter(a=>a.solved).length,firstTry:values.filter(a=>a.firstTry).length,mistakes:values.filter(a=>a.attempts>0&&!a.firstTry).length};}
+ function mistakeIndices(answers){return Object.keys(answers).filter(key=>answers[key].attempts>0&&!answers[key].firstTry).map(Number);}
+ root.ISMReviewModel={shuffle,blocks,build,record,summary,mistakeIndices};
 })(typeof window==='undefined'?globalThis:window);
