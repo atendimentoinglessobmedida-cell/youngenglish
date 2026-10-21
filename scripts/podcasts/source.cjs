@@ -117,7 +117,8 @@ module.exports=[
       ]
     ],
     "recap": "Introduce yourself, ask one friendly question, and make an invitation. Use invented names when you practise.",
-    "recapPt": "Apresente-se, faça uma pergunta amigável e um convite. Use nomes inventados na prática."
+    "recapPt": "Apresente-se, faça uma pergunta amigável e um convite. Use nomes inventados na prática.",
+    "lesson": "elementary.html"
   },
   {
     "id": "young-weekday-routine",
@@ -236,7 +237,8 @@ module.exports=[
       ]
     ],
     "recap": "Build three routine sentences. Add a time, a frequency word and a connection such as before or after.",
-    "recapPt": "Monte três frases de rotina. Acrescente um horário, uma palavra de frequência e uma ligação como before ou after."
+    "recapPt": "Monte três frases de rotina. Acrescente um horário, uma palavra de frequência e uma ligação como before ou after.",
+    "lesson": "basic.html"
   },
   {
     "id": "young-weekend-plans",
@@ -355,6 +357,7 @@ module.exports=[
       ]
     ],
     "recap": "A clear plan includes an activity, a day, a time and a meeting place. Confirm the details and practise with fictional plans.",
-    "recapPt": "Um plano claro inclui atividade, dia, horário e ponto de encontro. Confirme os detalhes usando planos fictícios."
+    "recapPt": "Um plano claro inclui atividade, dia, horário e ponto de encontro. Confirme os detalhes usando planos fictícios.",
+    "lesson": "pre-intermediate.html"
   }
 ];
