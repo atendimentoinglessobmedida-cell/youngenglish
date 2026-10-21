@@ -11,7 +11,76 @@ function scene(i,cls=''){return `<span class="scene ${cls}" role="img" aria-labe
 let selectedLevel='Pre-A1',activeGame=null;const gameWins=new Set(),stars={};
 
 // Unique character-led game artwork
-const gameArtwork={memory:['assets/premium-books-960.webp','Adolescentes praticando memória e vocabulário com livros.'],visual:['assets/premium-travel-960.webp','Adolescentes explorando pistas visuais em uma atividade.'],sentence:['assets/premium-comics-960.webp','Adolescentes criando frases e histórias em uma atividade de escrita.'],secret:['assets/premium-series-960.webp','Adolescentes resolvendo juntos um desafio de palavras.'],listen:['assets/premium-music-960.webp','Adolescentes praticando escuta com música e fones de ouvido.'],dialogue:['assets/premium-cinema-960.webp','Adolescentes criando e praticando diálogos em uma cena de produção.']};
+const gameArtwork={
+  "memory": [
+    "assets/games/memory-v1.webp",
+    "Jovens encontrando pares de cartões ilustrados na biblioteca."
+  ],
+  "visual": [
+    "assets/games/visual-v1.webp",
+    "Jovens explorando pistas em um jardim botânico."
+  ],
+  "sentence": [
+    "assets/games/sentence-v1.webp",
+    "Jovens organizando peças coloridas em uma oficina de frases."
+  ],
+  "secret": [
+    "assets/games/secret-v1.webp",
+    "Jovens resolvendo o enigma de um baú misterioso."
+  ],
+  "listen": [
+    "assets/games/listen-v1.webp",
+    "Uma jovem ouvindo pistas de áudio em um estúdio."
+  ],
+  "dialogue": [
+    "assets/games/dialogue-v1.webp",
+    "Dois jovens ensaiando uma conversa no palco."
+  ],
+  "wordsearch": [
+    "assets/games/wordsearch-v1.webp",
+    "Jovens investigando um painel de peças coloridas."
+  ],
+  "spelling": [
+    "assets/games/spelling-v1.webp",
+    "Uma jovem praticando escrita ao lado de seus fones."
+  ],
+  "storyorder": [
+    "assets/games/storyorder-v1.webp",
+    "Jovens colocando cartões de uma história em sequência."
+  ],
+  "repair": [
+    "assets/games/repair-v1.webp",
+    "Jovens consertando uma ponte de peças coloridas."
+  ],
+  "matchsprint": [
+    "assets/games/matchsprint-v1.webp",
+    "Dois jovens disputando uma rodada de associação de cartões."
+  ],
+  "listenchoose": [
+    "assets/games/listenchoose-v1.webp",
+    "Uma jovem ouvindo e escolhendo entre três cenas."
+  ],
+  "vocabrelay": [
+    "assets/games/vocabrelay-v1.webp",
+    "Jovens encontrando pistas ilustradas em uma expedição."
+  ],
+  "contextwords": [
+    "assets/games/contextwords-v1.webp",
+    "Jovens usando vocabulário para fazer um pedido na cafeteria."
+  ],
+  "grammarquest": [
+    "assets/games/grammarquest-v1.webp",
+    "Jovens percorrendo uma trilha de desafios em um jardim."
+  ],
+  "sentencewrite": [
+    "assets/games/sentencewrite-v1.webp",
+    "Uma jovem compondo frases em seu caderno."
+  ],
+  "storywriter": [
+    "assets/games/storywriter-v1.webp",
+    "Jovens imaginando uma aventura a partir de um livro."
+  ]
+};
 function gameArt(id,cls=''){const a=gameArtwork[id]||gameArtwork.sentence;return '<img class="scene game-art '+cls+'" src="'+a[0]+'" alt="'+a[1]+'" width="960" height="640" loading="lazy" decoding="async">'}
 const gameTypes=[{id:'memory',title:'Memória bilíngue',desc:'Encontre os pares de palavras e significados.',scene:1},{id:'visual',title:'Explorador de imagens',desc:'Leia pistas e descubra qual cena combina.',scene:4},{id:'sentence',title:'Laboratório de frases',desc:'Coloque as palavras em ordem e construa uma ideia.',scene:7},{id:'secret',title:'Palavra secreta',desc:'Use a pista e descubra as letras escondidas.',scene:6},{id:'listen',title:'Detetive da escuta',desc:'Ouça uma conversa e resolva o desafio.',scene:9},{id:'dialogue',title:'Escolhas de diálogo',desc:'Escolha respostas que fazem a conversa avançar.',scene:5}];
 const originalRender=render,originalStage=stageUI,originalFinish=finish,originalGuide=guideUI;
