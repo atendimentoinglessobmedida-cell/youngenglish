@@ -1,0 +1,70 @@
+{
+  "memory": [
+    "assets/games/memory-v1.webp",
+    "Jovens encontrando pares de cartões ilustrados na biblioteca."
+  ],
+  "visual": [
+    "assets/games/visual-v1.webp",
+    "Jovens explorando pistas em um jardim botânico."
+  ],
+  "sentence": [
+    "assets/games/sentence-v1.webp",
+    "Jovens organizando peças coloridas em uma oficina de frases."
+  ],
+  "secret": [
+    "assets/games/secret-v1.webp",
+    "Jovens resolvendo o enigma de um baú misterioso."
+  ],
+  "listen": [
+    "assets/games/listen-v1.webp",
+    "Uma jovem ouvindo pistas de áudio em um estúdio."
+  ],
+  "dialogue": [
+    "assets/games/dialogue-v1.webp",
+    "Dois jovens ensaiando uma conversa no palco."
+  ],
+  "wordsearch": [
+    "assets/games/wordsearch-v1.webp",
+    "Jovens investigando um painel de peças coloridas."
+  ],
+  "spelling": [
+    "assets/games/spelling-v1.webp",
+    "Uma jovem praticando escrita ao lado de seus fones."
+  ],
+  "storyorder": [
+    "assets/games/storyorder-v1.webp",
+    "Jovens colocando cartões de uma história em sequência."
+  ],
+  "repair": [
+    "assets/games/repair-v1.webp",
+    "Jovens consertando uma ponte de peças coloridas."
+  ],
+  "matchsprint": [
+    "assets/games/matchsprint-v1.webp",
+    "Dois jovens disputando uma rodada de associação de cartões."
+  ],
+  "listenchoose": [
+    "assets/games/listenchoose-v1.webp",
+    "Uma jovem ouvindo e escolhendo entre três cenas."
+  ],
+  "vocabrelay": [
+    "assets/games/vocabrelay-v1.webp",
+    "Jovens encontrando pistas ilustradas em uma expedição."
+  ],
+  "contextwords": [
+    "assets/games/contextwords-v1.webp",
+    "Jovens usando vocabulário para fazer um pedido na cafeteria."
+  ],
+  "grammarquest": [
+    "assets/games/grammarquest-v1.webp",
+    "Jovens percorrendo uma trilha de desafios em um jardim."
+  ],
+  "sentencewrite": [
+    "assets/games/sentencewrite-v1.webp",
+    "Uma jovem compondo frases em seu caderno."
+  ],
+  "storywriter": [
+    "assets/games/storywriter-v1.webp",
+    "Jovens imaginando uma aventura a partir de um livro."
+  ]
+}
