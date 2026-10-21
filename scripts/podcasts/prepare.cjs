@@ -21,7 +21,7 @@ for(const [app,lessons]of Object.entries(catalog)){
   narr(5,l.recap,l.recapPt,1100);narr(5,'Return to the app and use two expressions in a new conversation. Ask your teacher for feedback. Listening alone does not assess your pronunciation.','Volte ao aplicativo e use duas expressões em uma conversa nova. Peça feedback ao professor. A escuta sozinha não avalia sua pronúncia.');
   versions[mode]={label:mode==='en'?'English only':'Português + exemplos em inglês',chapters};
  }
- return{id:l.id,title:l.title,lesson:app==='travel'?'/':app==='young'?'elementary.html':'index.html#lesson/0/0',versions};});
+ return{id:l.id,title:l.title,lesson:l.lesson||(app==='travel'?'/':app==='young'?'elementary.html':'index.html#lesson/0/0'),versions};});
  const dir=path.join(out,app);fs.mkdirSync(dir,{recursive:true});fs.writeFileSync(path.join(dir,'episodes.json'),JSON.stringify(episodes,null,2));
 }
 fs.writeFileSync(path.join(out,'jobs.json'),JSON.stringify([...jobs.values()],null,2));console.log(JSON.stringify({apps:3,episodes:9,versions:18,uniqueSegments:jobs.size}));

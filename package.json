@@ -8,7 +8,7 @@
     "prepare:backend": "node scripts/prepare-young-backend.cjs",
     "test:db": "node --test tests/young-db.test.mjs",
     "build": "node scripts/build.cjs",
-    "test:podcasts": "node scripts/podcasts/check.cjs"
+    "test:podcasts": "node --test scripts/podcasts/check.cjs scripts/podcasts/runtime.test.cjs"
   },
   "devDependencies": {
     "@electric-sql/pglite": "0.5.8",
