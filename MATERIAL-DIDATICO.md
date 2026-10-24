@@ -21,3 +21,6 @@ Valide os quatro apps: seleção e links reais, dois modos, distribuição dos t
 ## Evolução após a primeira entrega
 
 Após uso dos roteiros com alunos reais, revise duração e adequação. Expanda as sequências por nível, acrescente avaliação formativa com critérios específicos e considere atribuição e devolutiva por conta. Qualquer sincronização de dados deve usar identidade verificada e autorização no servidor, com política de acesso própria. A substituição integral de livros depende de revisão curricular, cobertura das habilidades, qualidade editorial e direitos dos materiais, além da infraestrutura.
+
+## Sala integrada — atualização
+Os quatro pontos de entrada agora levam ao endereço principal https://ism-business-english.vercel.app/sala-de-aula.html. O catálogo contém 16 roteiros com identificação do app de origem. É possível combinar até quatro no encontro, distribuir 30/45/60 minutos, alternar com registros independentes, comparar os quatro percursos e registrar interesse. A preferência não gera contratação ou cobrança; as condições são combinadas com o professor. Os apps originais mantêm suas permissões. Backups antigos são convertidos para IDs separados por app; registros de outros domínios exigem exportação e restauração pelo titular.
