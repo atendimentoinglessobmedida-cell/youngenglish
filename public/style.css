@@ -40,3 +40,4 @@ header nav{flex-wrap:wrap}header nav .nav-group{position:relative;padding:0;marg
 
 /* Clear contrast on both light pages and dark navigation/hero surfaces. */
 .eyebrow{color:#066c6c}header nav>a:not(.nav){color:#fff}.premium-hero .eyebrow{color:#ffcf3a}
+.module em{color:#066c6c}
