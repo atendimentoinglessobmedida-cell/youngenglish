@@ -18,7 +18,10 @@ function create(config){
  function budgets(total,queue){const n=Math.max(1,Math.min(4,queue.length)),base=Math.floor(total/n);return Array.from({length:n},(_,i)=>base+(i<total%n?1:0));}
  function minutes(total){const weights=[.1,.1,.15,.15,.2,.2,.1],values=weights.map(w=>1+Math.floor((total-7)*w));for(let i=0,n=total-values.reduce((a,b)=>a+b,0);i<n;i++)values[[4,5,2,3,0,1,6][i%7]]++;return values;}
  function shared(state,canonical){const url=new URL(canonical),route=state.queue.includes(state.lesson)?state.queue:[state.lesson];url.search=new URLSearchParams({lesson:state.lesson,duration:String(state.duration),mode:'study',route:route.join(',')}).toString();return url.href;}
- return {normalize,budgets,minutes,shared};
+ function updateNotebookState(base,id,values){const next=normalize(base);if(!ids.has(id))throw Error('Lição inválida.');const old=next.records[id]||{stage:0};next.records[id]={...old,notes:str(values.notes,4000),response:str(values.response,6000),homework:str(values.homework,2000),assessment:['support','independent','review'].includes(values.assessment)?values.assessment:'',review:values.review===true,closed:values.closed===true};return next;}
+ function mergeNotebookState(base,latest){let result=normalize(base);const remote=normalize(latest);for(const [id,r]of Object.entries(remote.records))result=updateNotebookState(result,id,r);return result;}
+ function stageSource(lesson,stage){const url=new URL(lesson.source);if(lesson.app==='easy')url.hash=url.hash.replace(/\/\d+$/,'/'+[0,1,2,3,4,5,5][stage]);if(lesson.app==='business')url.hash=url.hash.replace(/\/\d+$/,'/'+[0,3,4,2,1,6,7][stage]);if(lesson.app==='young')url.searchParams.set('classroomStage',String([0,1,2,3,4,5,5][stage]));return url.href;}
+ return {normalize,budgets,minutes,shared,updateNotebookState,mergeNotebookState,stageSource};
 }
 root.ISMClassroomModel={create};
 })(typeof window==='undefined'?globalThis:window);
