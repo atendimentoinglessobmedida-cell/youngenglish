@@ -87,6 +87,8 @@ export function createYoungHandler({baseUrl,publishableKey,appOrigin,lessonIds,f
       }
       if(action==='feedback')return reply(200,{feedback:await call(`/rest/v1/young_feedback?select=id,lesson_id,message,created_at&profile_id=eq.${profileId}&order=created_at.desc`)});
       if(action==='premium'){
+        const permissions=await call('/rest/v1/rpc/young_account_permissions',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});
+        actor.permissions=permissions?.administrator===true?['manage_young_licenses']:[];
         const licenses=await call(`/rest/v1/young_licenses?select=profile_id,status,starts_at,expires_at&profile_id=eq.${profileId}&limit=1`);
         const record=Array.isArray(licenses)?licenses[0]:null;
         authorizePremium({actor,profile,license:record&&{profileId:record.profile_id,status:record.status,startsAt:record.starts_at,expiresAt:record.expires_at},now:now()});
