@@ -3,5 +3,10 @@
   "framework": null,
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "cleanUrls": false
+  "cleanUrls": false,
+  "git": {
+    "deploymentEnabled": {
+      "feature/ism-comercial-pix-manual": false
+    }
+  }
 }
