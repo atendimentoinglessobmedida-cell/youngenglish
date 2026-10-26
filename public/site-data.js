@@ -1,7 +1,7 @@
 // Identidade e WhatsApp reutilizados dos apps ISM de viagens e business.
 // Um e-mail só deve ser publicado após confirmação do responsável pela marca.
 const ismContact={name:'Márcio Guariba',phone:'5511976901015',phoneLabel:'(11) 97690-1015',email:null,instagram:'https://www.instagram.com/ingles.sob.medida/'};
-const ismPlans=[{name:'Mensal',days:30,price:58.99,months:1},{name:'Semestral',days:180,price:329.99,months:6},{name:'Anual',days:365,price:589.99,months:12}];
+const ismPlans=[];
 const ismMoney=n=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(n);
 const ismWhatsApp=text=>'https://wa.me/'+ismContact.phone+'?text='+encodeURIComponent(text);
 document.querySelectorAll('[data-whatsapp]').forEach(a=>a.href=ismWhatsApp(a.dataset.whatsapp));
