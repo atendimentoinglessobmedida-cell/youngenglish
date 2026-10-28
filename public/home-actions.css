@@ -1,0 +1,14 @@
+/* Links and dynamically inserted buttons share the same visible navigation states. */
+header nav > :is(a,button),header nav .nav-group > :is(a,button,summary){
+ display:inline-flex;align-items:center;justify-content:center;gap:6px;
+ min-height:48px;max-width:100%;padding:10px 14px;border:1px solid #ffffff35;
+ border-radius:10px;background:#ffffff0d;color:#fff;font:inherit;font-size:14px;
+ font-weight:650;line-height:1.35;text-align:center;text-decoration:none;white-space:normal;
+ overflow-wrap:anywhere;cursor:pointer;box-sizing:border-box;
+}
+header nav > :is(a,button):hover,header nav .nav-group > :is(a,button,summary):hover{background:#ffffff24;color:#fff}
+header nav > .active,header nav > [aria-current=page]{background:var(--yellow);color:#102944;border-color:var(--yellow)}
+header nav :is(a,button,summary):focus-visible{outline:3px solid #ffda70;outline-offset:3px;box-shadow:0 0 0 5px #102944}
+header nav .nav-group[open]{z-index:5}
+header nav [hidden]{display:none!important}
+@media(max-width:700px){header nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:100%}header nav > :is(a,button,details){width:100%;min-width:0;margin:0}header nav > :is(a,button){height:100%}header nav .nav-group>summary{width:100%}header nav > a[href="conversation-lab.html"],header nav > [data-debate-entry]{grid-column:1/-1}header nav > [hidden]{display:none!important}}
