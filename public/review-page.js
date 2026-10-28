@@ -50,7 +50,7 @@
   function open(){if(!dialog.open){previousHash=location.hash;dialog.showModal();document.body.style.overflow='hidden';history.replaceState(null,'',location.pathname+location.search+'#reviews');}void refresh(true);}
   find('review-block').onchange=()=>{selectBlock(groups.find(g=>g.id===find('review-block').value));draw();};find('review-refresh').onclick=()=>void refresh(true);
   window.addEventListener('hashchange',()=>{if(location.hash==='#reviews')open();else if(dialog.open)close();});window.addEventListener('pagehide',()=>{stop();generation++;loading=false;clearSession();groups=[];current=null;fingerprint='';find('review-content').replaceChildren();});window.addEventListener('pageshow',event=>{if(event.persisted&&dialog.open)void refresh(true);});window.addEventListener('focus',()=>{if(dialog.open)void refresh();});
-  if(adapter.embedded){const nav=document.querySelector('header nav');if(nav){const launch=btn('Review / Revisão',open,nav);launch.style.minHeight='44px';launch.style.padding='10px 14px';launch.style.cursor='pointer';}}else open();
+  if(adapter.embedded){const nav=document.querySelector('header nav');if(nav){const launch=btn('Review / Revisão',open,nav);launch.className='nav';launch.setAttribute('aria-haspopup','dialog');launch.setAttribute('aria-controls',dialog.id);launch.style.minHeight='44px';launch.style.padding='10px 14px';launch.style.cursor='pointer';}}else open();
   if(location.hash==='#reviews')open();return {open,refresh:()=>{if(dialog.open)void refresh();}};
  }
 })();
