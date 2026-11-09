@@ -73,6 +73,16 @@ test("four consistent tabs, pillars and secondary-page lesson targets", () => {
       ),
       bridge,
     );
+    if (app === "young") {
+      bridge.remember = false;
+      bridge.progressKey = "fixture-profile-a";
+      assert.equal(captured.canPersistResume(), false);
+      assert.equal(captured.resumeScope(), "fixture-profile-a");
+      bridge.remember = true;
+      assert.equal(captured.canPersistResume(), true);
+      bridge.progressKey = "fixture-profile-b";
+      assert.equal(captured.resumeScope(), "fixture-profile-b");
+    } else assert.equal(captured.canPersistResume(), true);
     captured.lessons();
     assert.equal(
       location.href,

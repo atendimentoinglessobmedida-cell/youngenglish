@@ -22,6 +22,8 @@ const ui=globalThis.ISMStrings.adapter;
  if(app==='young'&&isInteractive()&&new URLSearchParams(location.search).has('ismLesson'))restoreYoung(new URL(location.href));
  const props={
   app,name:names[app],homeHref:'index.html',canonicalHome:rootPage?'':'index.html#ism/inicio',legacyResume,roots:()=>[oldMain],chrome:()=>[oldHeader,...oldNavs,document.querySelector('footer'),...document.querySelectorAll('body > p:has(> a[href="student-start.html"])')],
+  canPersistResume:()=>app!=='young'||(typeof remember==='boolean'&&remember),
+  resumeScope:()=>app==='young'?(typeof progressKey==='string'?progressKey:'session'):'',
   firstLesson:app==='easy'?'/index.html#lesson/0/0':app==='young'?'/index.html?ismLesson=elementary-01&ismStage=0':'/index.html#lesson/1.1/0',
   allowedResume:url=>{
    if(!/\/(?:index\.html)?$/.test(url.pathname))return false;
