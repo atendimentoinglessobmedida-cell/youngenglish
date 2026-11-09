@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "locale": "pt-BR",
+  "learningLocale": "en",
+  "navigation": [
+    {
+      "id": "home",
+      "label": "Início"
+    },
+    {
+      "id": "lessons",
+      "label": "Aulas"
+    },
+    {
+      "id": "practice",
+      "label": "Praticar"
+    },
+    {
+      "id": "progress",
+      "label": "Progresso"
+    }
+  ],
+  "profileMenu": [
+    {
+      "id": "account",
+      "label": "Conta"
+    },
+    {
+      "id": "settings",
+      "label": "Configurações"
+    }
+  ],
+  "home": {
+    "primaryAction": {
+      "id": "resume",
+      "label": "Continuar",
+      "resumeMode": "exact-last-position"
+    },
+    "maxShortcuts": 3
+  },
+  "pillars": [
+    {
+      "id": "lessons",
+      "label": "Aulas"
+    },
+    {
+      "id": "review",
+      "label": "Revisão"
+    },
+    {
+      "id": "situations",
+      "label": "Situações"
+    },
+    {
+      "id": "conversation",
+      "label": "Conversação"
+    }
+  ],
+  "translation": {
+    "showLabel": "Ver em português",
+    "hideLabel": "Ocultar português"
+  },
+  "onboarding": {
+    "maxSteps": 3,
+    "steps": [
+      "Abrir",
+      "Fazer a primeira aula",
+      "Testar o áudio"
+    ],
+    "sampleLessonRequiresLogin": false
+  },
+  "limits": {
+    "maxVisibleNavigationItems": 5
+  },
+  "release": {
+    "audioHumanReviewRequired": true,
+    "stagingFirst": true,
+    "productionRequiresPassingTests": true
+  },
+  "notes": "Contrato de interface: não ativa recursos, não altera conteúdo, cobrança, autenticação ou rotas."
+}
