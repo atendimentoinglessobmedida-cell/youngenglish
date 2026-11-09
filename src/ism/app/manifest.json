@@ -1,6 +1,6 @@
 {
   "app": "young",
-  "kitVersion": "0.1.0",
+  "kitVersion": "0.2.0",
   "legacyEntry": "public/index.html",
   "contentOwnership": "legacy product files; unchanged by kit sync"
 }

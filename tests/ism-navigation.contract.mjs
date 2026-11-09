@@ -51,7 +51,8 @@ test("four consistent tabs, pillars and secondary-page lesson targets", () => {
       document: {
         currentScript: { dataset: { ismApp: app } },
         readyState: "loading",
-        querySelector: (s) => (s === "header" ? header : {}),
+        createElement: () => ({ setAttribute() {}, append() {} }),
+        querySelector: (s) => (s === "header" ? header : { append() {} }),
         querySelectorAll: () => [],
         addEventListener() {},
       },
@@ -107,6 +108,7 @@ test("four consistent tabs, pillars and secondary-page lesson targets", () => {
     "Aulas",
     "Praticar",
     "Progresso",
+    "Mais",
   ]);
   assert.deepEqual(Array.from(sandbox.ISMNavigationKit.pillars), [
     "Aulas",
@@ -178,7 +180,7 @@ test("all synchronized release files match their locked SHA-256", () => {
   const lock = JSON.parse(
     fs.readFileSync(path.join(root, "ism-kit.lock.json")),
   );
-  assert.equal(lock.version, "0.1.0");
+  assert.equal(lock.version, "0.2.0");
   assert.ok(Object.keys(lock.files).length >= 4);
   for (const [name, record] of Object.entries(lock.files)) {
     const bytes = fs.readFileSync(path.join(root, name));
@@ -188,4 +190,46 @@ test("all synchronized release files match their locked SHA-256", () => {
       name,
     );
   }
+});
+
+test("CTA invitation and installation suggestions require a native first completion", () => {
+  const policy = sandbox.ISMProductModel.policy;
+  for (const complete of [0, undefined, -1]) {
+    assert.equal(policy({ complete }).invite, false);
+    assert.equal(policy({ complete }).installSuggestion, false);
+  }
+  assert.equal(policy({ complete: 1 }).invite, true);
+  assert.equal(policy({ complete: 1 }).installSuggestion, true);
+});
+test("five-question guidance reaches each track without changing entitlement", () => {
+  const p = sandbox.ISMProductModel;
+  assert.equal(p.questions.length, 5);
+  for (let n = 0; n <= 5; n++) {
+    const answers = p.questions.map((q, i) =>
+      i < n ? q.answer : (q.answer + 1) % 3,
+    );
+    assert.equal(p.placement(answers).level, p.levels[n]);
+    assert.equal(p.placement(answers).href, "index.html#level/" + n);
+  }
+  assert.equal(
+    p.questions.some((q) => q.options.length !== 3),
+    false,
+  );
+});
+test("entry has useful static content and visible loading copy before scripts", () => {
+  const app = JSON.parse(
+    fs.readFileSync(path.join(root, "src/ism/app/manifest.json")),
+  ).app;
+  if (app === "travel") {
+    assert.match(
+      fs.readFileSync(path.join(root, "app/loading.tsx"), "utf8"),
+      /Carregando suas aulas…/,
+    );
+    return;
+  }
+  const web = app === "business" ? "" : app === "easy" ? "web" : "public";
+  const html = fs.readFileSync(path.join(root, web, "index.html"), "utf8");
+  assert.match(html, /data-ism-loading role="status">Carregando suas aulas…/);
+  assert.match(html, /data-ism-prepaint="true"/);
+  assert.equal((html.match(/class="ism-primary"/g) || []).length, 1);
 });

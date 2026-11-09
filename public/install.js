@@ -3,7 +3,7 @@ let deferred=null;
 const btn=()=>document.getElementById('install-app');
 const standalone=()=>window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;
 const ios=()=>/iphone|ipad|ipod/i.test(navigator.userAgent);
-function show(){const b=btn();if(b&&!standalone()){b.hidden=false;b.textContent='Instalar aplicativo'}}
+function show(){if(typeof done==='undefined'||done.size===0)return;const b=btn();if(b&&!standalone()){b.hidden=false;b.textContent='Instalar aplicativo'}}
 function hide(){const b=btn();if(b)b.hidden=true}
 function help(message){
  if(document.querySelector('.install-help'))return;

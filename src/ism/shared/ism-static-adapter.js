@@ -95,7 +95,42 @@ const ui=globalThis.ISMStrings.adapter;
   ];
   props.progressResources=['core','xp','stars'].map((type,index)=>({label:[ui.label069,ui.label070,ui.label071][index],tab:'progresso',run:()=>{if(isInteractive())openProgressInsight(type);else location.href='index.html#journey';}}));
  }
+
+ const originalGroups=props.profileGroups;
+ props.teacherResource=link('Conhecer o professor','professor.html','perfil');
+ props.planResource=link('Conhecer os planos',app==='business'?'planos.html':app==='easy'?'professor.html':'assinatura.html','perfil');
+ props.profileGroups=[
+ {id:'professor',label:'Professor',resources:[]},
+ {id:'planos',label:'Planos',resources:[props.planResource,...originalGroups.filter(g=>g.id==='conta').flatMap(g=>g.resources)]},
+ {id:'guia',label:'Guia / Primeiros passos',resources:[link('Ler os primeiros passos','student-start.html','perfil')]},
+ {id:'instalacao',label:'Instalar o app',resources:[]},
+ {id:'preferencias',label:'Configurações',resources:originalGroups.filter(g=>g.id==='preferencias').flatMap(g=>g.resources),widgets:originalGroups.find(g=>g.id==='preferencias')?.widgets},
+ {id:'creditos',label:'Créditos',resources:[link('Ver créditos',app==='business'?'photo-credits.html':app==='easy'?'visual-credits.html':'professor.html','perfil')]},
+ {id:'informacoes',label:'Conta e outras informações',resources:originalGroups.filter(g=>g.id==='informacoes').flatMap(g=>g.resources)}
+ ];
+ if(app==='business'){
+ props.shortcuts=[{label:'Business Mode',group:'situacoes'},{label:'Smart Review',group:'revisao'},{label:'Meu Progresso',tab:'progresso'}];
+ props.interviewResource=link('Abrir as atividades de entrevista já disponíveis','interview.html','aulas');
+ const all=props.pillars.flatMap(p=>p.resources);props.pillars=[
+ {id:'conversacao',label:'Falar',description:'Practice · pratique sua comunicação.',resources:all.filter(r=>/conversa|debate|simula|comunica/i.test(r.label))},
+ {id:'ouvir',label:'Ouvir',description:'Listening · ouça com atenção.',resources:all.filter(r=>/escuta|miniaula|listening|áudio/i.test(r.label))},
+ {id:'situacoes',label:'Refletir',description:'Business Mode · ideias e situações profissionais.',resources:all.filter(r=>!/conversa|debate|simula|comunica|escuta|miniaula|listening|áudio|revis/i.test(r.label))},
+ {id:'revisao',label:'Revisar',description:'Smart Review · reforce o que aprendeu.',resources:all.filter(r=>/revis/i.test(r.label))}];
+ props.profileGroups.splice(2,0,{id:'conteudos',label:'Curso principal e Pacote Premium',resources:[link('Curso principal (98 lições + 12 simulações)','index.html#journey','aulas'),link('Pacote Premium (88 lições em 8 trilhas)','premium.html','aulas'),link('Trilhas por nível','level-pathways.html','aulas')]});
+ }else if(app==='easy')props.shortcuts=[link('Audio lessons · EN/PT','podcasts.html'),{label:'Teste rápido de nível',screen:'nivel'},{label:'Smart Review',group:'revisao'}];
+ for(const pillar of props.pillars){if(app!=='business')pillar.label=({revisao:'Smart Review',situacoes:'Practice',conversacao:'Conversation Lab'})[pillar.id]||pillar.label;}
+
+ if(app==='young'){props.shortcuts[2].label='Conversation Lab';}
+ if(app==='business'){
+  const named=props.pillars.flatMap(p=>p.resources);
+  const mode=named.find(r=>r.label===ui.label055),review=named.find(r=>r.label===ui.label050);
+  if(mode&&review)props.shortcuts=[{...mode,label:'Business Mode'},{...review,label:'Smart Review'},{label:'Meu Progresso',tab:'progresso'}];
+  const names=new Map([[ui.label055,'Business Mode'],[ui.label050,'Smart Review'],[ui.label012,'Practice Lab'],[ui.label015,'Conversation Lab'],[ui.label057,'Business Ideas Lab'],[ui.label061,'Real Business Listening']]);
+  for(const item of named)if(names.has(item.label))item.label=names.get(item.label);
+ }
  const api=window.ISMNavigationKit.mount(props);
+ if(app==='easy'){const menu=document.createElement('nav');menu.className='ism-desktop-menu';menu.setAttribute('aria-label','Menu Easy');[['Aulas',()=>api.navigate('aulas')],['Praticar',()=>api.navigate('praticar')],['Jogos',()=>api.openResource(props.pillars.find(p=>p.id==='situacoes').resources.find(r=>r.label==='Jogos'))],['Meu progresso',()=>api.navigate('progresso')],['Mais',()=>api.navigate('perfil')]].forEach(([label,run])=>{const b=document.createElement('button');b.textContent=label;b.type='button';b.onclick=run;menu.append(b);});document.querySelector('.ism-header').append(menu);}
+ 
  function connect(){if(isInteractive()&&app!=='business'){const previous=render;render=function(){const value=previous.apply(this,arguments);api.legacyRendered();return value;};}if(app==='young'&&isInteractive()&&new URLSearchParams(location.search).has('ismLesson'))restoreYoung(new URL(location.href));api.legacyRendered();}
  if(document.readyState==='loading'||document.readyState==='interactive')document.addEventListener('DOMContentLoaded',connect,{once:true});else connect();
 })();
