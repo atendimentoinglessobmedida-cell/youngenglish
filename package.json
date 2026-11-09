@@ -9,7 +9,13 @@
     "test:db": "node --test tests/young-db.test.mjs",
     "build": "node scripts/build.cjs",
     "test:podcasts": "node --test scripts/podcasts/check.cjs scripts/podcasts/runtime.test.cjs",
-    "test:debate": "node --test scripts/debate.test.cjs"
+    "test:debate": "node --test scripts/debate.test.cjs",
+    "lint:ism": "node scripts/ism-quality.mjs lint",
+    "validate:content": "node scripts/ism-quality.mjs content",
+    "check:links": "node scripts/ism-quality.mjs links",
+    "verify": "node scripts/ism-quality.mjs",
+    "format:ism": "npx --yes --package=prettier@3.6.2 prettier --write \"src/ism/**/*.{json,tsx}\" \"scripts/ism-quality.mjs\"",
+    "format:check": "npx --yes --package=prettier@3.6.2 prettier --check \"src/ism/**/*.{json,tsx}\" \"scripts/ism-quality.mjs\""
   },
   "devDependencies": {
     "@electric-sql/pglite": "0.5.8",

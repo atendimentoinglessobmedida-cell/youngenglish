@@ -1,0 +1,602 @@
+{
+  "schemaVersion": 1,
+  "origin": "Original published source / private Travel v2; immutable teaching assets selected by documented filenames and media extensions",
+  "files": [
+    {
+      "path": "android/app/src/main/res/drawable-nodpi/ism_launcher_foreground.png",
+      "sha256": "4dc458fb1bebed069606fd591177a2c13d969023ff298b38350bea59e7da2b29"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-hdpi/ic_launcher.png",
+      "sha256": "15858980b24df1c1daf448b5376cbb9e94ca4ccd092d0a2bb357f05a4f8b75c1"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png",
+      "sha256": "15858980b24df1c1daf448b5376cbb9e94ca4ccd092d0a2bb357f05a4f8b75c1"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-mdpi/ic_launcher.png",
+      "sha256": "5d0c33372712df73c8b15210c834ec2dbb03f8d06523e068717c481243af5806"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png",
+      "sha256": "5d0c33372712df73c8b15210c834ec2dbb03f8d06523e068717c481243af5806"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xhdpi/ic_launcher.png",
+      "sha256": "fb7c037ed9f808f2e08e5399a3068472ec57b495c547e8161cc5ec619e88caa6"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png",
+      "sha256": "fb7c037ed9f808f2e08e5399a3068472ec57b495c547e8161cc5ec619e88caa6"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png",
+      "sha256": "db389b133f8f87b504fa1d81fc3a31caea309cc5515a41a03128a2076ae9c18f"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png",
+      "sha256": "db389b133f8f87b504fa1d81fc3a31caea309cc5515a41a03128a2076ae9c18f"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+      "sha256": "367353ea23f1f2b528acc1406a4ebc62d1b227cb0a9cad5477c0cd22050e0b7f"
+    },
+    {
+      "path": "android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png",
+      "sha256": "367353ea23f1f2b528acc1406a4ebc62d1b227cb0a9cad5477c0cd22050e0b7f"
+    },
+    {
+      "path": "public/app-icon-v2.svg",
+      "sha256": "599195da204691c9383e091e9f54743fe44ecf6ea3ffa16736fdd3e78b95c69c"
+    },
+    {
+      "path": "public/apple-touch-icon-v2.png",
+      "sha256": "77da85c2bcd448db0180800a467847d6a5e514ae563696e21777e6df6b9588e0"
+    },
+    {
+      "path": "public/apple-touch-icon.png",
+      "sha256": "963664d7105f73393612f5d4193442a6d6a4d5222e96e6678d6f514ec5866415"
+    },
+    {
+      "path": "public/assets/debate-audio/ai-homework-turn-0.mp3",
+      "sha256": "9041209cca7ad3f9129b2fc702fbec8c41ca8e12e1ddcd2d581ae21702476bc9"
+    },
+    {
+      "path": "public/assets/debate-audio/ai-homework-turn-1.mp3",
+      "sha256": "979721a59d7ca6175e52e16c9ee167d7bef667914f64621b79a65c74cc9e7e99"
+    },
+    {
+      "path": "public/assets/debate-audio/ai-homework-turn-10.mp3",
+      "sha256": "a22172c48caa8f25545146a9a73e41cf8e868f800707165882d0e167528d2951"
+    },
+    {
+      "path": "public/assets/debate-audio/ai-homework-turn-11.mp3",
+      "sha256": "ac7dc4a312b174af24eebecb651b71466dcd617e78ff8b42ec33ec7567f3bfcc"
+    },
+    {
+      "path": "public/assets/debate-audio/ai-homework-turn-12.mp3",
+      "sha256": "00b83be8c6d662a3408c7b75274f4e601e3dbd8797fc0e907a59fe1ecadccc52"
+    },
+    {
+      "path": "public/assets/debate-audio/ai-homework-turn-13.mp3",
+      "sha256": "d3e56481898e01d10f2ebfbb2410834d2ca259cefa9600c057b0834ce1117136"
+    },
+    {
+      "path": "public/assets/debate-audio/ai-homework-turn-2.mp3",
+      "sha256": "5aee1b7eae158c3199522a88451a5e5757cd2ba9b89fa048f3384edd75c294c4"
+    },
+    {
+      "path": "public/assets/debate-audio/ai-homework-turn-3.mp3",
+      "sha256": "053e42331dd244fbd028b7c5d34fe491af0c2b2ac534685e5ee5a9b39fdeae5d"
+    },
+    {
+      "path": "public/assets/debate-audio/ai-homework-turn-4.mp3",
+      "sha256": "d367aa2368f1e8cb957ed204c3e369424144ca8344f32eae627dd0cac3aac883"
+    },
+    {
+      "path": "public/assets/debate-audio/ai-homework-turn-5.mp3",
+      "sha256": "4267ce24435862073aedf8baeec892149472e50ce09e5990a084f943569cc863"
+    },
+    {
+      "path": "public/assets/debate-audio/ai-homework-turn-6.mp3",
+      "sha256": "6da2e40e6c91dad2897f7cb64edb9bdd0a4f52741ea91b86baec95997dd102fe"
+    },
+    {
+      "path": "public/assets/debate-audio/ai-homework-turn-7.mp3",
+      "sha256": "06a6be111029017afc6726e4b80d9c2fb03306332eac8990a164022c6fa80c34"
+    },
+    {
+      "path": "public/assets/debate-audio/ai-homework-turn-8.mp3",
+      "sha256": "62d96bac90767348ca34a2ab2c92de74090e4aaad59aad2997d5eab9a02fd078"
+    },
+    {
+      "path": "public/assets/debate-audio/ai-homework-turn-9.mp3",
+      "sha256": "ca1f69370fc16bd2afb61b0612d48c4332197c254877e62006f30065be40af49"
+    },
+    {
+      "path": "public/assets/debate-audio/ai-homework-word-0.mp3",
+      "sha256": "ca75a8b19f2913867c20ecdfcba750a10c0341f1faf1e937fcc3e234ddd367a8"
+    },
+    {
+      "path": "public/assets/debate-audio/ai-homework-word-1.mp3",
+      "sha256": "0051d783b0a81478d3dc01b0ad87404d7bcdb553f6f3f69ede6294e3952a77f9"
+    },
+    {
+      "path": "public/assets/debate-audio/ai-homework-word-2.mp3",
+      "sha256": "8cebb22ed0b3927b34a38a35fbce0e4ab7a993d92e3e35e29af9844e0cc3669d"
+    },
+    {
+      "path": "public/assets/debate-audio/ai-homework-word-3.mp3",
+      "sha256": "270106c6a0fcb7e6e0cbee05ecf81473797a5522a6bafed377b27ad6c0314d0e"
+    },
+    {
+      "path": "public/assets/debate-audio/ai-homework-word-4.mp3",
+      "sha256": "943b90f526b71269a8459d85725b0d2146b6f2c20f5611e5c64d8aa85224d12c"
+    },
+    {
+      "path": "public/assets/debate-audio/ai-homework-word-5.mp3",
+      "sha256": "c0907b1d3705f247272d772b4969e94f7ce2486a4dafaa887d0a7d9ce1f22699"
+    },
+    {
+      "path": "public/assets/debate-audio/school-phones-turn-0.mp3",
+      "sha256": "e41dcb984804a3333aff5289ee3d86131f28763d98c182d760a86db1a49d7ce9"
+    },
+    {
+      "path": "public/assets/debate-audio/school-phones-turn-1.mp3",
+      "sha256": "47363226123c2580bfad55de9a121ac508e890738c2c7a3c843958f93365c29c"
+    },
+    {
+      "path": "public/assets/debate-audio/school-phones-turn-10.mp3",
+      "sha256": "61c467a0336bd848d09dc10eb1cd7a164c9991e957936a38f65274497abc56fc"
+    },
+    {
+      "path": "public/assets/debate-audio/school-phones-turn-11.mp3",
+      "sha256": "496b0c3aba73e2183a17154c207fecbeac66d8cdfa465d4b2717d07aaa2263e2"
+    },
+    {
+      "path": "public/assets/debate-audio/school-phones-turn-12.mp3",
+      "sha256": "98308a6cccd79c0fcdefb6296a44d4caf6dbab25c7ca6bc8e42a25fa66b04b88"
+    },
+    {
+      "path": "public/assets/debate-audio/school-phones-turn-13.mp3",
+      "sha256": "343b86822d0baf1a44d1b04aaea2b25640caa03ce9c56def18147427d4d4b204"
+    },
+    {
+      "path": "public/assets/debate-audio/school-phones-turn-2.mp3",
+      "sha256": "4cbb5af2ba2bc1005e9e25d853f358521a15b314e542c486357269062bcb8423"
+    },
+    {
+      "path": "public/assets/debate-audio/school-phones-turn-3.mp3",
+      "sha256": "d9efeac5bd80d6aa6353718d3a8cc4439061829614265f39e2e689f860fee252"
+    },
+    {
+      "path": "public/assets/debate-audio/school-phones-turn-4.mp3",
+      "sha256": "0cc3541226174744ddd933f1dc66c764b9cec5e57eb2a20538a4581861fe5ee1"
+    },
+    {
+      "path": "public/assets/debate-audio/school-phones-turn-5.mp3",
+      "sha256": "0ee7d09a698fc48315cb9e97dad0f7e1e3cfb5bc55566d4d68c25c9d271b946d"
+    },
+    {
+      "path": "public/assets/debate-audio/school-phones-turn-6.mp3",
+      "sha256": "e9fdc793d1acb957174d92024e9ae2f835a6408e6178b880a71ca828a419744a"
+    },
+    {
+      "path": "public/assets/debate-audio/school-phones-turn-7.mp3",
+      "sha256": "252da794e47ec531b7aee69d02c2dc09cacc96707f74e17f671cda5b54f74154"
+    },
+    {
+      "path": "public/assets/debate-audio/school-phones-turn-8.mp3",
+      "sha256": "9ae382e53ac3a6088a1665c99aea2b6baa6df1c6b8f68969a04efed24813623a"
+    },
+    {
+      "path": "public/assets/debate-audio/school-phones-turn-9.mp3",
+      "sha256": "59af782c144c2e23f4628b727e3754a84f3b5068f7918877ba8471e3d8e31a56"
+    },
+    {
+      "path": "public/assets/debate-audio/school-phones-word-0.mp3",
+      "sha256": "af21a69b95eb288ded462ed0fce41bf9eec5b03c9d0031c526d15766aa132592"
+    },
+    {
+      "path": "public/assets/debate-audio/school-phones-word-1.mp3",
+      "sha256": "9232a7ee8422f207d2218f209cd3cfc217d40faf1e24548aabf7ec1afa743c05"
+    },
+    {
+      "path": "public/assets/debate-audio/school-phones-word-2.mp3",
+      "sha256": "58126611f055079d36491b477ebc92b5a59bb3aa32e0586de740134dbc2c5dd5"
+    },
+    {
+      "path": "public/assets/debate-audio/school-phones-word-3.mp3",
+      "sha256": "06ede2e0a233b0ce121eb0b6db5397400cfd572f0d72f5292f12a1bc4496b6d0"
+    },
+    {
+      "path": "public/assets/debate-audio/school-phones-word-4.mp3",
+      "sha256": "cdcaef2e3c73ac8f51f1355647997f50bccd7a7add802ddfa846fa31b5a4f6cd"
+    },
+    {
+      "path": "public/assets/debate-audio/school-phones-word-5.mp3",
+      "sha256": "a39ed6113e94cd5081ee6587bd83ec4d275caf8f900da027d7c2c5930125f697"
+    },
+    {
+      "path": "public/assets/debate-audio/trust-online-turn-0.mp3",
+      "sha256": "709fde69d7e02cf04c71a57c739750c2eaa9689dd034f62408100fb281169383"
+    },
+    {
+      "path": "public/assets/debate-audio/trust-online-turn-1.mp3",
+      "sha256": "5a8374b8a29e339a7c3456e46ce87faedb4adb3285647a30fdb1ee024b60fe13"
+    },
+    {
+      "path": "public/assets/debate-audio/trust-online-turn-10.mp3",
+      "sha256": "959d9793863a7136c4eff2764c87b482ad2b3fa6ebcb8053443f7a028e5cfceb"
+    },
+    {
+      "path": "public/assets/debate-audio/trust-online-turn-11.mp3",
+      "sha256": "73e91e06964255032fc2c2ffb06af98796dc03304947ce058b7a876ef47fd0af"
+    },
+    {
+      "path": "public/assets/debate-audio/trust-online-turn-12.mp3",
+      "sha256": "5889a66dd4b63ed2e8e77799d20b301b49722a7ded7d8d901237e1c2527697d9"
+    },
+    {
+      "path": "public/assets/debate-audio/trust-online-turn-13.mp3",
+      "sha256": "fbdd16be72efd082827f558eeeb23b6d5f9e4bc845a069d55dcbd0b5b80ec086"
+    },
+    {
+      "path": "public/assets/debate-audio/trust-online-turn-2.mp3",
+      "sha256": "448382fe9da9966d1edb01dbdda18db5cda6f8e45d8d678f090507e38bc72468"
+    },
+    {
+      "path": "public/assets/debate-audio/trust-online-turn-3.mp3",
+      "sha256": "08c1aaa38c709e588f26694ae0df46390d93b02c47fa518a83612448b3cec3e9"
+    },
+    {
+      "path": "public/assets/debate-audio/trust-online-turn-4.mp3",
+      "sha256": "dba0daa11f4aa9a84c59bd3752d7c129a91a1a88df3c49a58e98fa03d571287d"
+    },
+    {
+      "path": "public/assets/debate-audio/trust-online-turn-5.mp3",
+      "sha256": "77eb59281e9a8e5e9f3ccd68b164832b021c2f0a0b99a3dbf6c563894d3b41a9"
+    },
+    {
+      "path": "public/assets/debate-audio/trust-online-turn-6.mp3",
+      "sha256": "235e02818025c0a1c0adb3873841f02670f87466aa96c41e1432f67a5778078c"
+    },
+    {
+      "path": "public/assets/debate-audio/trust-online-turn-7.mp3",
+      "sha256": "027902f9bed3db5190e7bd16b4d90cec3412ae8a71a6077d167bef861b9f0931"
+    },
+    {
+      "path": "public/assets/debate-audio/trust-online-turn-8.mp3",
+      "sha256": "85446bae27564051a21f7160639f5c50a466d4fcd6a55664ff4e355dc3834de2"
+    },
+    {
+      "path": "public/assets/debate-audio/trust-online-turn-9.mp3",
+      "sha256": "820514d6bb4e53bdcda6416eab53d788580f69f58ad4239f0168fcbca21f9c8d"
+    },
+    {
+      "path": "public/assets/debate-audio/trust-online-word-0.mp3",
+      "sha256": "db603925c5dda96f8b22b7aa8b85e565d1ab1bc656d01a6ddcd4f6dabf45a8c0"
+    },
+    {
+      "path": "public/assets/debate-audio/trust-online-word-1.mp3",
+      "sha256": "6e89e02e8bfc72355cc3a1ab410ac8c475d9075158a76e1e237112d6bcd9f04a"
+    },
+    {
+      "path": "public/assets/debate-audio/trust-online-word-2.mp3",
+      "sha256": "fee5e97a0a7d342956e50b89641c4118e98e78cc8f5afa8f9c554d4bf9738937"
+    },
+    {
+      "path": "public/assets/debate-audio/trust-online-word-3.mp3",
+      "sha256": "3c15a7e341da7cc3ae93eb45a0d488990dea0baaf49d5f2093577fc7381a230b"
+    },
+    {
+      "path": "public/assets/debate-audio/trust-online-word-4.mp3",
+      "sha256": "2949721b281b15c5ba8c1dce4b945be2a5549e5fe83d223c900efccf163d0eea"
+    },
+    {
+      "path": "public/assets/debate-audio/trust-online-word-5.mp3",
+      "sha256": "d9535d590a9af69c47e7a5d98ec13b1e782af30fcc480ea462c1bf4d417e0c36"
+    },
+    {
+      "path": "public/assets/debate/ai-homework-v1.webp",
+      "sha256": "eaaebf3fc5b27119b6f6a5a9da48a8cb73e9bd5179a82e00d202105d1dab63bd"
+    },
+    {
+      "path": "public/assets/debate/cover-v1.webp",
+      "sha256": "0156128fc659c2ceee52c6e8fdbc7b5a4815831a730514c1b13faacd280867e9"
+    },
+    {
+      "path": "public/assets/debate/school-phones-v1.webp",
+      "sha256": "54567bc4b339226b382e7726aacbf01cc285feb140d7687a6038f42632e3c0d4"
+    },
+    {
+      "path": "public/assets/debate/trust-online-v1.webp",
+      "sha256": "909bdc1f718f1151c0d02595f030d94b50998ad87b456d490482855612e3eecd"
+    },
+    {
+      "path": "public/assets/games/contextwords-v1.webp",
+      "sha256": "8830bd313ce46cb1eacf8a10d35f76437c4d209a451dcd06cd06b33337940e09"
+    },
+    {
+      "path": "public/assets/games/dialogue-v1.webp",
+      "sha256": "f42145b20a2276e8f82d37e17e7ff115e15a6c5984668fe9cc3c279798b6bf18"
+    },
+    {
+      "path": "public/assets/games/grammarquest-v1.webp",
+      "sha256": "e3d23e53bfb5dc843a945bd58760b65eb42369ea4867ceb37312bb656244b0c3"
+    },
+    {
+      "path": "public/assets/games/listen-v1.webp",
+      "sha256": "98d7bacacdd45cc1334abde0285d70f838be6d149c7ccc12efd3bddd5ec189e8"
+    },
+    {
+      "path": "public/assets/games/listenchoose-v1.webp",
+      "sha256": "5f8c8b05a4ccb8d6a1aaeb8417041aa26aba47d74487f745489669ae268a7bd6"
+    },
+    {
+      "path": "public/assets/games/matchsprint-v1.webp",
+      "sha256": "88d450b17533ad129f03b7205a642090188f9735314f608037b793a70236f5d8"
+    },
+    {
+      "path": "public/assets/games/memory-v1.webp",
+      "sha256": "1df95a7d2adaf34203199f99227d9d245b738ef7051ca02c49b3989b46842324"
+    },
+    {
+      "path": "public/assets/games/repair-v1.webp",
+      "sha256": "b74c3ed7f3e58483f05447b8b55a7e52331925d3858cae1e3a9c96b7fb482acf"
+    },
+    {
+      "path": "public/assets/games/secret-v1.webp",
+      "sha256": "8c419dbd23755a148996093dd773461663119cc882383ebadae1659ba28c110d"
+    },
+    {
+      "path": "public/assets/games/sentence-v1.webp",
+      "sha256": "c8c60284820ae1eb6558972e67f58e2e784e816c5eb55620b2978a9b86dd87a4"
+    },
+    {
+      "path": "public/assets/games/sentencewrite-v1.webp",
+      "sha256": "18cdd5ae9faba0ecfb57cb39945f800dd2fd503d998e8da52e32c01d06de38ce"
+    },
+    {
+      "path": "public/assets/games/spelling-v1.webp",
+      "sha256": "b90dd0d9f798e47fcd551ce339701a5ade3c21ad3030c598405d19bfe468ce4c"
+    },
+    {
+      "path": "public/assets/games/storyorder-v1.webp",
+      "sha256": "1bca3fa0415d2dfb07c9d153764ab77246e63552c16d8a8c71795ed604ae3f08"
+    },
+    {
+      "path": "public/assets/games/storywriter-v1.webp",
+      "sha256": "9eb9c80eea54409d3da2608104b1f33878cf3386e1b27281b16ff18d236d3dec"
+    },
+    {
+      "path": "public/assets/games/visual-v1.webp",
+      "sha256": "417bd0c2e1515467d5d0af737e4c3421675f1493622db18a042d7a636b20b224"
+    },
+    {
+      "path": "public/assets/games/vocabrelay-v1.webp",
+      "sha256": "ec1066e22da4ef2368b9bd6db9f68a25588b1c657ee3f5147fa7a3bc9479e143"
+    },
+    {
+      "path": "public/assets/games/wordsearch-v1.webp",
+      "sha256": "2462e2db63ac8bc3211acc06ecc8c2facbec41000fd899e2a2acfa2e4d5c32a3"
+    },
+    {
+      "path": "public/assets/home-level-advanced.svg",
+      "sha256": "b30bd215f68071508b86d9f4e40d2defb37e4f8c27bd37a94f62f597fe0d9277"
+    },
+    {
+      "path": "public/assets/home-level-basic.svg",
+      "sha256": "6ba3ddb132171b153c36a420332defe473c6e5e2f2835d260aec13f886963d68"
+    },
+    {
+      "path": "public/assets/home-level-intermediate.svg",
+      "sha256": "d1b458b561ed4955dac794963ec36025a18ee1dd5a9e5f7a5109a2ab99d42fcd"
+    },
+    {
+      "path": "public/assets/home-level-pre.svg",
+      "sha256": "8b53f657acb82ce4b24277d9d961d56a727984dfc33b81b31fc98a57af89bd7d"
+    },
+    {
+      "path": "public/assets/home-level-upper.svg",
+      "sha256": "f608e86fabd0a2568a0c4af00b8b89058c5742147318a0154be9da3f7afcc113"
+    },
+    {
+      "path": "public/assets/podcasts/young-new-friends-en.mp3",
+      "sha256": "2a78713ed9e3bc0cbf6304c74ba89f92c504bbe9bd6eb2248bc522176d0bac95"
+    },
+    {
+      "path": "public/assets/podcasts/young-new-friends-pt.mp3",
+      "sha256": "6a5ea2350c9112403b20ea6dd5ed7b581bf9af3aa4ef3deda7707f91f4a262a7"
+    },
+    {
+      "path": "public/assets/podcasts/young-weekday-routine-en.mp3",
+      "sha256": "04f3e1a7748f5f5c710a52e7030e9d988755d1caf66a543830960e18abf1a6e0"
+    },
+    {
+      "path": "public/assets/podcasts/young-weekday-routine-pt.mp3",
+      "sha256": "42fee83a30dc4d2c096f212406609afbc5bb4eb8f72442654f92632ab03bc29f"
+    },
+    {
+      "path": "public/assets/podcasts/young-weekend-plans-en.mp3",
+      "sha256": "e370061007b4efd7e2bca89f6e7036fbef235198df24f73915b75fb081869d56"
+    },
+    {
+      "path": "public/assets/podcasts/young-weekend-plans-pt.mp3",
+      "sha256": "2d5aa08874c07400876a09e9250bf1b248dd531eb8af9cd0e4905961796b10b4"
+    },
+    {
+      "path": "public/assets/premium-books-480.webp",
+      "sha256": "617692aebf721f9ad14f9a93c1dec2c75487694ef927180e3cdbd06b62f711ab"
+    },
+    {
+      "path": "public/assets/premium-books-960.webp",
+      "sha256": "46d544128ddbece4c22f60bfd9e8e08112f3d5742d7625f1d82603d0bcb04b07"
+    },
+    {
+      "path": "public/assets/premium-books.svg",
+      "sha256": "0c920d269756fe3b0d760f2fced5296b80a04aae5751e0fbf816019e33645725"
+    },
+    {
+      "path": "public/assets/premium-cinema-480.webp",
+      "sha256": "c06dcbc4401b612e7a41b85e2660e7bc1b14c29a06ef873b7c205dd7381e777a"
+    },
+    {
+      "path": "public/assets/premium-cinema-960.webp",
+      "sha256": "f51dcad396c025af7e24f86f7d5b6f255b5ed3859ab5110c5ff6ad0ea52af378"
+    },
+    {
+      "path": "public/assets/premium-cinema.svg",
+      "sha256": "d56069f51b21933d190e9e4ef563807ef110188ebaccd23a00e9dbb4916f4869"
+    },
+    {
+      "path": "public/assets/premium-comics-480.webp",
+      "sha256": "f3a1a19892d54698b019f6934dd00b9e7c5155c71329c46d805d9e842c938171"
+    },
+    {
+      "path": "public/assets/premium-comics-960.webp",
+      "sha256": "4971eb520c91794ef8580053650a11fe588592ea6fc08ea2f2a5a08dfe29cb5d"
+    },
+    {
+      "path": "public/assets/premium-comics.svg",
+      "sha256": "5d99ba3992c2627f0f492df9acc22af218b0d342d979c8723320d3fee39e19eb"
+    },
+    {
+      "path": "public/assets/premium-music-480.webp",
+      "sha256": "84c4b63587a84f73212eca0239af693936834e8b468d8ba6d73c3c9e22c2cb14"
+    },
+    {
+      "path": "public/assets/premium-music-960.webp",
+      "sha256": "91d27f6aaf05549111a33e7a2b41e9d927bbc850d3808b518c8d700d6ef32949"
+    },
+    {
+      "path": "public/assets/premium-music.svg",
+      "sha256": "d88dc9b83be4d6070412dab27e890d73dc162b1d6dd6f487d4dd6c4aa688e411"
+    },
+    {
+      "path": "public/assets/premium-series-480.webp",
+      "sha256": "58df5dbce27764e659c2c53480968c90a19a87152f0b339b0bd5c7affc76bccf"
+    },
+    {
+      "path": "public/assets/premium-series-960.webp",
+      "sha256": "1c4365c76de5432dd13333e0049e11e661bc651071afe0ef91d67a88d7449e3e"
+    },
+    {
+      "path": "public/assets/premium-series.svg",
+      "sha256": "d2edf07eb7a3dc411300d59f11180e459e1909abfb9c9452566b6b382dbb0cbd"
+    },
+    {
+      "path": "public/assets/premium-travel-480.webp",
+      "sha256": "8558a1cac8de704ab46228066c1464c3c03430e511ac2d865ef4ee7fb9c06298"
+    },
+    {
+      "path": "public/assets/premium-travel-960.webp",
+      "sha256": "710945d2365269c24a717161fdeab80c297af46cd716bf5e63c5ca5da5eef6c9"
+    },
+    {
+      "path": "public/assets/premium-travel.svg",
+      "sha256": "064199ae08fc617cdb0a983a918f8c0fc3df8b6eaba76a10f168539f1c1db236"
+    },
+    {
+      "path": "public/assets/professor-marca.webp",
+      "sha256": "b8a7ae0e37b80f62e049b42f03876ea240a00b5a95eef9544cf600b7aa841320"
+    },
+    {
+      "path": "public/assets/professor-teens-toddlers-1536.webp",
+      "sha256": "a14237e06b19f31193c633d43ec3969e3edf52e6f93eda897c77cd9962889c65"
+    },
+    {
+      "path": "public/assets/professor-teens-toddlers-960.webp",
+      "sha256": "26be3414417f6e564bc2e9d67e116052c17885edd03b8695ac4c9fa3e213fecd"
+    },
+    {
+      "path": "public/assets/theme-citizenship.svg",
+      "sha256": "cb2b5cf3c48e66db018c4513645eb62bfa66c27597c9a77a1ac2e7ed0bcdb7d3"
+    },
+    {
+      "path": "public/assets/theme-esports.svg",
+      "sha256": "16734974c07877636a153170353448212353940f137ff2d4b6430ad7f4b461a5"
+    },
+    {
+      "path": "public/assets/theme-food.svg",
+      "sha256": "3c3a5268ea88641d1244a2da71144870dd164e011a0ce0f719c04311864f1afc"
+    },
+    {
+      "path": "public/assets/theme-nature.svg",
+      "sha256": "9a22f932b25015f28932ef69235a17b4f0b27eba8640bf8d3e197bc3755d2766"
+    },
+    {
+      "path": "public/assets/theme-school.svg",
+      "sha256": "f8108e45233680715a7947cc0133c36fe2e55edf644f884712c917cb2ea2b16f"
+    },
+    {
+      "path": "public/assets/theme-science.svg",
+      "sha256": "11dd270601e4848d17759753ade9efc907525beecce5a71505277e26598033ec"
+    },
+    {
+      "path": "public/content.js",
+      "sha256": "5ac775bfb4e81be158473b2f535af158d345cc8b63aa9ce166161f736bca6db3"
+    },
+    {
+      "path": "public/elementary-content.js",
+      "sha256": "bfb3288577f6bc8c0e783c3e1266a24bb6e1003eb27145b9fe9787bf4943945a"
+    },
+    {
+      "path": "public/expansion-content.js",
+      "sha256": "bd395df0a92d301700a25ea48548c83dee0dc34dcb59b5fcf555bdeb2871ae71"
+    },
+    {
+      "path": "public/favicon.svg",
+      "sha256": "8e161723cff780eff53f23b27dca83511f8460f25c28c04ee5ebedc96a356b33"
+    },
+    {
+      "path": "public/icon-192-v2.png",
+      "sha256": "fdd066de45862bf449164cf5b71cee10e01cfb130bc11958f49c9384c0360909"
+    },
+    {
+      "path": "public/icon-192.png",
+      "sha256": "963664d7105f73393612f5d4193442a6d6a4d5222e96e6678d6f514ec5866415"
+    },
+    {
+      "path": "public/icon-512-v2.png",
+      "sha256": "ef3cd400f0f38c568b70a2d73f69a3b749d3d3437e5642f998780105c495aff4"
+    },
+    {
+      "path": "public/icon-512.png",
+      "sha256": "f37d45e07c7331fad7a3e31a1ea9c528d754a6b76ab183a010c4ad0c977fccb6"
+    },
+    {
+      "path": "public/icon-maskable-512-v2.png",
+      "sha256": "ef3cd400f0f38c568b70a2d73f69a3b749d3d3437e5642f998780105c495aff4"
+    },
+    {
+      "path": "public/icon-maskable-512.png",
+      "sha256": "f37d45e07c7331fad7a3e31a1ea9c528d754a6b76ab183a010c4ad0c977fccb6"
+    },
+    {
+      "path": "public/practice-content.js",
+      "sha256": "46b7e896a75b24eeed35474aee9ed91a1f7fdc41349a4977a368fb1d3f920648"
+    },
+    {
+      "path": "public/premium-content.js",
+      "sha256": "3b9ac1fc4609e7e8663afadafedd9f1c900b6371de10b1b4816e28bc04e8106b"
+    },
+    {
+      "path": "public/quality-content.js",
+      "sha256": "e9ed5f42bb5f8f252c1f1d709e97e022414bbe88eaf0132a54bc8b58a7484865"
+    },
+    {
+      "path": "public/scene-atlas.webp",
+      "sha256": "a4940cff660437a904a80ef34541e3413421747a3243ed1fa981b7da9ddb22ca"
+    },
+    {
+      "path": "public/video-content.js",
+      "sha256": "138dadff0485469d451b05dcbbc47a5c868d57358c78212ba210af6c6b7eef2f"
+    },
+    {
+      "path": "scripts/debate/content.cjs",
+      "sha256": "ee05a81ba9446e860eac88c0449378ba15438e7c4e6401a7a4b26b75bc6af892"
+    }
+  ]
+}
