@@ -15,7 +15,8 @@
     "check:links": "node scripts/ism-quality.mjs links",
     "verify": "node scripts/ism-quality.mjs",
     "format:ism": "npx --yes --package=prettier@3.6.2 prettier --write \"src/ism/**/*.{json,tsx}\" \"scripts/ism-quality.mjs\"",
-    "format:check": "npx --yes --package=prettier@3.6.2 prettier --check \"src/ism/**/*.{json,tsx}\" \"scripts/ism-quality.mjs\""
+    "format:check": "npx --yes --package=prettier@3.6.2 prettier --check \"src/ism/**/*.{json,tsx}\" \"scripts/ism-quality.mjs\"",
+    "check:budget": "node scripts/ism-quality.mjs budget"
   },
   "devDependencies": {
     "@electric-sql/pglite": "0.5.8",

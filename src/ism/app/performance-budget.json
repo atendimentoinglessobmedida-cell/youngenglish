@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "origin": "Local shared runtime bytes, uncompressed; initial adoption 2026-11-09",
+  "files": {
+    "ism-navigation.js": 16652,
+    "ism-navigation.css": 11898,
+    "ism-static-adapter.js": 10281
+  },
+  "tolerancePercent": 10,
+  "lighthouseMobile": {
+    "origin": "Medição local Lighthouse 13.6.0, frontend estático",
+    "minimumPerformance": 95,
+    "minimumAccessibility": 100
+  },
+  "notes": "A CI avisa se a camada comum crescer mais de 10%. A nota Lighthouse não é recalculada por este script; requer execução do navegador e evidência própria."
+}

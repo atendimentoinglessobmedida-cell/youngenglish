@@ -21,3 +21,8 @@ Video Lab reúne 12 missões: seis referências externas do British Council e se
 
 
 Practice Lab acrescenta 12 aulas originais gratuitas, duas por nível, com 96 entradas de vocabulário, 36 exercícios de gramática e seis textos além de seis conversas. O total passa a 96 aulas gratuitas e 60 Premium. A organização por habilidades foi estudada no Test-English; seus termos proíbem copiar, enquadrar ou republicar materiais. Nenhuma questão, texto, explicação, imagem ou código desse site foi reproduzido. Referências externas opcionais aparecem no Guia. Elementary ISM é início absoluto e não equivale ao A1 Elementary do site. Novas aulas usam os quinze jogos existentes, com mínimo de escrita adequado à proposta e autoavaliação explícita.
+
+
+## Padronização ISM em preview
+
+Mapa da camada comum, comandos, ambientes, contribuição, novas aulas e rollback: [Guia incremental](docs/ism/README.md). Execute `npm run verify`. Produção só pode ser promovida após aprovação explícita.

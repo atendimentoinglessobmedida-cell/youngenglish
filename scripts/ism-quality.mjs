@@ -18,7 +18,7 @@ const tasks =
         ]
       : app === "young"
         ? ["test", "test:podcasts", "test:debate", "build"]
-        : ["lint", "test"];
+        : ["lint", "test", "typecheck"];
 const mode = process.argv[2] || "verify";
 function run(name) {
   if (!process.env.npm_execpath) throw Error("Execute com npm run verify");
@@ -51,6 +51,16 @@ async function content() {
   const baseline = JSON.parse(
     await fs.readFile("src/ism/content/schemas/preserved-assets.json"),
   );
+  if (baseline.schemaVersion !== 1 || !Array.isArray(baseline.files))
+    throw Error("Manifesto de preservação inválido");
+  for (const entry of baseline.files)
+    if (
+      typeof entry.path !== "string" ||
+      !entry.path ||
+      entry.path.split(/[\\/]/).includes("..") ||
+      !/^[a-f0-9]{64}$/.test(entry.sha256)
+    )
+      throw Error("Entrada de conteúdo inválida");
   const errors = [];
   for (const entry of baseline.files) {
     try {
@@ -108,11 +118,36 @@ async function links() {
   );
   if (added.length) throw Error("Novos links locais ausentes");
 }
+async function budget() {
+  const baseline = JSON.parse(
+    await fs.readFile("src/ism/app/performance-budget.json"),
+  );
+  for (const [name, bytes] of Object.entries(baseline.files)) {
+    const actual = (await fs.stat("src/ism/shared/" + name)).size;
+    const limit = Math.ceil(bytes * (1 + baseline.tolerancePercent / 100));
+    if (actual > limit)
+      console.warn(
+        "::warning::ISM bundle " +
+          name +
+          ": " +
+          actual +
+          " bytes; orçamento " +
+          limit,
+      );
+    else
+      console.log(
+        "ISM bundle " + name + ": " + actual + " / " + limit + " bytes",
+      );
+  }
+}
 if (mode === "lint") await lint();
 else if (mode === "content") await content();
 else if (mode === "links") await links();
+else if (mode === "budget") await budget();
 else {
+  run("format:check");
   await lint();
+  await budget();
   await content();
   await links();
   for (const task of tasks) run(task);
