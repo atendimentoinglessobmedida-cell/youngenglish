@@ -38,7 +38,7 @@ const ui=globalThis.ISMStrings.adapter;
   state:()=>{if(!isInteractive())return {};if(app==='business')return {complete:typeof mastered==='function'?mastered():0,total:typeof TOTAL==='number'?TOTAL:98};return {complete:done.size,total:lessons.length};},
   isDefault:()=>!resumeOpened&&!new URLSearchParams(location.search).has('ismLesson')&&rootPage&&(!location.hash||['#','#home'].includes(location.hash)),
   tabForLocation:()=>/practice|games|simulate|toolkit|businessmode|smartreview|conversation|listening|debate|review/.test(location.href)?'praticar':/progress|rewards/.test(location.href)?'progresso':'aulas',
-  lessons:()=>{if(isInteractive()&&app==='business'){goJourney();return;}const node=oldHeader?.querySelector('#levels');if(node)node.click();else location.href='index.html#levels';},
+  lessons:()=>{if(isInteractive()&&app==='business'){goJourney();return;}const node=oldHeader?.querySelector('#levels');if(node)node.click();else location.href=app==='business'?'index.html#journey':'index.html#levels';},
   refresh:()=>{if(isInteractive()&&app!=='business')render();}
  };
  if(app==='easy'){

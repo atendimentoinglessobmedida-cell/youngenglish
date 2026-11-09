@@ -29,7 +29,55 @@ function contrast(a, b) {
     y = luminance(b);
   return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05);
 }
-test("four consistent tabs and four pillars", () => {
+test("four consistent tabs, pillars and secondary-page lesson targets", () => {
+  const app = JSON.parse(
+    fs.readFileSync(path.join(root, "src/ism/app/manifest.json")),
+  ).app;
+  if (app !== "travel") {
+    let captured;
+    const location = {
+      pathname: "/conversation-lab.html",
+      search: "",
+      hash: "",
+      href: "",
+      protocol: "https:",
+    };
+    const header = { querySelector: () => null, querySelectorAll: () => [] };
+    const bridge = {
+      URLSearchParams,
+      URL,
+      location,
+      ISMStrings: sandbox.ISMStrings,
+      document: {
+        currentScript: { dataset: { ismApp: app } },
+        readyState: "loading",
+        querySelector: (s) => (s === "header" ? header : {}),
+        querySelectorAll: () => [],
+        addEventListener() {},
+      },
+      window: {
+        ISMNavigationKit: {
+          mount: (config) => {
+            captured = config;
+            return {};
+          },
+        },
+      },
+    };
+    bridge.globalThis = bridge;
+    vm.runInNewContext(
+      fs.readFileSync(
+        path.join(root, "src/ism/shared/ism-static-adapter.js"),
+        "utf8",
+      ),
+      bridge,
+    );
+    captured.lessons();
+    assert.equal(
+      location.href,
+      app === "business" ? "index.html#journey" : "index.html#levels",
+    );
+  }
   assert.deepEqual(Array.from(sandbox.ISMNavigationKit.tabs), [
     "Início",
     "Aulas",
