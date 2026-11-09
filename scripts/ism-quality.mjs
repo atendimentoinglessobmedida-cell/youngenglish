@@ -146,6 +146,7 @@ else if (mode === "links") await links();
 else if (mode === "budget") await budget();
 else {
   run("format:check");
+  run("test:ism");
   await lint();
   await budget();
   await content();
@@ -157,3 +158,4 @@ else {
       ". Navegador, Lighthouse, aparelhos reais e backend autenticado exigem evidências separadas.",
   );
 }
+
