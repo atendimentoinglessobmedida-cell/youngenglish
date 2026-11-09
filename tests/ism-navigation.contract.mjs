@@ -117,4 +117,3 @@ test("all synchronized release files match their locked SHA-256", () => {
     );
   }
 });
-

@@ -158,4 +158,3 @@ else {
       ". Navegador, Lighthouse, aparelhos reais e backend autenticado exigem evidências separadas.",
   );
 }
-
