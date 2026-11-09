@@ -25,7 +25,7 @@ function mountISMNavigation(config){
  let tab='inicio',group='',destroyed=false,lastResume=null,frame=0;
  try{lastResume=safeResume(localStorage.getItem(key),location.origin,config.allowedResume);}catch{}
  const state=()=>config.state?.()||{};
- function remember(){const value=config.resume?.();const clean=value&&safeResume(value,location.origin,config.allowedResume);if(!clean)return;if(clean!==lastResume){lastResume=clean;try{localStorage.setItem(key,clean);}catch{}}}
+ function remember(){if(roots.every(node=>node.hidden))return;const value=config.resume?.();const clean=value&&safeResume(value,location.origin,config.allowedResume);if(!clean)return;if(clean!==lastResume){lastResume=clean;try{localStorage.setItem(key,clean);}catch{}}}
  function button(label,action,cls='ism-action'){const b=element('button',label,cls);b.type='button';b.addEventListener('click',action);return b;}
  function focus(){requestAnimationFrame(()=>{const target=main.hidden?roots.flatMap(r=>[...r.querySelectorAll('h1,h2,[tabindex="-1"]')]).find(n=>n.getClientRects().length):main.querySelector('h1');if(target){target.tabIndex=-1;target.focus({preventScroll:true});}window.scrollTo({top:0,behavior:'instant'});});}
  function current(tabId){for(const b of bottom.children){if(b.dataset.tab===tabId)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');}profile.setAttribute('aria-expanded',String(tabId==='perfil'));}
@@ -53,6 +53,7 @@ function mountISMNavigation(config){
  const observer=new MutationObserver(schedule);for(const node of roots)observer.observe(node,{childList:true,subtree:true});
  const api={navigate,legacyRendered:rendered,destroy(){destroyed=true;observer.disconnect();cancelAnimationFrame(frame);restoreWidgets();window.removeEventListener('hashchange',changed);window.removeEventListener('popstate',changed);document.removeEventListener('click',schedule,true);for(const [node,hidden]of [...originalRoots,...hiddenChrome])node.hidden=hidden;root.remove();delete document.body.dataset.ismApp;}};
  root.ismNavigation=api;window.ISMNavigation=api;
+ for(const [node]of originalRoots)node.hidden=true;
  const own=location.hash.match(/^#ism\/(inicio|aulas|praticar|progresso|perfil)(?:\/([a-z-]+))?$/);if(own)navigate(own[1],own[2]||'',false);else if(config.isDefault?.()!==false)navigate('inicio','',false);else showLegacy(config.tabForLocation?.()||'aulas');
  return api;
 }
