@@ -1,7 +1,7 @@
 {
   "version": "0.2.0",
   "sourceRepository": "ism-shared-kit — local canonical release; no remote repository provisioned",
-  "sourceCommit": "cfd35c3ec7887984d092992bf3e192ceda1ecb6d",
+  "sourceCommit": "466d3648512a33b5de9c8a84f720157c114d1fd3",
   "files": {
     "src/ism/shared/ism-elements.js": {
       "sha256": "a4bc5f67aa17feaba8f6509ae5014d9a6ca7e78c5ef73432f3307622c1301cf5",
@@ -12,8 +12,8 @@
       "bytes": 13063
     },
     "src/ism/shared/ism-navigation.js": {
-      "sha256": "d66269cea0fa6dd26765a9701109f17a6be9b15c08b28634adaa80c79e299657",
-      "bytes": 35308
+      "sha256": "98c28ed3fb59c413c7496465f756ca86f0cbf9a465330943c0c90461f1cd5e69",
+      "bytes": 35373
     },
     "src/ism/shared/ism-static-adapter.js": {
       "sha256": "26b85c9ffaf5f053b2d2b1ca5da795939e13de8eb66212c97849f1aab399c524",
