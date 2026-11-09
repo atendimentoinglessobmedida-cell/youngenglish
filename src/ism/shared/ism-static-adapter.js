@@ -10,11 +10,18 @@ const ui=globalThis.ISMStrings.adapter;
  const link=(label,href,tab='praticar')=>({label,href,tab});
  const action=(label,id,fallback,tab='praticar')=>({label,tab,run:()=>{const node=oldHeader?.querySelector('#'+id);if(node)node.click();else location.href=fallback;}});
  const review={label:ui.label004,tab:'praticar',run:()=>{const node=[...(oldHeader?.querySelectorAll('button')||[])].find(n=>/Review|Revisão|Revisar/.test(n.textContent));if(node)node.click();else location.href=app==='business'?'reviews.html':'index.html#ism/praticar/revisao';}};
+ function legacyResume(){
+  if(!isInteractive())return null;
+  if(app==='business'){const last=typeof lastLesson==='function'?lastLesson():null;if(!last)return null;const stage=typeof lessonStageSaved==='function'?lessonStageSaved(last.lid):'context';return '/index.html#lesson/'+last.mid+'.'+(Number(last.index)+1)+'/'+stage;}
+  if(app==='young'){const saved=typeof resumeLesson!=='undefined'?resumeLesson:null;if(!saved||!lessons.some(l=>l.id===saved.id))return null;return '/index.html?'+new URLSearchParams({ismLesson:saved.id,ismStage:String(Math.min(5,Math.max(0,Math.floor(Number(saved.step)||0))))});}
+  if(done.size||Object.keys(answers).length||Object.keys(drafts).length){const next=lessons.findIndex(l=>!done.has(l.id)&&!l._locked);return '/index.html#lesson/'+Math.max(0,next)+'/0';}
+  return null;
+ }
  let resumeOpened=false;
  function restoreYoung(url){const id=url.searchParams.get('ismLesson'),n=typeof lessons!=='undefined'?lessons.findIndex(l=>l.id===id):-1;if(n<0)return;openLesson(n);step=Math.min(5,Math.max(0,Number(url.searchParams.get('ismStage'))||0));render();resumeOpened=true;}
  if(app==='young'&&isInteractive()&&new URLSearchParams(location.search).has('ismLesson'))restoreYoung(new URL(location.href));
  const props={
-  app,name:names[app],homeHref:'index.html',roots:()=>[oldMain],chrome:()=>[oldHeader,...oldNavs,document.querySelector('footer'),...document.querySelectorAll('body > p:has(> a[href="student-start.html"])')],
+  app,name:names[app],homeHref:'index.html',canonicalHome:rootPage?'':'index.html#ism/inicio',legacyResume,roots:()=>[oldMain],chrome:()=>[oldHeader,...oldNavs,document.querySelector('footer'),...document.querySelectorAll('body > p:has(> a[href="student-start.html"])')],
   firstLesson:app==='easy'?'/index.html#lesson/0/0':app==='young'?'/index.html?ismLesson=elementary-01&ismStage=0':'/index.html#lesson/1.1/0',
   allowedResume:url=>{
    if(!/\/(?:index\.html)?$/.test(url.pathname))return false;

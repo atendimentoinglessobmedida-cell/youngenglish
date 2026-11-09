@@ -77,6 +77,30 @@ test("four consistent tabs, pillars and secondary-page lesson targets", () => {
       location.href,
       app === "business" ? "index.html#journey" : "index.html#levels",
     );
+    if (app === "business") {
+      bridge.show = () => {};
+      bridge.lastLesson = () => ({ mid: 2, index: 1, lid: "2.2" });
+      bridge.lessonStageSaved = () => "listen";
+      assert.equal(captured.legacyResume(), "/index.html#lesson/2.2/listen");
+    } else {
+      bridge.render = () => {};
+      bridge.lessons = [{ id: "elementary-01" }, { id: "elementary-02" }];
+      bridge.done = new Set();
+      bridge.answers = {};
+      bridge.drafts = {};
+      bridge.resumeLesson = null;
+      assert.equal(captured.legacyResume(), null);
+      if (app === "young") {
+        bridge.resumeLesson = { id: "elementary-02", step: 3 };
+        assert.equal(
+          captured.legacyResume(),
+          "/index.html?ismLesson=elementary-02&ismStage=3",
+        );
+      } else {
+        bridge.done.add("elementary-01");
+        assert.equal(captured.legacyResume(), "/index.html#lesson/1/0");
+      }
+    }
   }
   assert.deepEqual(Array.from(sandbox.ISMNavigationKit.tabs), [
     "Início",
