@@ -29,7 +29,7 @@ function contrast(a, b) {
     y = luminance(b);
   return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05);
 }
-test("four consistent tabs, pillars and secondary-page lesson targets", () => {
+test("five tabs, profile consent and route-safe lesson targets", () => {
   const app = JSON.parse(
     fs.readFileSync(path.join(root, "src/ism/app/manifest.json")),
   ).app;
@@ -83,6 +83,18 @@ test("four consistent tabs, pillars and secondary-page lesson targets", () => {
       bridge.progressKey = "fixture-profile-b";
       assert.equal(captured.resumeScope(), "fixture-profile-b");
     } else assert.equal(captured.canPersistResume(), true);
+    const originalLocation = { ...location };
+    location.href = "https://app-git-preview.example/index.html#levels";
+    location.pathname = "/index.html";
+    location.hash = "#levels";
+    assert.equal(captured.tabForLocation(), "aulas");
+    location.pathname = "/reviews.html";
+    location.hash = "";
+    assert.equal(captured.tabForLocation(), "praticar");
+    location.pathname = "/index.html";
+    location.hash = "#progress";
+    assert.equal(captured.tabForLocation(), "progresso");
+    Object.assign(location, originalLocation);
     captured.lessons();
     assert.equal(
       location.href,
