@@ -1,0 +1,37 @@
+name: Backup auditavel - mirror e bundle
+on:
+  push:
+    branches: [backup/auditoria-2026-11]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Criar e verificar backup Git
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          umask 077
+          mkdir -p backup
+          git -c 'credential.helper=!f() { echo username=x-access-token; echo password="$GH_TOKEN"; }; f' clone --mirror "https://github.com/$REPO.git" backup/repository.git
+          git -C backup/repository.git fsck --full --no-reflogs
+          git -C backup/repository.git show-ref > backup/refs-before.txt
+          git -C backup/repository.git bundle create ../repository.bundle --all
+          git -C backup/repository.git bundle verify ../repository.bundle
+          tar -C backup -czf backup/repository-mirror.tar.gz repository.git
+          tar -tzf backup/repository-mirror.tar.gz >/dev/null
+          sha256sum backup/repository.bundle backup/repository-mirror.tar.gz > backup/SHA256SUMS
+          git -C backup/repository.git for-each-ref --format='%(refname) %(objectname)' refs/heads refs/tags > backup/branch-tag-tips.txt
+          rm -rf backup/repository.git
+      - uses: actions/upload-artifact@v4
+        with:
+          name: backup-${{ github.event.repository.name }}-${{ github.run_id }}
+          path: backup/
+          retention-days: 7
+          if-no-files-found: error
