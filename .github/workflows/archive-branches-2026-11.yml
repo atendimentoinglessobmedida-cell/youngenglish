@@ -17,7 +17,10 @@ jobs:
           REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
-          git -c 'credential.helper=!f() { echo username=x-access-token; echo password="$GH_TOKEN"; }; f' clone --mirror "https://github.com/$REPO.git" repo.git
+          mkdir repo.git
+          git -C repo.git init --bare
+          git -C repo.git remote add origin "https://github.com/$REPO.git"
+          git -C repo.git -c 'credential.helper=!f() { echo username=x-access-token; echo password="$GH_TOKEN"; }; f' fetch origin '+refs/heads/*:refs/heads/*' '+refs/tags/*:refs/tags/*'
           cd repo.git
           git fsck --full --no-reflogs
           git for-each-ref --format='%(refname:strip=2) %(objectname)' refs/heads > ../branch-tips.txt
