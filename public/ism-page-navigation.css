@@ -1,0 +1,35 @@
+.ism-page-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  gap: 8px 16px;
+  margin-block: 8px 16px;
+  padding: 8px 12px;
+  border: 1px solid #d6e1e6;
+  border-radius: 12px;
+  background: #f5f9fb;
+  color: #193448;
+  font: 600 0.9375rem/1.4 system-ui, sans-serif;
+}
+
+.ism-page-navigation details { min-width: 0; max-width: 100%; }
+.ism-page-navigation ul { max-height: 50vh; overflow: auto; margin-block: 4px; padding-inline-start: 20px; }
+.ism-page-navigation a,
+.ism-page-navigation summary,
+.ism-page-navigation button {
+  min-height: 44px;
+  padding-block: 12px;
+  color: #153b50;
+  cursor: pointer;
+}
+.ism-page-navigation a { display: inline-flex; align-items: center; text-decoration: underline; }
+.ism-page-navigation button {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  text-align: start;
+  overflow-wrap: anywhere;
+}
+.ism-page-navigation :focus-visible { outline: 2px solid #105c67; outline-offset: 2px; }
+.ism-page-navigation-target { scroll-margin-top: 8rem; }
