@@ -1,0 +1,20 @@
+.ism-lesson-search {
+  max-width: 1000px;
+  margin: 12px auto;
+  padding: 0 14px;
+  color: var(--ism-ink);
+  background: var(--ism-bg);
+  border: 1px solid var(--ism-line, #b9cad5);
+  border-radius: 12px;
+}
+.ism-lesson-search summary { padding-block: 11px; font-weight: 750; cursor: pointer; }
+.ism-lesson-search form { margin-block: 8px; }
+.ism-lesson-search form > div { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 5px; }
+.ism-lesson-search input { flex: 1 1 180px; min-width: 0; padding: 8px 10px; border: 1px solid #8197a6; border-radius: 8px; }
+.ism-lesson-search button { padding: 8px 16px; border: 0; border-radius: 8px; background: #194b72; color: white; }
+.ism-lesson-search p:empty, .ism-lesson-search ul:empty { display: none; }
+.ism-lesson-search ul { padding: 0; list-style: none; max-height: 50vh; overflow: auto; }
+.ism-lesson-search li a { display: grid; min-height: 44px; align-content: center; padding: 8px; border-top: 1px solid var(--ism-line, #b9cad5); color: inherit; }
+.ism-lesson-search li small { display: block; text-decoration: none; }
+.ism-lesson-search :focus-visible { outline: 2px solid #22737a; outline-offset: 2px; }
+@media (max-width: 1030px) { .ism-lesson-search { margin-inline: 14px; } }
