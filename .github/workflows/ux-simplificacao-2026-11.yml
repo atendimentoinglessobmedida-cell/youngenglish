@@ -14,9 +14,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Instalar dependencias
+        run: npm ci
       - name: Testar navegacao e acessibilidade
         run: node --test tests/ux-simplificacao.test.mjs
       - name: Verificar HTML/CSS
         run: |
           git diff --check
           test -f public/ux-simplificacao.css
+      - name: Testes existentes
+        run: npm test
+      - name: Checagem
+        run: npm run check
+      - name: Build
+        run: npm run build
