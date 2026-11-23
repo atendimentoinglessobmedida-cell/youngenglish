@@ -1,0 +1,30 @@
+name: UX simplificacao - testes de regressao
+on:
+  push:
+    branches: [ux/simplificacao-2026-11-v2]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  ux:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Instalar dependencias
+        run: npm ci
+      - name: Testar navegacao e acessibilidade
+        run: node --test tests/ux-simplificacao.test.mjs
+      - name: Verificar HTML/CSS
+        run: |
+          git diff --check
+          test -f public/ux-simplificacao.css
+      - name: Testes existentes
+        run: npm test
+      - name: Checagem
+        run: npm run check
+      - name: Build
+        run: npm run build
