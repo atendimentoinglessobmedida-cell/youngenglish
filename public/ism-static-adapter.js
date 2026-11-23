@@ -130,6 +130,8 @@ const ui=globalThis.ISMStrings.adapter;
   const names=new Map([[ui.label055,'Business Mode'],[ui.label050,'Smart Review'],[ui.label012,'Practice Lab'],[ui.label015,'Conversation Lab'],[ui.label057,'Business Ideas Lab'],[ui.label061,'Real Business Listening']]);
   for(const item of named)if(names.has(item.label))item.label=names.get(item.label);
  }
+ // Open the first conversation activity without passing through the practice categories.
+ props.shortcuts.unshift(link('Praticar agora','conversation-lab.html'));
  const api=window.ISMNavigationKit.mount(props);
  if(app==='easy'){const menu=document.createElement('nav');menu.className='ism-desktop-menu';menu.setAttribute('aria-label','Menu Easy');[['Aulas',()=>api.navigate('aulas')],['Praticar',()=>api.navigate('praticar')],['Jogos',()=>api.openResource(props.pillars.find(p=>p.id==='situacoes').resources.find(r=>r.label==='Jogos'))],['Meu progresso',()=>api.navigate('progresso')],['Mais',()=>api.navigate('perfil')]].forEach(([label,run])=>{const b=document.createElement('button');b.textContent=label;b.type='button';b.onclick=run;menu.append(b);});document.querySelector('.ism-header').append(menu);}
  
