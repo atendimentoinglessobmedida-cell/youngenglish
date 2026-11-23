@@ -1,0 +1,50 @@
+name: Arquivar pontas de branches
+on:
+  push:
+    branches: [backup/auditoria-2026-11]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Criar tags imutaveis de arquivamento
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          git -c 'credential.helper=!f() { echo username=x-access-token; echo password="$GH_TOKEN"; }; f' clone --mirror "https://github.com/$REPO.git" repo.git
+          cd repo.git
+          git fsck --full --no-reflogs
+          git for-each-ref --format='%(refname:strip=2) %(objectname)' refs/heads > ../branch-tips.txt
+          while read -r branch sha; do
+            tag="refs/tags/archive/$branch"
+            if git show-ref --verify --quiet "$tag"; then
+              existing="$(git rev-parse "$tag^{commit}")"
+              if [ "$existing" != "$sha" ]; then
+                echo "::error::Tag $tag existe em SHA diferente. Nenhuma tag existente sera alterada."
+                exit 1
+              fi
+              echo "OK existing $tag $sha"
+            else
+              git tag "archive/$branch" "$sha"
+              git -c 'credential.helper=!f() { echo username=x-access-token; echo password="$GH_TOKEN"; }; f' push origin "$tag"
+              echo "CREATED $tag $sha"
+            fi
+          done < ../branch-tips.txt
+          git -c 'credential.helper=!f() { echo username=x-access-token; echo password="$GH_TOKEN"; }; f' fetch origin '+refs/tags/archive/*:refs/tags/archive/*'
+          while read -r branch sha; do
+            actual="$(git rev-parse "refs/tags/archive/$branch^{commit}")"
+            test "$actual" = "$sha"
+          done < ../branch-tips.txt
+          cp ../branch-tips.txt ../archive-verified.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: archive-verified-${{ github.event.repository.name }}
+          path: archive-verified.txt
+          retention-days: 7
+          if-no-files-found: error
