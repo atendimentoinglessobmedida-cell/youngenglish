@@ -1,0 +1,7 @@
+/* UX simplificacao: additive only; preserves legacy routes and progress IDs. */
+.ux-first-step{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem;margin:.75rem 0 1rem;background:#eef6ff;border:1px solid #b6d7f4;border-radius:18px;color:#102944}
+.ux-first-step p{margin:0;font-weight:650;line-height:1.45}
+.ux-start{appearance:none;flex-shrink:0;min-height:48px;min-width:160px;border:0;border-radius:14px;padding:12px 20px;background:#102944;color:#fff;font:inherit;font-weight:800;cursor:pointer}
+.ux-start:focus-visible{outline:3px solid #d36b00;outline-offset:3px}
+@media(max-width:540px){.ux-first-step{flex-direction:column;align-items:stretch}.ux-start{width:100%}}
+@media(prefers-reduced-motion:reduce){.ux-start{animation:none;transition:none}}
