@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: 22
       - name: Instalar dependencias
-        run: npm ci
+        run: npm install --no-audit --no-fund
       - name: Testar navegacao e acessibilidade
         run: node --test tests/ux-simplificacao.test.mjs
       - name: Verificar HTML/CSS
